@@ -1,20 +1,28 @@
 {
   "owner": "Chorok Lee",
   "visibility": "private",
-  "scope": "Only the six author-selected paper repositories",
+  "scope": "Seven author-selected projects: the original six repositories plus ICAIF 2026",
   "papers": [
     {
       "id": "iclr2027",
       "label": "ICLR 2027",
       "title": "How Many More Labels Are Needed? Minimax Evaluation under Selective Labels",
-      "repository": "ChorokLeeDev/neurips-evalues-workshop2026",
+      "repository": "ChorokLeeDev/selective-labels-minimax-iclr2027",
       "branch": "main",
-      "manuscript": "iclr2027_cp_monitoring/output/pdf/iclr2027_v24_information_design_20260916.pdf",
-      "source": "iclr2027_cp_monitoring/paper_revisions/v24_information_design_20260916/main.tex",
-      "arxiv_source": "iclr2027_cp_monitoring/arxiv/selective_labels_arxiv_source.zip",
-      "repository_url": "https://github.com/ChorokLeeDev/neurips-evalues-workshop2026",
-      "working_branch_url": "https://github.com/ChorokLeeDev/neurips-evalues-workshop2026/tree/main",
-      "verified_date": "2026-09-27"
+      "manuscript": "artifacts/iclr2027.pdf",
+      "source": "paper/main.tex",
+      "arxiv_source": "artifacts/arxiv-source.zip",
+      "repository_url": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027",
+      "working_branch_url": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/tree/main",
+      "verified_date": "2026-09-27",
+      "scientific_source": "paper/body.tex",
+      "submission_source": "artifacts/iclr2027-source.zip",
+      "arxiv_pdf": "artifacts/arxiv.pdf",
+      "supplementary": "artifacts/numerical-supplement.zip",
+      "summary_source_commit": "34d30f12fa1d916e89a7eeba123c879e6c7c4db4",
+      "one_pager": "one-pagers/iclr2027.pdf",
+      "category": "Reliable prediction and statistical evaluation",
+      "status": "ICLR 2027 manuscript"
     },
     {
       "id": "aistats2027",
@@ -27,7 +35,11 @@
       "arxiv_source": "arxiv/reliance_alignment_arxiv_source.zip",
       "repository_url": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027",
       "working_branch_url": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/tree/main",
-      "verified_date": "2026-09-27"
+      "verified_date": "2026-09-27",
+      "summary_source_commit": "76661fdf862959345ea22ea2ab5494a4171a6eab",
+      "one_pager": "one-pagers/aistats2027.pdf",
+      "category": "Reliable prediction and statistical evaluation",
+      "status": "AISTATS 2027 submission 644"
     },
     {
       "id": "uai2026",
@@ -40,7 +52,11 @@
       "arxiv_source": null,
       "repository_url": "https://github.com/ChorokLeeDev/conformal-covid-uai2026",
       "working_branch_url": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/tree/main",
-      "verified_date": "2026-09-27"
+      "verified_date": "2026-09-27",
+      "summary_source_commit": "96d9616961e5ae8607373181d35262cb21a2b0d1",
+      "one_pager": "one-pagers/uai2026.pdf",
+      "category": "Reliable prediction and statistical evaluation",
+      "status": "UAI 2026 camera-ready source"
     },
     {
       "id": "kg-uncertainty",
@@ -53,7 +69,11 @@
       "arxiv_source": "output/kg-uncertainty-arxiv-source.zip",
       "repository_url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision",
       "working_branch_url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/revision/confirmation-resume-20260926",
-      "verified_date": "2026-09-27"
+      "verified_date": "2026-09-27",
+      "summary_source_commit": "208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18",
+      "one_pager": "one-pagers/kg-uncertainty.pdf",
+      "category": "Knowledge graphs and error diagnosis",
+      "status": "Active revision"
     },
     {
       "id": "factor-regime",
@@ -66,7 +86,11 @@
       "arxiv_source": "output/factor-paper-arxiv-source.zip",
       "repository_url": "https://github.com/ChorokLeeDev/factor-regime-revision",
       "working_branch_url": "https://github.com/ChorokLeeDev/factor-regime-revision/tree/revision/2026-09-26-factor-validity",
-      "verified_date": "2026-09-27"
+      "verified_date": "2026-09-27",
+      "summary_source_commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
+      "one_pager": "one-pagers/factor-regime.pdf",
+      "category": "Financial forecasting and model evaluation",
+      "status": "Active revision"
     },
     {
       "id": "regime-predictability",
@@ -79,7 +103,38 @@
       "arxiv_source": "output/regime-predictability-arxiv-source.zip",
       "repository_url": "https://github.com/ChorokLeeDev/regime-predictability-revision",
       "working_branch_url": "https://github.com/ChorokLeeDev/regime-predictability-revision/tree/revision/pi-interview-arxiv-20260926",
-      "verified_date": "2026-09-27"
+      "verified_date": "2026-09-27",
+      "summary_source_commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
+      "one_pager": "one-pagers/regime-predictability.pdf",
+      "category": "Financial forecasting and model evaluation",
+      "status": "Active revision"
+    },
+    {
+      "id": "icaif2026",
+      "label": "ICAIF 2026",
+      "title": "Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion",
+      "repository": "ChorokLeeDev/factor-decay-icaif2026",
+      "branch": "main",
+      "manuscript": "submission/main_icaif_submission.pdf",
+      "source": null,
+      "arxiv_source": "arxiv/factor_decay_arxiv_source.zip",
+      "repository_url": "https://github.com/ChorokLeeDev/factor-decay-icaif2026",
+      "working_branch_url": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main",
+      "verified_date": "2026-09-27",
+      "submission_number": 239,
+      "decision": "pending",
+      "summary_source": "Author-supplied five-page submitted PDF",
+      "summary_source_sha256": "798939cc75e3f690f8780f35c481523c0d5621b026c81b5b71e14fb97ad9fdf1",
+      "related_source_commit": "f283047d2d7d81fb7c726af3763bd452b99cee12",
+      "exact_submission_tex_located": false,
+      "one_pager": "one-pagers/icaif2026.pdf",
+      "category": "Financial forecasting and model evaluation",
+      "status": "ICAIF 2026 submission 239 · Decision pending",
+      "arxiv_pdf": "arxiv/factor_decay_arxiv.pdf",
+      "arxiv_metadata": "arxiv/abstract.txt",
+      "arxiv_source_kind": "reconstructed_from_submitted_pdf",
+      "arxiv_provenance": "arxiv/PROVENANCE.md"
     }
-  ]
+  ],
+  "updated": "2026-09-27"
 }

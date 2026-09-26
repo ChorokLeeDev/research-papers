@@ -1,0 +1,37 @@
+[
+  {
+    "id": "iclr2027",
+    "file": "one-pagers/iclr2027.pdf",
+    "sha256": "1146acaffe8e60cf01f88593d957820e80c5419e3f60a879b6aba59df13894d0"
+  },
+  {
+    "id": "aistats2027",
+    "file": "one-pagers/aistats2027.pdf",
+    "sha256": "391c0382974b2054579d81024a4a3865609ef9f3dc714080fead25ad3f70e96f"
+  },
+  {
+    "id": "uai2026",
+    "file": "one-pagers/uai2026.pdf",
+    "sha256": "82412481d6f6f71dff3ab91c470b1788e412dc6a19acf43a628bfaeeeb17e0d3"
+  },
+  {
+    "id": "kg-uncertainty",
+    "file": "one-pagers/kg-uncertainty.pdf",
+    "sha256": "680ba97a93263effae7dd6e59010438f87cdecb6ab1a2499e1c2176b2aa55a6d"
+  },
+  {
+    "id": "factor-regime",
+    "file": "one-pagers/factor-regime.pdf",
+    "sha256": "5fc5221869442aaa8366635c42add982d1552504ca0e9f457820bbd82021ee27"
+  },
+  {
+    "id": "regime-predictability",
+    "file": "one-pagers/regime-predictability.pdf",
+    "sha256": "8a7b008df08a7284cebf243e16c89ff5f549d5b7d5f9301c9b96385da15c9e65"
+  },
+  {
+    "id": "icaif2026",
+    "file": "one-pagers/icaif2026.pdf",
+    "sha256": "3d74562cbedc6107781b99cbf1463e8eb115c31dbb4b03a065d31e30131fc422"
+  }
+]
