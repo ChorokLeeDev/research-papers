@@ -1,0 +1,85 @@
+{
+  "owner": "Chorok Lee",
+  "visibility": "private",
+  "scope": "Only the six author-selected paper repositories",
+  "papers": [
+    {
+      "id": "iclr2027",
+      "label": "ICLR 2027",
+      "title": "How Many More Labels Are Needed? Minimax Evaluation under Selective Labels",
+      "repository": "ChorokLeeDev/neurips-evalues-workshop2026",
+      "branch": "main",
+      "manuscript": "iclr2027_cp_monitoring/output/pdf/iclr2027_v24_information_design_20260916.pdf",
+      "source": "iclr2027_cp_monitoring/paper_revisions/v24_information_design_20260916/main.tex",
+      "arxiv_source": "iclr2027_cp_monitoring/arxiv/selective_labels_arxiv_source.zip",
+      "repository_url": "https://github.com/ChorokLeeDev/neurips-evalues-workshop2026",
+      "working_branch_url": "https://github.com/ChorokLeeDev/neurips-evalues-workshop2026/tree/main",
+      "verified_date": "2026-09-27"
+    },
+    {
+      "id": "aistats2027",
+      "label": "AISTATS 2027",
+      "title": "When Marginal Shift Magnitudes Cannot Identify Conformal Coverage Loss",
+      "repository": "ChorokLeeDev/conformal-coverage-identification-aistats2027",
+      "branch": "main",
+      "manuscript": "submission/aistats_submission.pdf",
+      "source": "paper_aistats2027/reliance_alignment.tex",
+      "arxiv_source": "arxiv/reliance_alignment_arxiv_source.zip",
+      "repository_url": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027",
+      "working_branch_url": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/tree/main",
+      "verified_date": "2026-09-27"
+    },
+    {
+      "id": "uai2026",
+      "label": "UAI 2026",
+      "title": "Diagnosing Conformal Prediction Failures Under Distribution Shift: A COVID-19 Case Study",
+      "repository": "ChorokLeeDev/conformal-covid-uai2026",
+      "branch": "main",
+      "manuscript": "paper/main.pdf",
+      "source": "paper/main.tex",
+      "arxiv_source": null,
+      "repository_url": "https://github.com/ChorokLeeDev/conformal-covid-uai2026",
+      "working_branch_url": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/tree/main",
+      "verified_date": "2026-09-27"
+    },
+    {
+      "id": "kg-uncertainty",
+      "label": "KG uncertainty revision",
+      "title": "Role Support in Knowledge-Graph Error Ranking: Predictor Regimes and Evaluation Policies",
+      "repository": "ChorokLeeDev/kg-uncertainty-revision",
+      "branch": "revision/confirmation-resume-20260926",
+      "manuscript": "output/kg-uncertainty-revised.pdf",
+      "source": "manuscript.tex",
+      "arxiv_source": "output/kg-uncertainty-arxiv-source.zip",
+      "repository_url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision",
+      "working_branch_url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/revision/confirmation-resume-20260926",
+      "verified_date": "2026-09-27"
+    },
+    {
+      "id": "factor-regime",
+      "label": "Factor/crowding revision",
+      "title": "Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence",
+      "repository": "ChorokLeeDev/factor-regime-revision",
+      "branch": "revision/2026-09-26-factor-validity",
+      "manuscript": "output/factor-crowding-revised.pdf",
+      "source": "manuscript.tex",
+      "arxiv_source": "output/factor-paper-arxiv-source.zip",
+      "repository_url": "https://github.com/ChorokLeeDev/factor-regime-revision",
+      "working_branch_url": "https://github.com/ChorokLeeDev/factor-regime-revision/tree/revision/2026-09-26-factor-validity",
+      "verified_date": "2026-09-27"
+    },
+    {
+      "id": "regime-predictability",
+      "label": "Regime predictability revision",
+      "title": "Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability",
+      "repository": "ChorokLeeDev/regime-predictability-revision",
+      "branch": "revision/pi-interview-arxiv-20260926",
+      "manuscript": "output/regime-predictability-revised.pdf",
+      "source": "manuscript.tex",
+      "arxiv_source": "output/regime-predictability-arxiv-source.zip",
+      "repository_url": "https://github.com/ChorokLeeDev/regime-predictability-revision",
+      "working_branch_url": "https://github.com/ChorokLeeDev/regime-predictability-revision/tree/revision/pi-interview-arxiv-20260926",
+      "verified_date": "2026-09-27"
+    }
+  ]
+}
