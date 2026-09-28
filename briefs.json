@@ -1,7 +1,7 @@
 {
   "iclr2027": {
     "category": "Reliable prediction and statistical evaluation",
-    "status": "ICLR 2027 manuscript",
+    "status": "Submitted to ICLR 2027 · Decision pending (not accepted)",
     "question": "How many additional labels are needed to detect unacceptable risk when the labels already observed may be selectively missing?",
     "idea": "Treat evaluation as a minimax audit of a frozen cohort. An auditor privately queries committed outcomes and must control false alarms even when the original missingness depends on the outcome.",
     "result": "The paper characterizes exact fixed-query asymptotic power with truthful labels, then separates noisy-label guarantees that look similar but induce different testing problems. Robust frontiers translate uncertainty about label quality into query requirements and blind regions.",
