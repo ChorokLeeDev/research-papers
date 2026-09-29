@@ -1,6 +1,6 @@
 {
   "owner": "Chorok Lee",
-  "visibility": "private",
+  "visibility": "public",
   "scope": "Seven author-selected projects: the original six repositories plus ICAIF 2026",
   "papers": [
     {
@@ -90,7 +90,8 @@
       "summary_source_commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
       "one_pager": "one-pagers/factor-regime.pdf",
       "category": "Financial forecasting and model evaluation",
-      "status": "Active revision"
+      "status": "Active revision",
+      "arxiv_url": "https://arxiv.org/abs/2512.11913"
     },
     {
       "id": "regime-predictability",
@@ -107,7 +108,8 @@
       "summary_source_commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
       "one_pager": "one-pagers/regime-predictability.pdf",
       "category": "Financial forecasting and model evaluation",
-      "status": "Active revision"
+      "status": "Active revision",
+      "arxiv_url": "https://arxiv.org/abs/2601.10732"
     },
     {
       "id": "icaif2026",
@@ -131,10 +133,14 @@
       "category": "Financial forecasting and model evaluation",
       "status": "ICAIF 2026 submission 239 · Decision pending",
       "arxiv_pdf": "arxiv/factor_decay_arxiv.pdf",
-      "arxiv_metadata": "arxiv/abstract.txt",
-      "arxiv_source_kind": "reconstructed_from_submitted_pdf",
-      "arxiv_provenance": "arxiv/PROVENANCE.md"
+      "arxiv_metadata": "arxiv/factor_decay_arxiv_metadata.txt",
+      "arxiv_source_kind": "original_tex_edition",
+      "arxiv_provenance": "arxiv/PROVENANCE.md",
+      "arxiv_editable_source": "arxiv/original-source-20260929/main.tex",
+      "arxiv_source_commit": "a0bd43ea47898011d0661710975658a8969299d5",
+      "arxiv_prepared_date": "2026-09-29",
+      "arxiv_page_count": 10
     }
   ],
-  "updated": "2026-09-27"
+  "updated": "2026-09-29"
 }

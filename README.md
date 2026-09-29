@@ -1,8 +1,8 @@
 # Research Papers
 
-Chorok Lee · Private research catalogue · Updated 27 September 2026
+Chorok Lee · Research catalogue · Updated 29 September 2026
 
-논문별 저장소, 기준 원고, 한 페이지 소개와 한·영 1분 스피치를 모았습니다. 범위는 지정한 여섯 저장소와 추가 요청한 ICAIF 제출본입니다. 아래 7개 항목은 프로젝트/버전 목록이며 독립적인 출판 논문 수를 뜻하지 않습니다.
+논문별 저장소, 기준 원고, 한 페이지 소개와 한·영 1분 스피치를 모았습니다. 금융 논문 세 편의 차이는 아래 비교표에서 확인할 수 있습니다. 아래 7개 항목은 프로젝트/버전 목록이며 독립적인 출판 논문 수를 뜻하지 않습니다.
 
 ## Papers
 
@@ -30,14 +30,31 @@ Chorok Lee · Private research catalogue · Updated 27 September 2026
 
 | Paper / version | Manuscript | arXiv source | One-pager |
 | --- | --- | --- | --- |
-| **Factor/crowding revision** · [Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence](https://github.com/ChorokLeeDev/factor-regime-revision/tree/revision/2026-09-26-factor-validity)<br>Active revision | [PDF](https://github.com/ChorokLeeDev/factor-regime-revision/blob/revision/2026-09-26-factor-validity/output/factor-crowding-revised.pdf) | [ZIP](https://github.com/ChorokLeeDev/factor-regime-revision/blob/revision/2026-09-26-factor-validity/output/factor-paper-arxiv-source.zip) | [EN / KO PDF](one-pagers/factor-regime.pdf) |
-| **Regime predictability revision** · [Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability](https://github.com/ChorokLeeDev/regime-predictability-revision/tree/revision/pi-interview-arxiv-20260926)<br>Active revision | [PDF](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/revision/pi-interview-arxiv-20260926/output/regime-predictability-revised.pdf) | [ZIP](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/revision/pi-interview-arxiv-20260926/output/regime-predictability-arxiv-source.zip) | [EN / KO PDF](one-pagers/regime-predictability.pdf) |
-| **ICAIF 2026** · [Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main)<br>ICAIF 2026 submission 239 · Decision pending | [PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/submission/main_icaif_submission.pdf) | [ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip) | [EN / KO PDF](one-pagers/icaif2026.pdf) |
+| **Factor/crowding revision** · [Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence](https://github.com/ChorokLeeDev/factor-regime-revision/tree/revision/2026-09-26-factor-validity)<br>Active revision | [PDF](https://github.com/ChorokLeeDev/factor-regime-revision/blob/revision/2026-09-26-factor-validity/output/factor-crowding-revised.pdf) · [arXiv](https://arxiv.org/abs/2512.11913) | [ZIP](https://github.com/ChorokLeeDev/factor-regime-revision/blob/revision/2026-09-26-factor-validity/output/factor-paper-arxiv-source.zip) | [EN / KO PDF](one-pagers/factor-regime.pdf) |
+| **Regime predictability revision** · [Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability](https://github.com/ChorokLeeDev/regime-predictability-revision/tree/revision/pi-interview-arxiv-20260926)<br>Active revision | [PDF](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/revision/pi-interview-arxiv-20260926/output/regime-predictability-revised.pdf) · [arXiv](https://arxiv.org/abs/2601.10732) | [ZIP](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/revision/pi-interview-arxiv-20260926/output/regime-predictability-arxiv-source.zip) | [EN / KO PDF](one-pagers/regime-predictability.pdf) |
+| **ICAIF 2026** · [Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main)<br>ICAIF 2026 submission 239 · Decision pending | [Preprint · 10 pages](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf)<br>[Submission · 5 pages](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/submission/main_icaif_submission.pdf) | [ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip) | [EN / KO PDF](one-pagers/icaif2026.pdf) |
+
+### How the three finance papers differ
+
+**세 논문의 질문은 각각 “큰 손실의 전조인가?”, “예측에 도움이 되는 정보인가?”, “그 예측관계가 언제 약해지는가?”입니다.**
+
+| Paper | 쉬운 질문과 예시 | Main focus / 핵심 초점 |
+| --- | --- | --- |
+| **[Return-Decay Residuals](https://arxiv.org/abs/2512.11913)** | 투자전략의 성적 악화가 다음 달 큰 손실의 전조일까?<br>예: 모멘텀 전략의 성적이 예상보다 나빠졌을 때 이후 손실 위험도 커지는가? | **Tail-risk warnings · 손실 위험**<br>전략 자체의 성적에서 만든 지표가 미래 위험을 예측하는지, 같은 시점의 정보가 겹쳐 생긴 연관성인지 점검합니다. |
+| **[Source Exclusion](https://arxiv.org/abs/2601.10732)** | A의 정보를 알면 B를 더 잘 예측할 수 있을까?<br>예: 가치주 움직임을 알면 소형주 수익률 예측이 나아지는가? | **Value of source information · 정보의 예측 기여**<br>A를 예측식뿐 아니라 시장 국면 추정과 학습 과정에서도 완전히 빼고 비교하는 방법을 연구합니다. |
+| **[Predicting Factor Decay](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf)** | 관측된 A→B 예측관계는 얼마나 오래 유지될까?<br>예: 과거에 유용했던 가치주→소형주 관계가 언제 약해지는가? | **Durability of predictive relationships · 예측관계의 지속기간**<br>관계가 약해지는 시점과 위험을 생존 분석·머신러닝으로 예측할 수 있는지 탐색합니다. |
+
+The distinction is **future loss risk**, **the predictive contribution of a source**, and **the durability of a predictive relationship**. The last two papers share research history but ask different questions.
+
+여기서 팩터는 가치주·소형주·모멘텀처럼 공통된 투자 특성을 묶은 수익률을 뜻합니다. 첫 논문은 개별 전략의 성적과 손실 위험을, 나머지 두 논문은 팩터 사이의 예측관계를 다룹니다. 관계의 지속기간을 해석하려면 정보의 기여부터 제대로 측정해야 하므로 Source Exclusion의 검증 문제는 Factor Decay에도 중요합니다. 다만 특정 모델의 표본 외 실패만으로 실제 예측정보가 사라졌다고 단정할 수는 없습니다.
+
+**Evidence limits:** the two audit papers do not establish a robust general forecasting advantage. Factor Decay reports exploratory results based on only seven decay events; the comparison above describes research questions, not proven trading benefits.
 
 ### Version notes
 
 - **ICLR:** the current repository is `selective-labels-minimax-iclr2027`; manuscript and source links use its cleaned `artifacts/` and `paper/` layout.
-- **ICAIF:** submission **239**, **decision pending**. The author-supplied five-page PDF is authoritative. The related ten-page manuscript and code are an earlier provenance snapshot; the exact submitted LaTeX source was not located. The arXiv ZIP is a documented reconstruction with author identification and small consistency corrections. [arXiv PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf) · [Title / abstract](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main/arxiv) · [Provenance](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/PROVENANCE.md) · [Version comparison](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/docs/VERSION_COMPARISON.md).
+- **Factor Decay preprint:** the current [PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf) and [arXiv source ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip), prepared on 29 September 2026, use the **ten-page original TeX edition**, with six figures and 21 references. This replaces the earlier reconstructed upload package. The abstract and research text are preserved from the original TeX; author details and the publication wrapper were updated, and the missing figure was recovered from the original reference PDF. [Editable source](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main/arxiv/original-source-20260929) · [Provenance](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/PROVENANCE.md). Package preparation does not establish arXiv publication or newly validate the experiments.
+- **ICAIF submission record:** the separate five-page submitted PDF remains authoritative for that submission. The existing ICAIF one-pager and one-minute introduction below describe that five-page version; they are not new summaries of the ten-page preprint. The exact submitted LaTeX source was not located.
 - **Research lineage:** ICAIF and the regime-predictability revision share earlier research history. Their current claims and versions are tracked separately; later revision findings are not retroactively attributed to the ICAIF submission.
 - **Revision branches:** the three revision projects link to their active branches rather than possibly older default-branch manuscripts. Summaries record the exact source commits in [papers.json](papers.json). Live branch links may advance after the summary date.
 - **Status:** venue labels identify the tracked version. Only explicitly stated decisions should be read as conference outcomes. Repository preparation does not upload or alter a conference submission.
@@ -133,5 +150,5 @@ A factor relationship may work for years and then stop being useful. Can we fore
 ## Maintenance
 
 - Edit `papers.json` for links, statuses and source identities; edit `briefs.json` for the reviewed summaries and speeches.
-- Rebuild with `python tools/build_briefs.py`. See [one-pager build notes](one-pagers/README.md) for fonts and dependencies.
+- Rebuild only this README with `python tools/build_briefs.py --readme-only`, or include the PDFs with `python tools/build_briefs.py`. The finance comparison and version notes are maintained in the README builder. See [one-pager build notes](one-pagers/README.md) for fonts and dependencies.
 - Update the source commit and review the scientific claims whenever a summary changes. Preserve submitted artifacts and distinguish reported results from newly reproduced evidence.
