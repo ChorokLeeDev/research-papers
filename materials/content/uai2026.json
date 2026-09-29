@@ -1,0 +1,412 @@
+{
+  "id": "uai2026",
+  "title": "Diagnosing Conformal Prediction Failures Under Distribution Shift: A COVID-19 Case Study",
+  "short_title": "When conformal coverage fails",
+  "category": "Reliable prediction and statistical evaluation",
+  "accent": "#2563A6",
+  "source": {
+    "repository": "ChorokLeeDev/conformal-covid-uai2026",
+    "commit": "96d9616961e5ae8607373181d35262cb21a2b0d1",
+    "path": "paper/main.tex",
+    "url": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex",
+    "version_note": "UAI 2026 camera-ready source; fixed 29 September 2026 snapshot"
+  },
+  "summary": "Concentrated feature reliance is an empirical warning signal for coverage loss in gradient-boosted multiclass conformal predictors.",
+  "slides": [
+    {
+      "title": "Diagnosing conformal prediction failures",
+      "layout": "cover",
+      "lead": "Can a model's feature reliance warn us before future test data arrive?",
+      "bullets": [
+        "Chorok Lee · KAIST",
+        "COVID-19 supply-chain case study, with cross-domain checks",
+        "A diagnostic of vulnerability, with explicit limits"
+      ],
+      "notes": "Conformal prediction produces a set of plausible labels, not just a single prediction. Coverage is the fraction of examples whose true label appears in that set. The appeal is a statistical guarantee under exchangeability, which roughly requires calibration and future examples to be comparable. Deployment can violate that assumption. This study asks a practical question: can something measured before deployment identify models that are more vulnerable to future coverage loss? The proposed signal is the concentration of SHAP feature importance in the single most influential feature. We will connect that idea to the COVID-19 supply-chain case study, an idealized mechanism, and the observed cross-domain association. The result is a warning signal for a particular family of classifiers. It is not a replacement for conformal calibration or a guarantee under arbitrary future shift.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — Abstract; §Introduction"
+      ]
+    },
+    {
+      "title": "Same calendar shock, very different failures",
+      "layout": "table",
+      "lead": "Eight SALT tasks share the COVID-era split; their coverage losses vary sharply.",
+      "table": {
+        "headers": [
+          "Task",
+          "Validation",
+          "Post-shift",
+          "Drop"
+        ],
+        "rows": [
+          [
+            "Sales payment terms",
+            "90.8%",
+            "13.7%",
+            "77.1 pp"
+          ],
+          [
+            "Sales shipping condition",
+            "93.5%",
+            "21.8%",
+            "71.6 pp"
+          ],
+          [
+            "Item plant",
+            "92.0%",
+            "81.4%",
+            "10.6 pp"
+          ],
+          [
+            "Sales office",
+            "99.9%",
+            "99.9%",
+            "0.1 pp"
+          ]
+        ]
+      },
+      "bullets": [
+        "Non-randomized APS targets 90% coverage; values are 50-seed means.",
+        "Drop = validation coverage minus post-shift coverage; rounded values may not subtract exactly."
+      ],
+      "notes": "The benchmark supplies eight classification tasks under the same calendar split. Models train before February 2020, validation covers February through July 2020, and test observations come afterward. This is an observational temporal case study, not a randomized intervention identifying the causal effect of COVID. Each of fifty seeds trains an independent LightGBM model and calibrates its own predictor; the experiment is not an ensemble of fifty predictions. The table shows four tasks to make the contrast visible. Payment-term coverage falls by 77.1 percentage points, while sales-office coverage is essentially unchanged. The seed runs measure algorithmic variation on these tasks; they are not fifty independent shocks. Rounding explains why displayed validation and test values occasionally differ from the separately reported drop. The central problem is explaining this heterogeneous vulnerability.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — §Methodology; Table tab:main_results"
+      ]
+    },
+    {
+      "title": "Measure where the model places its reliance",
+      "layout": "equation",
+      "lead": "Top-1 concentration is the largest share of total mean absolute SHAP importance.",
+      "equation": "C=\\frac{\\max_j\\mathbb{E}|\\phi_j|}{\\sum_j\\mathbb{E}|\\phi_j|}",
+      "equation_plain": "C = largest mean |SHAP| / total mean |SHAP|",
+      "bullets": [
+        "Compute SHAP on validation data before deployment.",
+        "A large C means one feature dominates the measured attribution.",
+        "C measures reliance concentration; it does not measure how much future data will shift."
+      ],
+      "notes": "For each feature, average the absolute SHAP attribution over validation examples. Then divide the largest of those averages by the sum across all features. The result lies between zero and one and is comparable across the tasks despite different raw attribution scales. A value of 0.5 means that one feature accounts for half of the measured attribution mass. This does not say that half of prediction errors will come from that feature, nor that the feature will necessarily change in deployment. It describes concentration in a fitted model's explanation. The timing matters: no future labels or future covariates are needed to compute this diagnostic. The hypothesis is that a model with one dominant reliance point can be fragile when a damaging shift affects that point. Stability of the feature still matters.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — §SHAP Concentration Diagnostic; Eq. eq:concentration"
+      ]
+    },
+    {
+      "title": "Why concentration can amplify vulnerability",
+      "layout": "comparison",
+      "lead": "The theory explains a mechanism under stated assumptions.",
+      "columns": [
+        {
+          "heading": "Idealized mechanism",
+          "body": "The class-probability model combines a dominant-feature component and a residual component. Shift damages the dominant component while residual behavior stays exchangeable."
+        },
+        {
+          "heading": "Formal conclusion",
+          "body": "Under the theorem's conditions, a lower bound on expected APS score increases with concentration; a corresponding coverage upper bound worsens."
+        },
+        {
+          "heading": "Empirical boundary",
+          "body": "Probability-space additivity is an idealization. Measured TreeSHAP concentration is a proxy, not a guaranteed mixing coefficient."
+        }
+      ],
+      "notes": "APS scores accumulate predicted probability down the ranked labels until the true class is reached. If the model becomes confidently wrong, the true class can appear late in that ranking, moving its score beyond the cutoff calibrated earlier. The theorem studies a deliberately simplified model: a mixture in probability space of a component depending on one feature and a residual component. The dominant feature's shifted component puts little probability on the true class, while the residual component and label retain their calibration distribution. Under the additional inequalities stated in the theorem, increasing the mixture weight worsens bounds on scores and coverage. The paper explicitly notes that TreeSHAP operates in log-odds space here. Thus this is directional mechanistic support under assumptions, not a formal guarantee that any measured SHAP concentration determines future coverage.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — §Theory; Theorem thm:score_inflation, assumptions A1–A3 and A1 footnote"
+      ]
+    },
+    {
+      "title": "A strong association across the study tasks",
+      "layout": "figure",
+      "lead": "Primary pooled endpoint: Spearman ρ = 0.853 across 16 multiclass tasks in 9 domains.",
+      "figure": {
+        "path": "assets/uai2026/concentration_evidence.png",
+        "caption": "Exact source data replotted: 8 SALT and 8 external multiclass tasks. The 40% cutoff is exploratory.",
+        "source": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/src/generate_n16_figure.py"
+      },
+      "bullets": [
+        "Reported p < 0.001; bootstrap 95% interval [0.50, 0.96].",
+        "The pool includes the original 8 SALT tasks and 8 external tasks."
+      ],
+      "notes": "Each point is a task: concentration measured on validation data appears on the horizontal axis, and subsequent coverage loss on the vertical axis. The pooled association is strong, with Spearman correlation 0.853. The unit of analysis is the task, not an individual prediction or seed. The sixteen-task result combines the original eight SALT tasks with eight external multiclass tasks. It is therefore not sixteen wholly independent new validations of a rule developed elsewhere. Four external tasks use documented shifts, and four are null-shift controls with random or predefined splits. The three-class Stack Overflow task is excluded from this primary endpoint, which uses at least four classes. The dashed threshold is exploratory. Notice the exceptions, especially sales-office and KDDCup99: they are important for interpreting the signal as a risk diagnostic rather than a deterministic rule.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — §SHAP Concentration Correlates with Failure; Table tab:stratified_correlation; Figure fig:n16_correlation"
+      ]
+    },
+    {
+      "title": "Detecting shift and predicting damage differ",
+      "layout": "table",
+      "lead": "On the eight SALT tasks, model-specific reliance is more associated with coverage loss.",
+      "table": {
+        "headers": [
+          "Diagnostic",
+          "Spearman ρ",
+          "When available"
+        ],
+        "rows": [
+          [
+            "Top-1 SHAP concentration",
+            "0.833",
+            "Before deployment"
+          ],
+          [
+            "Native gain concentration",
+            "0.667",
+            "Before deployment"
+          ],
+          [
+            "Across-seed disagreement",
+            "0.452",
+            "Before deployment"
+          ],
+          [
+            "MMD / C2ST / PSI",
+            "≤ 0.19",
+            "Requires shifted data"
+          ]
+        ]
+      },
+      "bullets": [
+        "Different information requirements: this is not a same-input forecasting contest.",
+        "Association does not establish a causal effect of concentration."
+      ],
+      "notes": "A distribution test can correctly detect that data changed while saying little about which fitted model loses coverage. In this case study, the three reported shift indicators identify differences across all tasks but have weak rank associations with the severity of coverage loss. SHAP concentration is more strongly associated with that severity and is available earlier. Native feature-gain concentration and variability of validation coverage across seeds are alternative pre-deployment diagnostics. Their observed correlations are smaller on the eight SALT tasks. This comparison must retain its information distinction: shift tests use post-shift observations, so we should not imply a controlled same-input forecasting competition. The small task count also limits statistical separation between alternative explanations. In particular, class count and concentration are related within SALT; the cross-domain partial-correlation analysis gives additional evidence but does not turn the study into a causal experiment.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — Table tab:diagnostic_comparison; §Comparison with Standard Shift Detection"
+      ]
+    },
+    {
+      "title": "The 40% rule has useful exceptions",
+      "layout": "table",
+      "lead": "An exploratory flag is not a safe-deployment certificate.",
+      "table": {
+        "headers": [
+          "Task",
+          "C",
+          "Drop",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Sales payment terms",
+            "54.2%",
+            "77.1 pp",
+            "High-C failure"
+          ],
+          [
+            "Sales office",
+            "42.6%",
+            "0.1 pp",
+            "False positive"
+          ],
+          [
+            "Covertype",
+            "49.8%",
+            "81.8 pp",
+            "External failure"
+          ],
+          [
+            "KDDCup99",
+            "21.1%",
+            "15.9 pp",
+            "False negative"
+          ]
+        ]
+      },
+      "bullets": [
+        "At-risk means mean coverage loss > 15 percentage points.",
+        "A protective-feature rule came from one case; it requires further validation."
+      ],
+      "notes": "The proposed 40 percent concentration cutoff is a compact screening rule. It should not be read as a universal threshold at which a predictor suddenly becomes unsafe. Sales-office has concentration above the cutoff but almost no coverage loss. The manuscript motivates a protective-secondary-feature check from that one observation; its numerical cutoffs remain provisional. KDDCup99 illustrates the reverse problem: concentration is below the threshold but the mean loss crosses the study's fifteen-percentage-point at-risk definition, with substantial seed variability. Covertype is the principal catastrophic external case, with the stated geographic split. A separate specificity experiment uses another Covertype split and obtains different results; those experiments should not be merged. The practical interpretation is to investigate concentrated dependence, examine feature stability, and keep monitoring empirical coverage. A low concentration value does not establish future validity.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — Table tab:framework_validation; §Decision Framework; §Cross-Domain and External Validation"
+      ]
+    },
+    {
+      "title": "Scope changes with the classifier",
+      "layout": "comparison",
+      "lead": "The strongest evidence concerns gradient-boosted multiclass APS predictors.",
+      "columns": [
+        {
+          "heading": "LightGBM",
+          "body": "Within SALT, concentration–drop ρ = 0.833. Single-feature reliance aligns with the studied failure mechanism."
+        },
+        {
+          "heading": "Random forest",
+          "body": "Within SALT, ρ = 0.30. Concentration is a weaker diagnostic in the reported architecture check."
+        },
+        {
+          "heading": "MLP",
+          "body": "Within SALT, ρ = 0.43. Large losses also occur with low concentration; the top-feature signal misses these cases."
+        }
+      ],
+      "bullets": [
+        "These are observed model-family differences, not proof of their training causes."
+      ],
+      "notes": "The central result has a scope: gradient-boosted multiclass classifiers using APS. The model-sensitivity analysis is useful because it tests whether the same compact diagnostic behaves similarly in other architectures. It does not. Random forests show a weaker association, and the multilayer perceptron can lose substantial coverage while its measured attribution remains relatively distributed. The source discusses these as global-sensitivity failures that a top-feature metric does not capture. One example is the MLP on sales-group, with roughly 27.5 percent concentration but 78.4 percentage points of coverage loss. That is a direct reason not to use a low C value as a universal reliability certificate. The architectural explanations are plausible interpretations, rather than isolated causal effects of bagging, boosting, or neural representations. Neural diagnostics and broader transfer need dedicated validation.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — Appendix Model Class Sensitivity; Tables tab:model_sensitivity and tab:mlp_lgb_comparison"
+      ]
+    },
+    {
+      "title": "Recovering coverage can reduce usefulness",
+      "layout": "comparison",
+      "lead": "The diagnostic identifies vulnerability; mitigation remains mechanism-dependent.",
+      "columns": [
+        {
+          "heading": "Adaptive calibration",
+          "body": "ACI increases coverage on severe tasks, but may return very large label sets. Coverage and informativeness must be reported together."
+        },
+        {
+          "heading": "Regularized scores",
+          "body": "RAPS reduces loss for some high-class-count tasks, yet does not uniformly repair concentrated-dependence failures."
+        },
+        {
+          "heading": "Retraining",
+          "body": "Quarterly retraining offers suggestive partial recovery; the highlighted single-seed effect is not significant after Holm correction."
+        }
+      ],
+      "notes": "A useful diagnostic does not by itself provide a repair. The paper examines three possible responses. Adaptive conformal inference can bring marginal coverage closer to target, but the returned sets may cover a large fraction of all classes, limiting practical value. This is why a coverage number should be paired with set-size or informativeness measures. RAPS regularizes how many labels accumulate in a prediction set and helps some high-cardinality tasks in the reported comparison; it does not uniformly resolve failure associated with a dominant feature. Retraining shows partial recovery in one highlighted task, but that experiment is single-seed and the multiple-testing-adjusted p-value is 0.11. These findings motivate mechanism-specific follow-up, not a universally validated deployment recipe. Prospective studies should specify the diagnostic, intervention, monitoring schedule, and success criteria before seeing future outcomes.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — §Extended Experiments: ACI, RAPS and Retraining"
+      ]
+    },
+    {
+      "title": "Model reliance and future coverage",
+      "layout": "takeaway",
+      "lead": "Concentration is a warning signal to test, not a new coverage guarantee.",
+      "bullets": [
+        "Measure validation-time top-1 SHAP concentration for the fitted model.",
+        "Check whether a plausible shift threatens its dominant feature.",
+        "Treat the 40% cutoff and protective-feature rule as exploratory.",
+        "Validate prospectively and monitor both coverage and set usefulness."
+      ],
+      "notes": "The contribution is a practical change in the reliability question. Instead of only asking whether a distribution has shifted, ask how the fitted predictor distributes its reliance and whether a shift could hit that reliance. The COVID-19 case study provides a striking contrast among tasks exposed to the same time period, and the external experiments support a broader association while preserving counterexamples. The idealized theorem provides directional intuition under a probability-mixture assumption; it does not certify measured TreeSHAP values. Three limits should remain visible: the threshold was developed using a small task set, the pooled endpoint includes those original tasks, and the evidence is model-family specific. The next step is prospective testing across new settings, with predeclared thresholds and interventions. In practice, this diagnostic can motivate closer inspection and monitoring; it cannot replace the assumptions behind conformal prediction.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex — §Conclusion; §Decision Framework; Theorem A1 footnote"
+      ]
+    }
+  ],
+  "poster": {
+    "headline": "Concentrated reliance flags a conformal vulnerability",
+    "question": "Can validation-time feature reliance help identify gradient-boosted classifiers whose prediction-set coverage will deteriorate under shift?",
+    "sections": [
+      {
+        "heading": "Problem",
+        "text": "Conformal prediction targets inclusion of the true label in a prediction set. Its standard guarantee relies on exchangeability. Eight supply-chain tasks under a shared COVID-era temporal split show sharply different coverage losses."
+      },
+      {
+        "heading": "Diagnostic",
+        "text": "Top-1 concentration C is the largest mean absolute SHAP importance divided by total importance. It is computed on validation data before deployment. High C indicates concentrated measured reliance, not the size or direction of a future shift."
+      },
+      {
+        "heading": "Observed evidence",
+        "text": "Across 16 multiclass tasks from 9 domains, concentration and coverage loss have Spearman ρ = 0.853 (p < 0.001; bootstrap 95% interval [0.50, 0.96]). This pool includes 8 original SALT tasks and 8 external tasks, including 4 null-shift controls."
+      },
+      {
+        "heading": "Mechanism and boundary",
+        "text": "An idealized additive probability model links damage to a dominant feature with worsening APS score and coverage bounds. Measured TreeSHAP concentration is a proxy; the theorem does not guarantee its deployment behavior."
+      },
+      {
+        "heading": "Counterexamples matter",
+        "text": "At the exploratory 40% cutoff, sales-office is a false positive (C = 42.6%, loss 0.1 pp), while KDDCup99 is a seed-sensitive false negative (C = 21.1%, mean loss 15.9 pp). Low concentration is not universal protection."
+      }
+    ],
+    "key_numbers": [
+      {
+        "value": "16",
+        "label": "multiclass tasks in pooled endpoint"
+      },
+      {
+        "value": "0.853",
+        "label": "Spearman association with coverage loss"
+      },
+      {
+        "value": "77.1 pp",
+        "label": "SALT payment-terms coverage loss"
+      }
+    ],
+    "figure": {
+      "path": "assets/uai2026/concentration_evidence.png",
+      "caption": "Exact source data replotted: 8 SALT and 8 external multiclass tasks. The 40% cutoff is exploratory.",
+      "source": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/src/generate_n16_figure.py"
+    },
+    "conclusion": "Inspect which features a model relies on before trusting its future coverage. Use concentration to guide investigation and monitoring; confirm any threshold prospectively.",
+    "limitations": "Evidence is strongest for gradient-boosted multiclass APS models. The 40% cutoff is exploratory; the protective-feature check comes from one case. Pooled tasks include development tasks and null controls. MLP failures can occur at low concentration. Association does not identify a causal effect."
+  },
+  "intro": {
+    "en": {
+      "hook": "A model can be confidently wrong after the world changes. Conformal prediction adds a set of plausible answers, but even that set can stop containing the truth. This paper asks whether the model's feature reliance offers an early warning before future data arrive.",
+      "sections": [
+        {
+          "heading": "The question",
+          "text": "Coverage is the fraction of examples whose true label appears in a prediction set. Standard conformal guarantees require exchangeability between calibration and future examples. The study examines why classifiers facing a shared COVID-era time split can have very different coverage losses. Its focus is gradient-boosted multiclass classifiers with Adaptive Prediction Sets (APS), targeting 90% coverage."
+        },
+        {
+          "heading": "The approach",
+          "text": "The proposed diagnostic is top-1 SHAP concentration: the largest mean absolute feature attribution divided by the sum across features. It uses validation data only. If one feature dominates the model's measured reliance, a damaging change affecting that feature may make the predictor fragile. An idealized probability-mixture theorem formalizes a mechanism under explicit assumptions; it is not a guarantee for measured TreeSHAP concentration."
+        },
+        {
+          "heading": "What the evidence shows",
+          "text": "Eight SALT supply-chain tasks exhibit coverage losses from 0.1 to 77.1 percentage points. The main experiments use 50 independent training seeds per task, not a 50-model prediction ensemble. Across a pooled set of 16 multiclass tasks in 9 domains, concentration and coverage loss have Spearman correlation 0.853, with reported p < 0.001 and bootstrap 95% interval [0.50, 0.96]. The pool comprises the original eight SALT tasks and eight external tasks. Four external tasks have documented shifts and four are null-shift controls. Within SALT, standard shift indicators are weakly associated with the severity of coverage loss."
+        },
+        {
+          "heading": "What the result does not promise",
+          "text": "The exploratory 40% cutoff has exceptions. Sales-office exceeds it but barely loses coverage; KDDCup99 falls below it but has a seed-sensitive mean loss above the study's at-risk cutoff. A protective-secondary-feature rule is based on one case. The diagnostic is weaker for random forests and MLPs; low concentration does not rule out neural-network failures. The pooled correlation is not wholly independent validation of the threshold, and an association does not show that reducing concentration will necessarily improve coverage."
+        },
+        {
+          "heading": "Why it matters",
+          "text": "The work adds a model-specific question to reliability assessment: does a plausible shift threaten the features on which this predictor relies? Concentration can guide inspection and monitoring before deployment. A prospective evaluation should freeze the diagnostic rule and test both coverage and prediction-set usefulness. Adaptive calibration may recover coverage by returning larger sets, so apparent statistical recovery can still leave a system less useful."
+        }
+      ],
+      "takeaway": "Treat concentrated reliance as a warning to investigate, especially for boosted multiclass conformal models. It is not a certificate of failure or safety."
+    },
+    "ko": {
+      "title": "분포 변화에서 컨포멀 예측은 왜 실패하는가: COVID-19 사례 연구",
+      "hook": "세상이 바뀌면 모델은 확신을 갖고 틀릴 수 있습니다. 가능한 정답들을 모아 주는 컨포멀 예측도 그 목록에서 실제 정답을 놓칠 수 있습니다. 이 논문은 미래 데이터를 보기 전에 모델의 취약성을 짐작할 신호가 있는지 묻습니다.",
+      "sections": [
+        {
+          "heading": "어떤 문제인가",
+          "text": "커버리지는 예측 집합에 실제 정답이 포함되는 비율입니다. 일반적인 컨포멀 예측의 보장은 보정 데이터와 미래 데이터의 교환가능성에 의존합니다. 이 연구는 같은 COVID 시기 구간을 거친 공급망 예측 과제들이 왜 서로 다른 커버리지 손실을 보이는지 살펴봅니다. 주된 대상은 90% 커버리지를 목표로 APS를 적용한 그래디언트 부스팅 다중분류 모델입니다."
+        },
+        {
+          "heading": "어떻게 접근했나",
+          "text": "핵심 지표는 최상위 SHAP 집중도입니다. 검증 데이터에서 계산한 피처별 절대 SHAP 값의 평균 중 가장 큰 값을 전체 합으로 나눕니다. 한 피처에 설명상 중요도가 몰린 모델은 그 피처에 불리한 변화가 생길 때 취약할 수 있다는 가설입니다. 확률 공간의 가법적 모형을 가정한 이론이 이 방향을 설명하지만, 실제 TreeSHAP 집중도의 미래 성능을 보장하는 정리는 아닙니다."
+        },
+        {
+          "heading": "무엇을 관찰했나",
+          "text": "SALT 공급망 8개 과제의 커버리지 손실은 0.1~77.1%p로 크게 달랐습니다. 과제별 50개 시드는 독립적인 모델 학습 실험이며, 50개 모델의 예측을 합친 앙상블은 아닙니다. 9개 도메인, 16개 다중분류 과제를 합친 분석에서 집중도와 커버리지 손실의 스피어만 상관계수는 0.853이었습니다. 보고된 p값은 0.001 미만, 부트스트랩 95% 구간은 [0.50, 0.96]입니다. 이 분석에는 기존 SALT 8개와 외부 8개가 포함되며, 외부 과제 중 4개는 실제 변화가 문서화된 설정, 4개는 변화가 없는 대조 설정입니다."
+        },
+        {
+          "heading": "어디까지 믿을 수 있나",
+          "text": "탐색적으로 제시한 집중도 40% 기준에는 예외가 있습니다. sales-office는 기준을 넘지만 거의 실패하지 않았고, KDDCup99는 기준보다 낮지만 시드에 따라 손실이 커졌습니다. 보조 피처의 보호 효과를 점검하는 규칙은 한 사례에서 나왔습니다. 랜덤 포레스트와 MLP에서는 관계가 더 약하며, 집중도가 낮아도 신경망은 크게 실패할 수 있습니다. 전체 상관분석은 기준을 만든 기존 과제도 포함하므로 완전히 새로운 검증으로 해석하면 안 됩니다."
+        },
+        {
+          "heading": "왜 유용한가",
+          "text": "이 논문은 데이터가 변했는지만 확인하지 말고, 그 변화가 모델이 의존하는 피처를 건드리는지도 살펴보자고 제안합니다. 집중도는 배포 전 점검과 모니터링의 우선순위를 정하는 신호가 될 수 있습니다. 향후에는 규칙을 미리 고정한 전향적 검증이 필요합니다. 커버리지를 되찾더라도 예측 집합이 너무 커지면 실용성이 떨어지므로, 정답 포함률과 집합의 유용성을 함께 평가해야 합니다."
+        }
+      ],
+      "takeaway": "높은 집중도는 취약성을 점검하라는 경고 신호입니다. 특히 부스팅 다중분류 모델에서 유용할 수 있지만, 실패나 안전을 확정하는 기준은 아닙니다."
+    }
+  },
+  "claims": [
+    {
+      "claim": "ρ = 0.853, n = 16 multiclass tasks, 9 domains; pooled original and external tasks",
+      "locator": "Table tab:stratified_correlation; §SHAP Concentration Correlates with Failure",
+      "source": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex"
+    },
+    {
+      "claim": "0.1–77.1 pp SALT mean coverage loss across 50 seeds",
+      "locator": "Table tab:main_results",
+      "source": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex"
+    },
+    {
+      "claim": "Probability-space additivity is an idealization, not guarantee for measured TreeSHAP C",
+      "locator": "Theorem thm:score_inflation, A1 footnote",
+      "source": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex"
+    },
+    {
+      "claim": "Exploratory40% cutoff has sales-office false positive and KDDCup99 false negative",
+      "locator": "Table tab:framework_validation",
+      "source": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex"
+    }
+  ]
+}

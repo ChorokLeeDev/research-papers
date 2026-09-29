@@ -1,0 +1,455 @@
+{
+  "id": "iclr2027",
+  "title": "How Many More Labels Are Needed? Minimax Evaluation under Selective Labels",
+  "short_title": "How many labels make an audit informative?",
+  "category": "Reliable prediction and statistical evaluation",
+  "accent": "#006F8A",
+  "source": {
+    "repository": "ChorokLeeDev/selective-labels-minimax-iclr2027",
+    "commit": "38b792da07a174980303e6cb9272e5f5e3bd9bac",
+    "path": "paper/body.tex",
+    "url": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex",
+    "version_note": "Current scientific manuscript, pinned 29 September 2026. Research communication; no acceptance claim."
+  },
+  "slides": [
+    {
+      "title": "How Many More Labels Are Needed? Minimax Evaluation under Selective Labels",
+      "layout": "cover",
+      "notes": "The starting problem is an evaluator who has many predictions but labels for only some of them. Good performance on those observed cases can be misleading if errors are disproportionately unresolved. This paper asks a design question: how many additional labels can establish that a specified acceptable-risk claim has been violated? It studies a frozen cohort, one decision deadline, and a committed missing-label set. These restrictions make a precise worst-case benchmark possible. The results distinguish three resources that are often conflated: the number of queries, the quality information available about the returned labels, and the number of predictions in the cohort. The numerical examples are mathematical design certificates, not estimates from a deployed audit. The talk will move from the hidden-error ambiguity to exact finite examples, and then explain why assumptions change the answer.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Abstract; Introduction"
+      ],
+      "lead": "The value of additional labels depends jointly on their number, their reliability, and the risk guarantee being tested.",
+      "bullets": [
+        "Chorok Lee · KAIST",
+        "Selective feedback can hide errors even when observed accuracy looks excellent.",
+        "A theory of detection power, label quality, and cohort size."
+      ]
+    },
+    {
+      "title": "The same visible record can hide different risks",
+      "layout": "table",
+      "notes": "This table is the motivating illustration, not an experimental dataset. Consider one thousand predictions and five hundred unresolved labels. Suppose the five hundred visible labels are all correct. One possible completion has one hundred hidden errors; another has two hundred. The visible ledger is identical, while the completed cohort error fractions are ten and twenty percent. A private uniform audit reaches into the unresolved pool, where these possibilities imply different error proportions. Importantly, the formal target is the law that generates risk, not merely the realized fraction in this illustration. A risk law at the acceptable boundary can occasionally generate an error-rich cohort. The test therefore has to control false alarms over the stipulated null class before it interprets newly discovered errors as evidence of a violation. Finding one error is not itself enough.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Introduction; Experiment and guarantees"
+      ],
+      "lead": "Observed accuracy alone cannot distinguish these two completions.",
+      "table": {
+        "headers": [
+          "Illustrative cohort",
+          "10%-error completion",
+          "20%-error completion"
+        ],
+        "rows": [
+          [
+            "Total predictions",
+            "1,000",
+            "1,000"
+          ],
+          [
+            "Visible correct labels",
+            "500",
+            "500"
+          ],
+          [
+            "Pending labels",
+            "500",
+            "500"
+          ],
+          [
+            "Errors hidden among pending",
+            "100",
+            "200"
+          ],
+          [
+            "Completed cohort error fraction",
+            "10%",
+            "20%"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "The audit protocol",
+      "layout": "comparison",
+      "notes": "The protocol matters as much as the statistical test. First, the predictor and cohort are frozen and all outcomes already exist. An outcome-aware mechanism can choose which labels to withhold, so natural feedback is not assumed random. It must commit the entire partial record before auditing begins. Second, the auditor privately selects distinct pending cases, with a hard budget on the number of queries. Selection may be adaptive, although uniform nonadaptive sampling attains the truthful asymptotic frontier. Third, the evaluator makes one decision at a prespecified deadline and controls its false-alarm probability. No additional native releases, outcome proxies, or predictable audit seeds are allowed during querying. These requirements describe the experiment to which the theorems apply. They do not claim that real deployments automatically satisfy it. Counterfactual or future outcomes may not be obtainable simply by requesting a label.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Experiment and guarantees; Exact intervention frontier"
+      ],
+      "lead": "Outcome-dependent missingness is allowed; a committed protocol creates a usable intervention.",
+      "columns": [
+        {
+          "heading": "1 · Commit the ledger",
+          "body": "Freeze the predictor and cohort. The withholding mechanism publishes a truthful partial record and cannot alter it after queries begin."
+        },
+        {
+          "heading": "2 · Audit pending cases",
+          "body": "Use private randomness to query at most k distinct unresolved cases. Outcomes must already exist and be accessible."
+        },
+        {
+          "heading": "3 · Test a risk claim",
+          "body": "Control false alarms at δ for one deadline. Power is the probability of detecting the planned higher-risk alternative."
+        }
+      ]
+    },
+    {
+      "title": "Missingness relative to the risk gap sets the frontier",
+      "layout": "table",
+      "notes": "Let a denote the acceptable risk boundary, p the planned higher risk, and epsilon equal p minus a. Let beta be the fraction of pending labels as the cohort size grows. The theorem fixes the number of truthful queries k while allowing the cohort and native observations to grow. If beta is no larger than epsilon, every fixed positive budget has limiting power one under the stated risk classes. Above that boundary, an adversary can conceal the risk difference in a larger unresolved pool. The exact limit is a worst-case binomial testing power over feasible hidden-error fractions. The upper bound allows every adaptive policy and the full record; it does not merely discard information by retaining a count. At the boundary, passive performance additionally depends on how the pending count approaches its limit. Therefore the one-query statement is asymptotic and qualified, never a promise that one label alone identifies risk.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Theorem: Fixed trusted-query budget; Corollary: Qualified zero-versus-one-query transition"
+      ],
+      "lead": "Risk gap ε = p − a; missing fraction β = b / n, with 0 < β < 1.",
+      "table": {
+        "headers": [
+          "Truthful audit regime",
+          "Fixed k ≥ 1 as n grows",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "0 < β < ε",
+            "Power → 1",
+            "The hidden pool cannot absorb the excess risk."
+          ],
+          [
+            "β = ε",
+            "Power → 1",
+            "One query can resolve a critical ambiguity."
+          ],
+          [
+            "β > ε",
+            "Exact binomial testing frontier",
+            "Extra visible records need not remove hidden ambiguity."
+          ]
+        ]
+      },
+      "bullets": [
+        "The critical no-query comparison also needs a √n-scale condition."
+      ]
+    },
+    {
+      "title": "A finite design needs exactly 57 queries",
+      "layout": "table",
+      "notes": "Here the paper moves from an asymptotic benchmark to a finite certified decision. Fix one thousand predictions, five hundred pending labels, acceptable risk ten percent, planning alternative twenty percent, false alarms at most five percent, and desired worst-case power ninety-five percent. Under truthful audits and the count-tail risk classes, every policy using at most fifty-six queries has power below the target: an exact upper certificate is approximately 0.949008. A supplied monotone residual rule using fifty-seven queries has a certified lower power approximately 0.952437, with size at most 0.05. These two inequalities establish minimum budget fifty-seven without identifying the exact optimal power. The fifty-six-query asymptotic threshold is a different statement. The finite rule is calibrated for this design alternative, and the same number must not be transferred to different risks, cohort sizes, noisy labels, or average-risk assumptions.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — A concrete query-budget consequence; Appendix: Certified threshold, matched comparisons, and sensitivity"
+      ],
+      "lead": "1,000 predictions · 500 pending · 10% versus 20% risk · at most 5% false alarms",
+      "table": {
+        "headers": [
+          "Budget",
+          "Certified statement",
+          "95% power target"
+        ],
+        "rows": [
+          [
+            "56 queries",
+            "Every adaptive policy: power < 94.901%",
+            "Impossible"
+          ],
+          [
+            "57 queries",
+            "A supplied rule: power ≥ 95.243%",
+            "Achievable"
+          ],
+          [
+            "56 queries, n → ∞",
+            "Minimum for 95% limiting power",
+            "Asymptotic only"
+          ]
+        ]
+      },
+      "bullets": [
+        "Finite conclusion assumes truthful labels and count-tail risk bounds."
+      ]
+    },
+    {
+      "title": "Knowing label quality can save hundreds of queries",
+      "layout": "table",
+      "notes": "Returned audit responses need not be perfect. A known common channel specifies its false-positive probability and sensitivity, allowing the same response mechanism to be used under both risk hypotheses. Conditional reliability bounds provide less information: they constrain response errors but allow identity- and history-dependent channels within the envelope. The table compares these information sets at the same ten-versus-twenty percent risk design and fifty percent missingness. With a known ten percent symmetric noise channel, the numerical minimum fixed budget for ninety-five percent limiting power is ninety-four. If only the corresponding conditional bounds are known, it is three hundred sixty-seven. At twenty percent, the robust problem enters a blind region: every fixed budget has limiting power equal to the five percent false-alarm level. The finite entries are numerical asymptotic inversions; the blind-region claim is exact. They are not finite-cohort guarantees or a theorem about budgets growing with cohort size.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Robust noisy frontier; Reliability blind region; Table: Numerical minimum budgets for 95% limiting power"
+      ],
+      "lead": "Numerically inverted budgets for 95% limiting power; these are not finite-cohort guarantees.",
+      "table": {
+        "headers": [
+          "Symmetric error level e",
+          "Known common channel",
+          "Only conditional bounds"
+        ],
+        "rows": [
+          [
+            "0%",
+            "56",
+            "56"
+          ],
+          [
+            "5%",
+            "72",
+            "117"
+          ],
+          [
+            "10%",
+            "94",
+            "367"
+          ],
+          [
+            "15%",
+            "127",
+            "5,981"
+          ],
+          [
+            "20%",
+            "176",
+            "No fixed budget escapes the blind region"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "A risk average is not a risk guarantee",
+      "layout": "comparison",
+      "notes": "Three risk classes reveal why an audit budget has no meaning without its underlying guarantee. Count-tail classes constrain the distribution of the total number of errors relative to binomial tails. Predictable-risk classes instead bound the cumulative conditional probabilities of error. These two classes are not nested; they share the truthful first-order frontier but can retain different information in existing observations when queries are noisy. Mean-risk classes impose only an expectation bound. Under those weak classes, at acceptable risk ten percent, alternative twenty percent, and size five percent, the exact minimax power is ten percent even if all labels are recovered. This is a property of the allowed risk-generating laws, not poor implementation. The observed cohort cannot validate its own class. A deployment therefore needs a defensible reason for choosing a risk contract before applying a certificate or interpreting a negative audit.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Which assumptions carry information?; Proposition: Sharp mean-risk ceiling; Table: What must be supplied"
+      ],
+      "lead": "Different assumptions change what the same observations can establish.",
+      "columns": [
+        {
+          "heading": "Count-tail bounds",
+          "body": "Control tails of the total error count. They support the truthful 57-query finite certificate and can preserve native information with noise."
+        },
+        {
+          "heading": "Predictable-risk budgets",
+          "body": "Bound cumulative conditional risk. They share the truthful asymptotic frontier but do not inherit the 57-query certificate."
+        },
+        {
+          "heading": "Mean risk only",
+          "body": "At the 10% versus 20% design, power is capped at 10%, even with complete labels. More labels cannot repair this assumption gap."
+        }
+      ]
+    },
+    {
+      "title": "More queries cannot replace a larger cohort",
+      "layout": "table",
+      "notes": "The fifty-seven-query rule was designed to detect twenty percent risk against a ten percent boundary. When actual risk is twelve percent, the same frozen rule has worst-case power only about 1.15 percent. This low number is a retained negative result, and it is even below a random five percent alarm. It demonstrates that a design-point guarantee is not uniform sensitivity to every violation. A private mixture of two rules partly repairs this: its certified lower powers are 8.661% at twelve percent risk and 95.017% at twenty percent. There is also an information limit independent of audit design. With one thousand predictions and complete truthful labels, the optimal test has only about 65.32 percent power for ten versus twelve percent risk. Exact inversion gives a minimum complete-label cohort size of 2,645 for ninety-five percent power. That number is necessary for any partial audit at the same design, but is not sufficient for a particular partial-label procedure. Budget planning must therefore consider both effect size and cohort size.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Verification and finite-sample strength; Appendix: Exact inversion of the complete-information cohort requirement; Table: Worst-mask power of the same frozen rule"
+      ],
+      "lead": "A guarantee at 20% risk does not imply sensitivity to a 12% risk.",
+      "table": {
+        "headers": [
+          "Design / information",
+          "Alternative risk",
+          "Power"
+        ],
+        "rows": [
+          [
+            "Frozen 57-query rule; n = 1,000",
+            "20%",
+            "95.24%"
+          ],
+          [
+            "Same frozen 57-query rule",
+            "12%",
+            "1.15%"
+          ],
+          [
+            "Complete labels; n = 1,000",
+            "12%",
+            "65.32% optimal"
+          ],
+          [
+            "Complete labels; n = 2,645",
+            "12%",
+            "First cohort size reaching 95%"
+          ]
+        ]
+      },
+      "bullets": [
+        "A private mixture improves 12%-risk power to 8.66%, while retaining at least 95.017% at 20% risk."
+      ]
+    },
+    {
+      "title": "An audit with explicit guarantees",
+      "layout": "text",
+      "notes": "A practical reading starts before any audit labels are inspected. Specify the acceptable-risk claim, false-alarm level, effect size worth detecting, desired power, cohort size, and pending-label bound. Then justify the risk class and how audit-label reliability transports from any validation controls to the unresolved cases. A measured average labeling accuracy is not the conditional response envelope used by the robust theorem. Commit the partial record and use private sampling under the one-deadline protocol. If an exact finite certificate matches the design, it can support a budget decision; otherwise, an asymptotic inversion is a planning benchmark and should be labeled as such. Finally inspect performance away from the planning alternative, since the paper shows that it can deteriorate sharply. Nonrejection does not certify acceptable risk or the realized error total. These are design implications of the mathematical results, not a claim that the manuscript validates a deployed monitoring system.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Experiment and guarantees; Verification and finite-sample strength; Conclusion and limitations"
+      ],
+      "lead": "Specify the claim and information assumptions before choosing the budget.",
+      "bullets": [
+        "Fix acceptable risk, planning alternative, power target, and false-alarm level.",
+        "Justify the risk class, pending-count bound, and conditional label reliability.",
+        "Use a matching finite certificate; treat asymptotic numbers as planning benchmarks.",
+        "Check off-design power. Nonrejection does not certify acceptable risk."
+      ]
+    },
+    {
+      "title": "Three resources determine what an audit can prove",
+      "layout": "takeaway",
+      "notes": "The paper answers a narrow but consequential question: how well can even the best audit detect excessive risk when an outcome-aware process chooses the missing labels? Its exact asymptotic benchmark and finite examples give more information than a statement that random sampling is unbiased. They show both attainable power and barriers that no adaptive policy can overcome in the specified experiment. The most useful message is that label count, label-quality information, and cohort size are separate resources. Fifty-seven truthful queries solve one declared finite design, while uncertainty about responses can require many more queries or create a blind region. A smaller risk gap can require a larger cohort even with complete labels. All conclusions remain conditional on the risk law and protocol assumptions. The numerical work is deterministic and distinguishes exact rational certificates from numerical optimization; it does not substitute for external validation of those assumptions.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex — Abstract; Conclusion and limitations"
+      ],
+      "lead": "Count labels, but also count what is known about them.",
+      "bullets": [
+        "Query count controls how much hidden information can be acquired.",
+        "Reliability knowledge controls whether returned labels distinguish risk hypotheses.",
+        "Cohort size controls whether the planned risk gap is statistically detectable.",
+        "All guarantees depend on a declared risk class and committed audit protocol."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Exactly 57 truthful queries are necessary and sufficient for the declared finite 95% power design.",
+      "locator": "Corollary: Minimum budget at the declared finite design",
+      "source": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex"
+    },
+    {
+      "claim": "Known 10% symmetric channel requires 94 queries versus 367 under conditional bounds for numerical 95% limiting power.",
+      "locator": "Table: Numerical minimum budgets for 95% limiting power",
+      "source": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex"
+    },
+    {
+      "claim": "Complete-label 10% versus 12% testing first reaches 95% power at n=2645.",
+      "locator": "Appendix: Exact inversion of the complete-information cohort requirement",
+      "source": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex"
+    },
+    {
+      "claim": "The fixed 57-query design has worst-mask power 0.011549 at p=0.12.",
+      "locator": "Table: Worst-mask power of the same frozen k=57, H=144 integer table",
+      "source": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex"
+    },
+    {
+      "claim": "Count-tail and predictable-risk classes share truthful frontiers but differ in noisy critical information; mean risk alone can cap power at 0.10.",
+      "locator": "Which assumptions carry information?",
+      "source": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex"
+    },
+    {
+      "claim": "A private mixture has certified lower powers 0.08661 at p=.12 and 0.95017 at p=.20 with 57 truthful queries.",
+      "locator": "Table: Two-target tradeoffs at n=1000,b=500,a=.1,delta=.05",
+      "source": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex"
+    }
+  ],
+  "summary": "The value of additional labels depends jointly on their number, their reliability, and the risk guarantee being tested.",
+  "poster": {
+    "headline": "More labels help only when the audit experiment supplies identifiable information.",
+    "question": "How many unresolved labels must be audited to detect excessive risk while controlling false alarms under outcome-dependent missingness?",
+    "sections": [
+      {
+        "heading": "Problem and protocol",
+        "text": "A frozen cohort can look accurate because errors remain unlabeled. The withholding process may inspect every outcome, but must commit a truthful partial ledger before private queries begin. The evaluator has a hard query budget and one decision deadline."
+      },
+      {
+        "heading": "Exact benchmark",
+        "text": "The paper characterizes fixed-query asymptotic minimax power over full-record adaptive policies. Uniform nonadaptive truthful queries attain the frontier with finite-sample false-alarm control. The frontier depends on missingness relative to the risk gap."
+      },
+      {
+        "heading": "Finite design certificate",
+        "text": "At 1,000 predictions, 500 pending labels, 10% versus 20% risk, and a 5% false-alarm ceiling, exactly 57 truthful queries are necessary and sufficient for 95% worst-case power under the count-tail classes. Budget minimality does not identify exact optimal power."
+      },
+      {
+        "heading": "Reliability information has a cost",
+        "text": "For 95% limiting power at the same risks and missing fraction, a known 10% symmetric noise channel needs 94 queries numerically; only knowing the corresponding conditional reliability bounds needs 367. At 20% bounds, every fixed budget lies in an asymptotic blind region."
+      },
+      {
+        "heading": "Smaller violations need more information",
+        "text": "The frozen 57-query rule has only 1.15% power at 12% risk. A private mixture raises this to 8.66% while preserving at least 95.017% at 20% risk. Even complete labels at n = 1,000 have only 65.32% optimal power for 10% versus 12%; the first complete-label cohort reaching 95% is n = 2,645."
+      }
+    ],
+    "key_numbers": [
+      {
+        "value": "57",
+        "label": "Exact finite minimum in the declared truthful design"
+      },
+      {
+        "value": "94 → 367",
+        "label": "Numerical limiting budgets: known 10% channel → conditional bounds"
+      },
+      {
+        "value": "2,645",
+        "label": "Minimum complete-label cohort for 10% versus 12% risk"
+      }
+    ],
+    "table": {
+      "headers": [
+        "Resource",
+        "What can fail without it"
+      ],
+      "rows": [
+        [
+          "Enough queries",
+          "Hidden error compositions remain difficult to distinguish."
+        ],
+        [
+          "Reliable label information",
+          "Different channels can produce identical responses."
+        ],
+        [
+          "Enough predictions",
+          "Even complete labels have insufficient power."
+        ]
+      ]
+    },
+    "conclusion": "Plan label count, label-quality validation, and cohort size jointly. A nonrejection is not a certificate of acceptable risk.",
+    "limitations": "Mathematical, single-deadline experiment with accessible existing outcomes. Risk classes and conditional label-quality bounds require external justification. Finite certificates and asymptotic numerical budgets have different scope. No deployment validation is claimed."
+  },
+  "intro": {
+    "en": {
+      "hook": "A model can look accurate because its difficult cases remain unlabeled. If an evaluator pays for more labels, how many are enough to detect an important risk increase? This paper turns that question into a worst-case audit-design problem.",
+      "sections": [
+        {
+          "heading": "Question",
+          "text": "Consider a frozen model and a fixed cohort whose outcomes already exist but are only partly visible. The process withholding labels may know every outcome, so the observed cases can be selectively easy. The evaluator privately queries some pending cases and tests whether an acceptable-risk claim has been violated. Power means the probability of detecting a specified higher-risk alternative; false-alarm control limits rejection under the acceptable-risk class. The target is a risk-generating law, not simply the realized cohort error fraction."
+        },
+        {
+          "heading": "Approach",
+          "text": "The paper derives the exact limiting worst-case power for each fixed query budget, allowing the benchmark auditor to use the full record and adapt its queries. A uniform, nonadaptive truthful audit attains that frontier. The comparison distinguishes the number of requested labels from the information supplied about their reliability. It also compares count-tail guarantees, cumulative predictable-risk budgets, and mean-risk bounds; these assumptions support different conclusions even when the visible protocol is unchanged."
+        },
+        {
+          "heading": "Main evidence",
+          "text": "Under truthful labels and count-tail risk bounds, a finite certificate shows that exactly 57 queries are necessary and sufficient for 95% worst-case power with 1,000 predictions, 500 pending labels, acceptable risk 10%, alternative risk 20%, and false alarms at most 5%. Every 56-query adaptive policy falls short, while a supplied 57-query rule exceeds the target. Separately, numerical asymptotic calculations at the same risks and missing fraction require 94 queries with a known 10% symmetric noise channel, compared with 367 when only conditional reliability bounds are known. Those are limiting budgets, not finite-cohort certificates."
+        },
+        {
+          "heading": "Why the scope matters",
+          "text": "The 57-query rule is tuned to 20% risk: its power falls to 1.15% at 12%. A private mixture partly repairs this to 8.66% while preserving 95% power at 20%. Even complete labels for 1,000 predictions yield only 65.32% optimal power for 10% versus 12% risk; at least 2,645 complete-label predictions are needed to reach 95%. Mean risk alone can impose a low power ceiling even with all outcomes visible. More labels cannot replace a sufficient cohort or a defensible risk guarantee."
+        },
+        {
+          "heading": "Practical meaning",
+          "text": "Before auditing, specify the risk claim, meaningful alternative, cohort, pending-count bound, and label-reliability assumptions. Use a matching finite certificate when available and inspect performance away from the planning alternative. The analysis assumes committed selection, private sampling, accessible existing outcomes, and one deadline. It provides mathematical design evidence, not deployment validation. Failure to reject does not certify acceptable risk."
+        }
+      ],
+      "takeaway": "Audit power depends on three separate resources: how many labels are acquired, what is known about their quality, and how many predictions are available."
+    },
+    "ko": {
+      "title": "라벨을 몇 개 더 확인해야 하는가? 선택적으로 관측된 라벨에서의 미니맥스 평가",
+      "hook": "모델이 잘 맞히는 것처럼 보여도, 어려운 사례의 정답만 아직 확인되지 않았을 수 있습니다. 추가로 정답을 확인한다면 몇 개가 필요할까요? 이 논문은 위험 증가를 발견하는 데 필요한 감사 규모를 최악의 상황까지 고려해 분석합니다.",
+      "sections": [
+        {
+          "heading": "무엇을 묻는가",
+          "text": "이미 예측과 실제 결과가 존재하는 고정된 사례 집단을 생각합니다. 라벨을 보류하는 과정은 결과를 알고 있을 수 있으므로, 관측된 사례만으로 계산한 정확도는 편향될 수 있습니다. 평가자는 미확인 사례를 비공개 무작위 방식으로 골라 정답을 확인합니다. 목표는 허용 가능한 위험에 관한 가설이 깨졌는지 검사하는 것입니다. 검정력은 정해 둔 더 높은 위험을 발견할 확률이고, 오경보율은 허용 가능한 위험에서도 잘못 경고할 확률입니다."
+        },
+        {
+          "heading": "어떻게 접근하는가",
+          "text": "논문은 라벨 확인 횟수가 고정된 상태에서 사례 수가 커질 때 가능한 최악 상황의 최대 검정력을 구합니다. 기존 관측 전체를 활용하고 다음 확인 대상을 적응적으로 고르는 방법까지 비교 대상으로 포함합니다. 정답이 정확하다면 단순한 균등 무작위 확인으로도 이 점근적 한계에 도달합니다. 또한 오류 개수의 꼬리확률을 제한하는 가정, 누적 조건부 위험을 제한하는 가정, 평균 위험만 제한하는 가정을 구분합니다."
+        },
+        {
+          "heading": "핵심 결과",
+          "text": "예측 1,000개 중 500개의 라벨이 미확인이고, 허용 위험 10%와 대안 위험 20%를 구분하며 오경보율을 5% 이하로 제한하는 예에서, 검정력 95%를 위한 최소 확인 횟수는 정확히 57회입니다. 이는 정답 라벨과 오류 개수의 꼬리확률 가정 아래의 유한 표본 결과입니다. 별도로 같은 위험과 미확인 비율에서 95%의 점근적 검정력을 얻는 수치 계산은, 10% 대칭 잡음의 구조를 정확히 알면 94회, 조건부 신뢰도 범위만 알면 367회를 요구합니다. 이 두 수치는 유한 표본 보장이 아닙니다."
+        },
+        {
+          "heading": "왜 조건을 함께 봐야 하는가",
+          "text": "57회 규칙은 위험 20%를 발견하도록 설계되어, 실제 위험이 12%이면 검정력이 약 1.15%로 낮아집니다. 두 규칙을 무작위로 섞으면 20%에서 95% 이상을 유지하면서 12%에서 8.66%로 개선하지만 여전히 낮습니다. 예측 1,000개의 정답을 전부 알아도 10%와 12%를 구분하는 최적 검정력은 65.32%입니다. 95%에 도달하려면 완전한 라벨이 있는 사례가 최소 2,645개 필요합니다. 평균 위험만 가정하는 경우에는 모든 라벨을 알아도 낮은 검정력 한계가 남을 수 있습니다."
+        },
+        {
+          "heading": "어떻게 활용하는가",
+          "text": "감사 전에 허용 위험, 발견하려는 위험 증가, 사례 수, 미확인 개수의 상한, 라벨 신뢰도 가정을 정해야 합니다. 조건이 맞는 유한 표본 보장을 사용하고, 계획한 위험과 다른 상황의 성능도 확인해야 합니다. 논문은 고정된 관측 기록, 비공개 표본추출, 이미 존재하여 확인 가능한 결과, 한 번의 판정 시점을 가정합니다. 실제 운영에서 이 조건들이 성립하는지 검증한 연구는 아니며, 경고가 없다는 이유만으로 위험이 허용 수준이라고 인증할 수 없습니다."
+        }
+      ],
+      "takeaway": "필요한 것은 라벨 수만이 아닙니다. 라벨의 품질에 관해 아는 정보와 전체 사례 수도 감사의 검정력을 함께 결정합니다."
+    }
+  }
+}

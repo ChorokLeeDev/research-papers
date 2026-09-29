@@ -1,0 +1,458 @@
+{
+  "prepared": "2026-09-29",
+  "author": "Chorok Lee",
+  "deliverables": 35,
+  "slide_count_per_deck": 10,
+  "poster_format": "A0 portrait, English",
+  "introduction_format": "A4, one page per language",
+  "papers": [
+    {
+      "id": "iclr2027",
+      "title": "How Many More Labels Are Needed? Minimax Evaluation under Selective Labels",
+      "short_title": "How many labels make an audit informative?",
+      "source": {
+        "repository": "ChorokLeeDev/selective-labels-minimax-iclr2027",
+        "commit": "38b792da07a174980303e6cb9272e5f5e3bd9bac",
+        "path": "paper/body.tex",
+        "url": "https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/38b792da07a174980303e6cb9272e5f5e3bd9bac/paper/body.tex",
+        "version_note": "Current scientific manuscript, pinned 29 September 2026. Research communication; no acceptance claim."
+      },
+      "artifacts": [
+        {
+          "kind": "slides_en.pptx",
+          "path": "iclr2027/iclr2027_slides_en.pptx",
+          "sha256": "47f6c5d7e7b5be61f104891936243667a8b0d2cbe5e58823f7e4e51886a99714",
+          "bytes": 47821
+        },
+        {
+          "kind": "slides_en.pdf",
+          "path": "iclr2027/iclr2027_slides_en.pdf",
+          "sha256": "17edce9edaabb3bbe63b20bff51f021f97b70bbbcba9e72dd5f8d6351324bb6c",
+          "bytes": 174179,
+          "pages": 10,
+          "page_size_pt": [
+            960.01,
+            540.0
+          ]
+        },
+        {
+          "kind": "poster_en.pdf",
+          "path": "iclr2027/iclr2027_poster_en.pdf",
+          "sha256": "80380b7b8ebe401e52d966325885b48c3088503219c816ad6b136ae53994958f",
+          "bytes": 53473,
+          "pages": 1,
+          "page_size_pt": [
+            2383.94,
+            3370.39
+          ]
+        },
+        {
+          "kind": "introduction_en.pdf",
+          "path": "iclr2027/iclr2027_introduction_en.pdf",
+          "sha256": "318be01b8e22d2c920d21a63118583d57965451e2e8a4dabeaa60f318b957723",
+          "bytes": 31878,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        },
+        {
+          "kind": "introduction_ko.pdf",
+          "path": "iclr2027/iclr2027_introduction_ko.pdf",
+          "sha256": "343e5f2f3bf2a630a834e2681a55a8cf2e92c147ee786405dce74be4ffd39ca9",
+          "bytes": 125041,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aistats2027",
+      "title": "When Marginal Shift Magnitudes Cannot Identify Conformal Coverage Loss",
+      "short_title": "When drift does not identify coverage loss",
+      "source": {
+        "repository": "ChorokLeeDev/conformal-coverage-identification-aistats2027",
+        "commit": "76661fdf862959345ea22ea2ab5494a4171a6eab",
+        "path": "paper_aistats2027/reliance_alignment.tex",
+        "url": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex",
+        "version_note": "Current scientific manuscript, pinned 29 September 2026. Research communication; no acceptance claim."
+      },
+      "artifacts": [
+        {
+          "kind": "slides_en.pptx",
+          "path": "aistats2027/aistats2027_slides_en.pptx",
+          "sha256": "4078bcce24bfabb8e5c81278fc210e1133672249a020ea0f8b3dd89c8ec60cb5",
+          "bytes": 47594
+        },
+        {
+          "kind": "slides_en.pdf",
+          "path": "aistats2027/aistats2027_slides_en.pdf",
+          "sha256": "bd158693fa295131187f1dce7c868ab093da8ec1b020940ed530979424ac3e45",
+          "bytes": 184269,
+          "pages": 10,
+          "page_size_pt": [
+            960.01,
+            540.0
+          ]
+        },
+        {
+          "kind": "poster_en.pdf",
+          "path": "aistats2027/aistats2027_poster_en.pdf",
+          "sha256": "948ba5d7a2edae30845b798c75d97e8ec02acc392ede9ff3d63bfd63cadba6d8",
+          "bytes": 32540,
+          "pages": 1,
+          "page_size_pt": [
+            2383.94,
+            3370.39
+          ]
+        },
+        {
+          "kind": "introduction_en.pdf",
+          "path": "aistats2027/aistats2027_introduction_en.pdf",
+          "sha256": "e25d5b6037211999e4c97d4c64df43c146ea24904cdb68aee86dcf2eb47799c8",
+          "bytes": 32232,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        },
+        {
+          "kind": "introduction_ko.pdf",
+          "path": "aistats2027/aistats2027_introduction_ko.pdf",
+          "sha256": "896555a74f71e66413d0377d7cf39359651ffd00b8953f1bd54b0a64e139a991",
+          "bytes": 148374,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uai2026",
+      "title": "Diagnosing Conformal Prediction Failures Under Distribution Shift: A COVID-19 Case Study",
+      "short_title": "When conformal coverage fails",
+      "source": {
+        "repository": "ChorokLeeDev/conformal-covid-uai2026",
+        "commit": "96d9616961e5ae8607373181d35262cb21a2b0d1",
+        "path": "paper/main.tex",
+        "url": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/paper/main.tex",
+        "version_note": "UAI 2026 camera-ready source; fixed 29 September 2026 snapshot"
+      },
+      "artifacts": [
+        {
+          "kind": "slides_en.pptx",
+          "path": "uai2026/uai2026_slides_en.pptx",
+          "sha256": "4a153a59d9a2ddf0871c19b4b8546160c27d6d2d42ad04bbb815b04233839c5b",
+          "bytes": 175958
+        },
+        {
+          "kind": "slides_en.pdf",
+          "path": "uai2026/uai2026_slides_en.pdf",
+          "sha256": "ef5981f4b83c87415591f2b0ff7c64ec3b5710ccd84dc5bb1a2f8e641a56842c",
+          "bytes": 282141,
+          "pages": 10,
+          "page_size_pt": [
+            960.01,
+            540.0
+          ]
+        },
+        {
+          "kind": "poster_en.pdf",
+          "path": "uai2026/uai2026_poster_en.pdf",
+          "sha256": "fc83b607a64bd86440712ac24d664dc27995e7d9ebc1e91fdf34723fc76d99a2",
+          "bytes": 47435,
+          "pages": 1,
+          "page_size_pt": [
+            2383.94,
+            3370.39
+          ]
+        },
+        {
+          "kind": "introduction_en.pdf",
+          "path": "uai2026/uai2026_introduction_en.pdf",
+          "sha256": "ce4e638a95369e544150bab1675f7d865df3100502c2e40e460ff053e9f76182",
+          "bytes": 31873,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        },
+        {
+          "kind": "introduction_ko.pdf",
+          "path": "uai2026/uai2026_introduction_ko.pdf",
+          "sha256": "2a01c041bb2f0fc1347e720f9feeeaa298569ca56b08d20e6e2b318ccaa6a41f",
+          "bytes": 128873,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kg-uncertainty",
+      "title": "Role Support in Knowledge-Graph Error Ranking: Predictor Regimes and Evaluation Policies",
+      "short_title": "Role support and KG error ranking",
+      "source": {
+        "repository": "ChorokLeeDev/kg-uncertainty-revision",
+        "commit": "208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18",
+        "path": "manuscript.tex",
+        "url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/manuscript.tex",
+        "version_note": "Revision draft 9 · 26 September 2026; empirical_results.tex read with source"
+      },
+      "artifacts": [
+        {
+          "kind": "slides_en.pptx",
+          "path": "kg-uncertainty/kg-uncertainty_slides_en.pptx",
+          "sha256": "108a9efd470176adabca30f9387c33270c68d561f1dda2475e9967942d7c3458",
+          "bytes": 48114
+        },
+        {
+          "kind": "slides_en.pdf",
+          "path": "kg-uncertainty/kg-uncertainty_slides_en.pdf",
+          "sha256": "4d45473acd10f6c62114f74406a707614792f244701ab97de3ef1dcab6b4e561",
+          "bytes": 168368,
+          "pages": 10,
+          "page_size_pt": [
+            960.01,
+            540.0
+          ]
+        },
+        {
+          "kind": "poster_en.pdf",
+          "path": "kg-uncertainty/kg-uncertainty_poster_en.pdf",
+          "sha256": "195757d0bdbf2ddf9db05c02f8f13067e6a6e258b1addf4cd6760a990e588a79",
+          "bytes": 53538,
+          "pages": 1,
+          "page_size_pt": [
+            2383.94,
+            3370.39
+          ]
+        },
+        {
+          "kind": "introduction_en.pdf",
+          "path": "kg-uncertainty/kg-uncertainty_introduction_en.pdf",
+          "sha256": "4037e369ab2dd08633f1376ab29fecf213578742448d8e619c41866178edfd2f",
+          "bytes": 31891,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        },
+        {
+          "kind": "introduction_ko.pdf",
+          "path": "kg-uncertainty/kg-uncertainty_introduction_ko.pdf",
+          "sha256": "c043102f23e4e541613e8a60036a0582cc225f5ba97674b295dbd6e3e729bac7",
+          "bytes": 133824,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "factor-regime",
+      "title": "Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence",
+      "short_title": "Return-decay residuals and tail risk",
+      "source": {
+        "repository": "ChorokLeeDev/factor-regime-revision",
+        "commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
+        "path": "manuscript.tex",
+        "url": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex",
+        "version_note": "Current revision on revision/2026-09-26-factor-validity, pinned 29 September 2026; arXiv:2512.11913."
+      },
+      "artifacts": [
+        {
+          "kind": "slides_en.pptx",
+          "path": "factor-regime/factor-regime_slides_en.pptx",
+          "sha256": "527092dfd09900b83a01b1cb5ed924c13bb32d72dbf979df2f0293e635df939a",
+          "bytes": 48137
+        },
+        {
+          "kind": "slides_en.pdf",
+          "path": "factor-regime/factor-regime_slides_en.pdf",
+          "sha256": "0085d733fd36735bda0bb38e8c5dacfdafd3a51820baed8051e9347676c74259",
+          "bytes": 175003,
+          "pages": 10,
+          "page_size_pt": [
+            960.01,
+            540.0
+          ]
+        },
+        {
+          "kind": "poster_en.pdf",
+          "path": "factor-regime/factor-regime_poster_en.pdf",
+          "sha256": "7fdacdf5f980627276abfe8a9b80f0f54a383a7d60c1ce680479f1446234860a",
+          "bytes": 32435,
+          "pages": 1,
+          "page_size_pt": [
+            2383.94,
+            3370.39
+          ]
+        },
+        {
+          "kind": "introduction_en.pdf",
+          "path": "factor-regime/factor-regime_introduction_en.pdf",
+          "sha256": "78ac157bc0f1a7871829087667a3a03fe93410cf49f18a6ae45aacef64b7ba5c",
+          "bytes": 31904,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        },
+        {
+          "kind": "introduction_ko.pdf",
+          "path": "factor-regime/factor-regime_introduction_ko.pdf",
+          "sha256": "25ff83fb8a32be064c538d609f4fabe21d0ca60519edf357c3b2aa2c93211314",
+          "bytes": 130155,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "regime-predictability",
+      "title": "Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability",
+      "short_title": "Source exclusion in regime-gated forecasts",
+      "source": {
+        "repository": "ChorokLeeDev/regime-predictability-revision",
+        "commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
+        "path": "manuscript.tex",
+        "url": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex",
+        "version_note": "Current revision on revision/pi-interview-arxiv-20260926, pinned 29 September 2026; arXiv:2601.10732."
+      },
+      "artifacts": [
+        {
+          "kind": "slides_en.pptx",
+          "path": "regime-predictability/regime-predictability_slides_en.pptx",
+          "sha256": "3901ba5b06b0627fb7462220afa7bbcb723b9de1ad98c0495c47d7ad1f4d38f4",
+          "bytes": 48950
+        },
+        {
+          "kind": "slides_en.pdf",
+          "path": "regime-predictability/regime-predictability_slides_en.pdf",
+          "sha256": "c647cf497b1662e33c66bf6e694bc16a9190ca4b316ae256ac6d594e857e2b69",
+          "bytes": 188690,
+          "pages": 10,
+          "page_size_pt": [
+            960.01,
+            540.0
+          ]
+        },
+        {
+          "kind": "poster_en.pdf",
+          "path": "regime-predictability/regime-predictability_poster_en.pdf",
+          "sha256": "63369bc53dd7c027dd6f943eb8d2b866d30092c14da84c27bc2a2bebb3542390",
+          "bytes": 32594,
+          "pages": 1,
+          "page_size_pt": [
+            2383.94,
+            3370.39
+          ]
+        },
+        {
+          "kind": "introduction_en.pdf",
+          "path": "regime-predictability/regime-predictability_introduction_en.pdf",
+          "sha256": "b4a8db9b74712ef49ff03b6c78305cb7c65a8cd591b96574cb769ca6e9b54d47",
+          "bytes": 32012,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        },
+        {
+          "kind": "introduction_ko.pdf",
+          "path": "regime-predictability/regime-predictability_introduction_ko.pdf",
+          "sha256": "b2cf40d5432ad38d302203a60a835b2e0b01b836a1cea35d51999aad2e0b1314",
+          "bytes": 131844,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "icaif2026",
+      "title": "Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion",
+      "short_title": "Predicting Factor Decay",
+      "source": {
+        "repository": "ChorokLeeDev/factor-decay-icaif2026",
+        "commit": "a0bd43ea47898011d0661710975658a8969299d5",
+        "path": "arxiv/original-source-20260929/main.tex",
+        "url": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex",
+        "version_note": "Original ten-page TeX preprint edition, prepared 29 September 2026. Separate from the archived five-page submission."
+      },
+      "artifacts": [
+        {
+          "kind": "slides_en.pptx",
+          "path": "icaif2026/icaif2026_slides_en.pptx",
+          "sha256": "5db85ff44c9ca388bb2a741b48273dad419aa4061431b18ae50f4148e727e2d8",
+          "bytes": 225503
+        },
+        {
+          "kind": "slides_en.pdf",
+          "path": "icaif2026/icaif2026_slides_en.pdf",
+          "sha256": "196e9971c861edcb3743dc3f1890bebbf9f7db9b02967ca481894a350eef2bfe",
+          "bytes": 425727,
+          "pages": 10,
+          "page_size_pt": [
+            960.01,
+            540.0
+          ]
+        },
+        {
+          "kind": "poster_en.pdf",
+          "path": "icaif2026/icaif2026_poster_en.pdf",
+          "sha256": "e4bd0f5512eabe70b885a34b25157b10de4fb33208050807c44e51c35ed1f912",
+          "bytes": 832340,
+          "pages": 1,
+          "page_size_pt": [
+            2383.94,
+            3370.39
+          ]
+        },
+        {
+          "kind": "introduction_en.pdf",
+          "path": "icaif2026/icaif2026_introduction_en.pdf",
+          "sha256": "7fed49a841a756d8e0e885555a7674f5cff336f358124b7357644fdb4f9f7afb",
+          "bytes": 31577,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        },
+        {
+          "kind": "introduction_ko.pdf",
+          "path": "icaif2026/icaif2026_introduction_ko.pdf",
+          "sha256": "ca31f0bbb4429e22cf590f303442f6ee41f7f46bba019d26925af22e39004038",
+          "bytes": 121522,
+          "pages": 1,
+          "page_size_pt": [
+            595.28,
+            841.89
+          ]
+        }
+      ]
+    }
+  ]
+}

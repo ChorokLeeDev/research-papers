@@ -1,0 +1,476 @@
+{
+  "id": "regime-predictability",
+  "title": "Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability",
+  "short_title": "Source exclusion in regime-gated forecasts",
+  "category": "Financial forecasting and model evaluation",
+  "accent": "#215A92",
+  "source": {
+    "repository": "ChorokLeeDev/regime-predictability-revision",
+    "commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
+    "path": "manuscript.tex",
+    "url": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex",
+    "version_note": "Current revision on revision/pi-interview-arxiv-20260926, pinned 29 September 2026; arXiv:2601.10732."
+  },
+  "summary": "Removing a factor's lag coefficients and removing its information from an entire regime-gated pipeline evaluate different predictive claims.",
+  "slides": [
+    {
+      "title": "When does removing a variable actually remove its information?",
+      "layout": "cover",
+      "lead": "A cross-market audit of source exclusion in regime-gated forecasts.",
+      "bullets": [
+        "Chorok Lee · KAIST",
+        "Equity factors · Forecast evaluation · Information pathways",
+        "arXiv:2601.10732 · September 2026 revision"
+      ],
+      "notes": "Suppose we want to know whether value-factor history improves a size-factor forecast. A common approach fits a model with and without the value factor. In a regime-gated model, however, the factor may influence both the explicit lag regression and the estimated market-state weights. Removing its lag coefficients can leave its information inside the gate. This paper audits the distinction using equity-factor forecasts. It compares two legitimate but different removal operations, evaluates a complete family across four markets, and uses simulations with known conditional means to explain why fitted model performance is not identical to information value. The main result is procedural sensitivity and limited inferential resolution. It is not a claim that every source is useful, that every source is useless, or that the method yields a validated trading signal.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Abstract; Introduction"
+      ]
+    },
+    {
+      "title": "A source can reach the forecast by two routes",
+      "layout": "comparison",
+      "lead": "The gate chooses how much each regime-specific regression contributes.",
+      "columns": [
+        {
+          "heading": "Explicit lag route",
+          "body": "Past source-factor returns enter the regression directly through lag coefficients."
+        },
+        {
+          "heading": "Regime-gate route",
+          "body": "The source helps fit or update hidden-state probabilities. Those weights affect the forecast even without source-lag coefficients."
+        },
+        {
+          "heading": "Whole pipeline",
+          "body": "Preprocessing, scaling, validation, and tuning can also depend on the source. Complete exclusion must audit each route."
+        }
+      ],
+      "bullets": [
+        "A forward filter still uses future information if its parameters were fitted on future observations."
+      ],
+      "notes": "A regime-gated model forms a weighted average of several regression forecasts. The weights represent predicted latent-state probabilities, estimated here with Gaussian or Student-t hidden Markov models. The source factor can enter the regression as a lagged predictor. It can also help infer the state, thereby changing the weights on intercepts and retained predictors. A simple constructed example predicts the target through a weight that depends on the source, even though there is no explicit source-lag coefficient. This makes the information path concrete. Prediction must use a gate available before the outcome. Smoothed states typically use future observations, and even forward filtering is unsuitable for an honest historical forecast if its parameters or scaling were fitted on the full sample. State ranks in this study are statistical labels, not verified economic regimes.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Regime estimation without future observations; Two routes by which a source factor can predict the target"
+      ]
+    },
+    {
+      "title": "Three comparisons answer three different questions",
+      "layout": "table",
+      "lead": "Name the removal operation before interpreting its gain.",
+      "table": {
+        "headers": [
+          "Comparison",
+          "What changes?",
+          "Question answered"
+        ],
+        "rows": [
+          [
+            "Shared-gate ablation",
+            "Remove source lags; retain source-informed gate",
+            "Do explicit lags add value given this gate?"
+          ],
+          [
+            "Complete source exclusion",
+            "Remove source from every restricted-model path",
+            "Does the full source-informed procedure improve forecasts?"
+          ],
+          [
+            "Gate-value comparison",
+            "Gated versus pooled, same raw information",
+            "Does this fitted gate earn its extra complexity?"
+          ]
+        ]
+      },
+      "bullets": [
+        "Shared-gate ablation is valid for its own target; it is not complete information exclusion."
+      ],
+      "notes": "These are distinct estimands rather than a ranking from invalid to valid methods. Shared-gate ablation compares explicit lag inclusion conditional on a source-informed gate. That question is meaningful, but it cannot establish a forecast based on an information set that excludes the source. Complete source exclusion separately fits the restricted gate and all downstream steps using retained variables only. Its gain describes the compared fitted procedures. The gate-value comparison instead holds raw information fixed and asks whether a gated procedure improves on a pooled model. These gains should not substitute for one another. Furthermore, subtracting the first two gains compares restricted procedures: re-estimating a gate changes approximation, estimation, optimization, and regularization. Their difference is not a clean causal attribution to a latent information channel. The paper uses controlled settings to study those costs separately.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Source-removal paths and predictive estimands; Table: Source access"
+      ]
+    },
+    {
+      "title": "Negative fitted gain does not prove no information",
+      "layout": "equation",
+      "lead": "The oracle value of additional information and the performance of fitted models are different objects.",
+      "equation": "\\mathcal R(f_R)-\\mathcal R(f_U)=G_{\\rm oracle}+E_R-E_U",
+      "equation_plain": "Fitted gain = oracle information gain + restricted-model error − unrestricted-model error",
+      "bullets": [
+        "ℛ: expected squared loss; R and U denote source-excluded and source-included forecasts.",
+        "E_R and E_U: excess risk relative to each oracle, including approximation and estimation error.",
+        "Oracle information gain is nonnegative for nested information sets.",
+        "Extra fitted-model error can outweigh information; a positive sample gain alone also does not establish population usefulness."
+      ],
+      "notes": "The paper uses a standard conditional-expectation identity, not a new theorem. Under squared loss, an oracle conditional mean using a larger information set cannot have higher population risk than one using a nested smaller set. Their difference is the expected squared distance between the two conditional means. A fitted model is not that oracle. Its risk also includes the distance between its predictions and the appropriate conditional mean. The displayed identity says that observed procedure advantages mix information value with approximation and estimation costs on both sides. A complex source-informed model can therefore lose even when the source is informative. Conversely, a large fitted gain can occur because the restricted comparator is particularly poor. This identity motivates fair procedure comparisons and restrained interpretation of sample score signs. The bounded-loss inference used later has a different target from ordinary squared-risk identities.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Proposition: Oracle and fitted predictive gains; Chronological fitted-procedure comparison"
+      ]
+    },
+    {
+      "title": "Evaluate the complete cross-market task family",
+      "layout": "comparison",
+      "lead": "Six factors, all 30 ordered directions, four regional panels.",
+      "columns": [
+        {
+          "heading": "Markets and outcomes",
+          "body": "US, Europe, Japan, and Asia Pacific excluding Japan. One-day mean-return forecasts; two lagged observations in the frozen expansion."
+        },
+        {
+          "heading": "Chronology",
+          "body": "Train before 2005; validate 2005–2009; annually refit during evaluation. Report 2010–2024 and January 2025–August 2026 separately."
+        },
+        {
+          "heading": "Inference family",
+          "body": "4 regions × 30 directions × 5 procedure comparisons × 4 weight choices = 2,400 temporal endpoints."
+        }
+      ],
+      "bullets": [
+        "The later era was outside earlier repository forecast evaluation; globally untouched exposure is unverified.",
+        "Panels share shocks and a provider; they are not independent replications."
+      ],
+      "notes": "The expansion was frozen in a timestamped repository commit before additional regional downloads and temporal evaluation. It includes every ordered source-target pair among six factors, so no direction is retained because it performed well. Five procedure comparisons comprise three complete-exclusion comparisons, using pooled, Gaussian-HMM, and Student-t-HMM forecasts, plus two shared-gate ablations. Each is evaluated unweighted and with three predictable reference-state weights. The confidence-sequence family therefore contains 2,400 endpoints for the temporal extension. The original historical period was previously inspected, so its intervals are descriptive. The later period was not part of earlier repository forecast evaluation, but outside exposure through other work remains unverified. All data use retrospective vintages. These qualifications matter: a repository freeze and chronological fitting improve auditability without establishing independent prospective confirmation or certified real-time availability.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Frozen cross-market task family: Design, data and evidence status; Endpoints and multiplicity"
+      ]
+    },
+    {
+      "title": "Removal choice changes some point-estimate signs",
+      "layout": "table",
+      "lead": "Temporal capped score = min(squared forecast error / c, 1); c is fixed from training.",
+      "table": {
+        "headers": [
+          "Quantity",
+          "Observed result",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Unweighted HMM sign disagreements",
+            "42 / 240",
+            "Descriptive removal sensitivity"
+          ],
+          [
+            "Directional temporal endpoints",
+            "0 / 2,400",
+            "No simultaneous directional crossing"
+          ],
+          [
+            "Intervals within ±0.005",
+            "776 / 2,400",
+            "All explained by forecast proximity"
+          ],
+          [
+            "Exact matches among those 776",
+            "196",
+            "Zero paired loss"
+          ]
+        ],
+        "column_widths": [
+          470,
+          220,
+          450
+        ]
+      },
+      "bullets": [
+        "Gain = restricted loss − source-included loss. Positive favors inclusion.",
+        "In all 42 sign disagreements, both component gains lie within ±0.005. Median absolute direct contrast: 0.000341."
+      ],
+      "notes": "The denominator 240 refers to four regions times 30 directions times two HMM families, with unweighted complete-exclusion and shared-gate point estimates compared for sign. Forty-two have strictly opposite signs; exact zeros are not counted as opposite. This is a narrower slice than the 2,400-endpoint inference family, which also includes pooled comparisons and predictable weights. None of those temporal endpoints crosses a simultaneous directional boundary at any retained prefix. Some intervals fit within a prespecified score-resolution margin, but all 776 such inclusions are already guaranteed because the forecasts are sufficiently close; 196 pairs are exactly identical. They are not evidence of broad population nonpredictability. The direct discrepancies among the 42 sign disagreements are also small on the normalized capped-loss scale. Reporting magnitude alongside sign prevents a minor ranking change from sounding like a large discovered effect.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Table: Complete regional endpoint families; Figure: Temporal unweighted capped-loss gains; Magnitude of the procedure discrepancy"
+      ]
+    },
+    {
+      "title": "The original HML → SMB reconstruction is unfavorable",
+      "layout": "table",
+      "lead": "2010–2024, 3,774 matched dates; two-lag RMSE in basis points, lower is better.",
+      "table": {
+        "headers": [
+          "Procedure",
+          "Exclude HML",
+          "Include HML"
+        ],
+        "rows": [
+          [
+            "Pooled ridge",
+            "64.177",
+            "64.248"
+          ],
+          [
+            "Gaussian HMM",
+            "64.319",
+            "64.403"
+          ],
+          [
+            "Student-t HMM",
+            "64.257",
+            "64.322"
+          ],
+          [
+            "Zero-return benchmark",
+            "63.948",
+            "63.948"
+          ]
+        ]
+      },
+      "bullets": [
+        "HML: value-minus-growth spread; SMB: small-minus-big spread.",
+        "This current-vintage reconstruction is not an exact reproduction of the earlier study.",
+        "A lag count does not establish an advance-warning horizon."
+      ],
+      "notes": "This table concerns the earlier US reconstruction, not the entire regional family. HML is a value-minus-growth factor, while SMB is the five-factor small-minus-big spread. Their underlying portfolios overlap, so excluding numerical HML history is not an intervention that removes every value-related economic channel. On the same 3,774 evaluation dates, including HML slightly worsens RMSE for all three displayed model families. The zero-return forecast has the lowest aggregate error among the displayed procedures. These are realized errors from a current-vintage reconstruction; the original code, exact vintage, and search history remain unavailable. The point estimates therefore do not constitute an exact reproduction or a proof of no population predictive information. The forecast target is one day ahead. Using two or nine lagged predictors changes how far back the model looks, not how far ahead it predicts.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Current-vintage historical reconstruction: Forecast errors and incremental value; Table: SMB root mean squared forecast error"
+      ]
+    },
+    {
+      "title": "A controlled example separates pathways from fitting costs",
+      "layout": "table",
+      "lead": "Simulation: uncapped conditional squared-loss gains, in target-squared units; mean across 100 seeds.",
+      "table": {
+        "headers": [
+          "Procedure",
+          "Complete-exclusion gain",
+          "Shared-gate gain"
+        ],
+        "rows": [
+          [
+            "Exact oracle",
+            "0.1301",
+            "0.0000"
+          ],
+          [
+            "Gaussian gate",
+            "0.1345",
+            "−0.0036"
+          ],
+          [
+            "Student-t gate",
+            "0.1374",
+            "−0.0036"
+          ]
+        ]
+      },
+      "bullets": [
+        "The source carries information through a constructed state pathway.",
+        "Keeping that pathway makes exact shared-gate gain zero.",
+        "Small negative fitted shared-gate gains reflect procedure costs, not negative information."
+      ],
+      "notes": "This is a designed simulation with known conditional means, not market evidence. A source block contains a persistent observed state and an independent lag signal. In the gate-only scenario, the state helps predict the target but the independent lag signal is irrelevant. The exact complete-exclusion oracle gain is positive because source state information is removed. The exact shared-gate comparison retains that state pathway and has zero gain. Fitted shared-gate estimates are slightly negative because learning extra terms can add error. The two HMM complete-exclusion gains remain positive in this favorable state-observation setting. These controlled quantities demonstrate how the choice of removal operation changes the scientific question. They do not identify the mechanism behind any financial-data sign discrepancy. Monte Carlo uncertainty pertains to independent simulated seeds, and the source is a constructed block rather than an empirical equity factor.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Controlled pathways and estimation costs; Table: Known-conditional squared-loss gains"
+      ]
+    },
+    {
+      "title": "An informative noisy source can still hurt fitted HMMs",
+      "layout": "table",
+      "lead": "Simulation: uncapped conditional squared-loss gains, in target-squared units; positive favors inclusion.",
+      "table": {
+        "headers": [
+          "Source flip probability",
+          "Oracle gain",
+          "Gaussian-HMM gain",
+          "Student-t-HMM gain"
+        ],
+        "rows": [
+          [
+            "0.0",
+            "0.1336",
+            "0.1386",
+            "0.1419"
+          ],
+          [
+            "0.1",
+            "0.0708",
+            "−0.0494",
+            "−0.0486"
+          ],
+          [
+            "0.3",
+            "0.0174",
+            "−0.0216",
+            "−0.0327"
+          ],
+          [
+            "0.5",
+            "0.0000",
+            "−0.0336",
+            "−0.0446"
+          ]
+        ]
+      },
+      "bullets": [
+        "100 independent seeds per noise level; seeds are paired across levels.",
+        "Combined approximation, estimation, optimization, and tuning costs can outweigh information value."
+      ],
+      "notes": "The favorable simulation is stressed by corrupting the observed binary state coordinate with independent flips. At moderate corruption levels the source still contains positive oracle information, yet both fitted HMM procedures lose relative to source exclusion. At a flip probability of one half the channel is uninformative and the oracle gain is exactly zero, while fitted gains remain negative. This separates the existence of useful information from the ability of these particular fitted procedures to exploit it. The table reports mean known-conditional squared-loss gains; it is not a financial confidence interval or a causal explanation of market behavior. A subsequent matched Gaussian-versus-Bernoulli emission experiment improves forecasts at one noise level under privileged known-AR preprocessing. That narrower intervention does not uniquely explain the original pipeline failure, and its advantage is not uniform across noise levels.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Noisy-source failure study; Table: Noisy-source known-conditional squared-loss gains; Matched observation-model intervention"
+      ]
+    },
+    {
+      "title": "Information paths and inference targets",
+      "layout": "takeaway",
+      "lead": "The supported contribution is a reproducible procedure audit, not a validated warning system.",
+      "bullets": [
+        "Specify whether the source is removed from lags, the gate, or the entire pipeline.",
+        "Keep information value separate from fitted-model performance.",
+        "Report complete families, uncertainty, and discrepancy magnitudes.",
+        "Capped-loss evidence does not establish ordinary-MSE coverage or trading value."
+      ],
+      "notes": "The paper establishes a concrete distinction that matters when assessing regime-gated forecasts. A source can remain informative through the gate after its explicit lag coefficients disappear. Complete source exclusion and shared-gate ablation answer different questions, and their fitted differences also contain changes in model error. The cross-market point estimates demonstrate removal sensitivity, while the simultaneous intervals do not resolve a direction. The score-margin inclusions follow from forecast proximity and do not establish population noncausality. Simulations make these distinctions visible by comparing known information value with procedure costs. Limitations remain substantial: correlated markets, revised historical data, unverified outside exposure, a restricted set of HMM architectures, and conservative finite-sample resolution. The next research step is better isolated evaluation and a clearly meaningful target, not relabeling an unresolved result as success or failure.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex — Limitations and conclusion"
+      ]
+    }
+  ],
+  "poster": {
+    "headline": "Removing lag coefficients can leave the source inside the regime gate.",
+    "question": "How does measured predictive value change when a factor is removed from explicit regression lags versus every input path of a regime-gated forecasting procedure?",
+    "sections": [
+      {
+        "heading": "1 · Three distinct questions",
+        "text": "Shared-gate ablation asks whether explicit source lags add value given a source-informed gate. Complete exclusion removes the source from fitting, filtering, scaling, and tuning. Gate-value comparison tests gated versus pooled forecasts with the same raw information. These are different estimands; shared-gate ablation is not inherently invalid."
+      },
+      {
+        "heading": "2 · Complete family and chronology",
+        "text": "Six equity factors, all 30 ordered directions, and four regions: US, Europe, Japan, and Asia Pacific excluding Japan. Initial training precedes 2005, validation covers 2005–2009, and evaluation uses annual refits. January 2025–August 2026 is reported separately from inspected history."
+      },
+      {
+        "heading": "3 · Empirical removal sensitivity",
+        "text": "Gain is restricted-procedure loss minus source-included loss; positive favors inclusion. Complete exclusion and shared-gate ablation have opposite capped-loss signs in 42 of 240 unweighted temporal HMM comparisons. Both component gains lie within ±0.005; the median absolute direct contrast is 0.000341. These are descriptive discrepancies, not resolved population reversals."
+      },
+      {
+        "heading": "4 · Conditional inference",
+        "text": "The normalized score is min(squared forecast error / c, 1), with c fixed from training. Across 2,400 temporal endpoints, none has a simultaneous directional crossing. All 776 intervals inside ±0.005 are explained by forecast proximity; 196 concern identical forecasts. The margin measures score resolution, not economic utility."
+      },
+      {
+        "heading": "5 · Known-information controls",
+        "text": "Constructed simulations separate oracle information value from fitted procedure costs. At 10% binary-source corruption, oracle information gain is +0.0708 while Gaussian- and Student-t-HMM gains are −0.0494 and −0.0486. Positive information can coexist with harmful fitted inclusion."
+      }
+    ],
+    "key_numbers": [
+      {
+        "value": "42 / 240",
+        "label": "unweighted temporal sign disagreements"
+      },
+      {
+        "value": "0 / 2,400",
+        "label": "directional interval crossings"
+      },
+      {
+        "value": "776",
+        "label": "margin inclusions explained by proximity"
+      }
+    ],
+    "table": {
+      "headers": [
+        "Source access",
+        "Full model",
+        "Shared-gate ablation",
+        "Complete exclusion"
+      ],
+      "rows": [
+        [
+          "Explicit source lags",
+          "Yes",
+          "No",
+          "No"
+        ],
+        [
+          "Gate fit and filter",
+          "Yes",
+          "Yes",
+          "No"
+        ],
+        [
+          "Restricted preprocessing/tuning",
+          "Source-informed",
+          "Source-informed",
+          "Source-excluded"
+        ]
+      ]
+    },
+    "conclusion": "Source-removal definitions affect measured gains. The audit finds limited directional resolution and shows why fitted losses cannot establish either universal predictive success or absence of oracle information.",
+    "limitations": "Inference targets normalized capped squared loss, not ordinary MSE or investment utility. Regions and directions are dependent; data vintages are retrospective. Later evaluation was outside prior repository analysis, but outside exposure is unverified. Simulations do not identify a financial mechanism."
+  },
+  "intro": {
+    "en": {
+      "hook": "If a model predicts tomorrow's small-stock returns using value-stock history, removing the value-stock regression coefficients sounds like a clean test of usefulness. But the information may remain inside the model's estimate of the market regime. This paper audits that hidden route.",
+      "sections": [
+        {
+          "heading": "The question",
+          "text": "Regime-gated forecasts blend several regression predictions using estimated state probabilities. A source factor can influence the explicit lag coefficients and the gate that weights the regressions. Shared-gate ablation removes only the explicit lag route. Complete source exclusion also removes the source from gate fitting, filtering, preprocessing, and tuning. Both comparisons are meaningful, but they answer different questions. A separate gate-value comparison asks whether gating improves on a pooled model with the same raw information."
+        },
+        {
+          "heading": "How the study evaluates it",
+          "text": "The study first reconstructs the US HML-to-SMB relation: value-minus-growth information predicting a small-minus-big return spread. It then freezes an expansion across all 30 ordered directions among six factors in the US, Europe, Japan, and Asia Pacific excluding Japan. The expansion uses chronological training, validation, and annual refits, with January 2025–August 2026 reported separately. Five procedure comparisons and four weighting choices create a simultaneous temporal family of 2,400 endpoints. Inference concerns normalized squared loss capped at one, limiting the contribution of large errors; ordinary MSE remains descriptive."
+        },
+        {
+          "heading": "What the market evidence says",
+          "text": "Shared-gate and complete-exclusion point estimates have opposite signs in 42 of 240 unweighted temporal HMM comparisons. Yet none of the 2,400 temporal endpoints has a simultaneous directional crossing. All 776 intervals inside a prespecified ±0.005 score-resolution margin are already explained by the compared forecasts being close; 196 pairs are identical. These results demonstrate sensitivity to removal and limited resolution, not confirmed reversals of population predictive content or general absence of information."
+        },
+        {
+          "heading": "Why an informative source can still hurt",
+          "text": "Under squared loss, additional information has nonnegative oracle value when information sets are nested. Fitted models can nevertheless lose because extra approximation or estimation error outweighs that benefit. In a controlled noisy-source simulation, 10% binary corruption leaves oracle gain at +0.0708, while Gaussian- and Student-t-HMM gains become −0.0494 and −0.0486. This is synthetic evidence about procedure costs, not a financial mechanism. Correlated markets, retrospective data vintages, unverified outside exposure, and a limited architecture family constrain the empirical interpretation. Capped-loss intervals do not guarantee ordinary-MSE coverage, practical trading value, or a multi-day warning horizon."
+        }
+      ],
+      "takeaway": "To ask whether a variable helps, first specify every path by which its information enters the model—and distinguish the variable's information from the fitted model's ability to use it."
+    },
+    "ko": {
+      "title": "시장 국면을 활용하는 예측에서 정보원을 제외한다는 것: 주식 팩터 예측력의 시장 간 점검",
+      "hook": "가치주 움직임으로 내일 소형주 수익률을 예측한다고 해봅시다. 가치주 변수의 회귀계수를 없애면 그 정보도 사라질까요? 가치주가 시장 국면을 판단하는 데 쓰였다면, 정보는 여전히 모형 안에 남아 있을 수 있습니다.",
+      "sections": [
+        {
+          "heading": "무엇이 문제인가?",
+          "text": "국면을 활용하는 예측모형은 여러 회귀식의 예측을 ‘현재 어떤 상태일 가능성이 높은가’라는 가중치로 섞습니다. 가치주 같은 정보원은 회귀식에 직접 들어갈 수도 있고, 국면의 확률을 계산하는 데 들어갈 수도 있습니다. 따라서 회귀식의 시차변수만 빼는 비교와, 국면 추정·필터 갱신·전처리·튜닝까지 모두에서 정보원을 빼는 비교는 다릅니다. 둘 다 의미 있는 비교이지만 답하는 질문이 다릅니다. 국면을 쓰는 모형이 같은 원자료를 쓰는 단일 모형보다 좋은지도 별도 질문입니다."
+        },
+        {
+          "heading": "어떻게 검증했는가?",
+          "text": "먼저 가치주–성장주 수익률 차이인 HML로 소형주–대형주 차이인 SMB를 예측하는 미국 관계를 재구성했습니다. 이어 미국·유럽·일본·일본 제외 아시아태평양의 6개 팩터에서 가능한 30개 방향을 모두 평가했습니다. 학습·검증·평가를 시간순으로 나누고 매년 재학습했으며, 2025년–2026년 8월은 앞선 기간과 따로 보고했습니다. 5개 모형 비교와 4개 가중 방식까지 합하면 이후 기간의 평가항목은 2,400개입니다. 통계적 구간은 큰 오차의 기여를 제한한 정규화 제곱손실을 대상으로 합니다."
+        },
+        {
+          "heading": "실제 시장에서는 무엇이 나왔는가?",
+          "text": "가중치를 주지 않은 HMM 비교 240개 중 42개에서 시차변수만 제외할 때와 정보를 완전히 제외할 때 성능 차이의 부호가 반대였습니다. 하지만 2,400개 항목 중 여러 비교를 동시에 고려한 구간이 어느 한 방향으로 결론을 낸 경우는 없었습니다. 미리 정한 ±0.005 점수 범위 안에 든 구간은 776개였지만, 모두 두 예측값이 충분히 가깝다는 사실만으로 설명됐고 그중 196개는 예측값이 동일했습니다. 따라서 정보가 없다는 증명이나, 예측력의 유의한 역전을 발견한 결과는 아닙니다."
+        },
+        {
+          "heading": "정보가 있어도 모형은 왜 손해를 볼까?",
+          "text": "이론적으로 더 많은 정보를 아는 최적 예측자는 제곱손실에서 불리해지지 않습니다. 그러나 실제 학습모형은 정보를 활용하는 과정에서 추정오차를 더 낼 수 있습니다. 인공자료 실험에서 정보원의 이진 상태를 10% 확률로 뒤집자, 이론적 정보 이득은 +0.0708로 남았지만 학습한 두 HMM의 이득은 −0.0494와 −0.0486이 됐습니다. 이는 ‘정보의 존재’와 ‘특정 모형의 활용 능력’이 다름을 보여줍니다. 실제 금융시장의 원인을 확인한 것은 아닙니다. 서로 연관된 시장, 수정된 과거 자료, 외부 연구를 통한 평가자료 노출 여부, 제한된 모형 종류 때문에 실전 투자 성과나 보편적인 예측 불가능성으로 확대해석할 수 없습니다."
+        }
+      ],
+      "takeaway": "‘이 변수가 도움이 되는가’를 검증하려면 정보가 모형에 들어가는 모든 경로부터 명확히 해야 합니다. 정보 자체의 가치와 학습모형의 성능은 같은 것이 아닙니다."
+    }
+  },
+  "claims": [
+    {
+      "claim": "42 of240 unweighted temporal comparisons have strictly opposite complete-exclusion and shared-gate capped-loss point-estimate signs.",
+      "locator": "Measured family results and inferential resolution; Figure pathway-scatter",
+      "source": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex"
+    },
+    {
+      "claim": "No directional crossing among2400 temporal endpoints;776 margin inclusions all explained by forecast proximity, including196 identical-forecast pairs.",
+      "locator": "Table panel-family; Endpoints and multiplicity",
+      "source": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex"
+    },
+    {
+      "claim": "For42 sign reversals, median absolute direct capped contrast0.000341; maximum0.003688; both component gains within±0.005.",
+      "locator": "Magnitude of the procedure discrepancy",
+      "source": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex"
+    },
+    {
+      "claim": "US HML→SMB 2010–2024 two-lag RMSE pooled64.177/64.248, Gaussian64.319/64.403, Student64.257/64.322 (exclude/include);zero63.948 bp.",
+      "locator": "Table empirical; results/empirical-comparison/rmse-table.tex",
+      "source": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex"
+    },
+    {
+      "claim": "Gate-only exact oracle full information gain0.1301 and shared-gate gain0; fitted Gaussian/Student shared gains−0.0036.",
+      "locator": "Table mechanism; results/mechanism-full/mechanism-gains-table.tex",
+      "source": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex"
+    },
+    {
+      "claim": "At binary-source flip probability0.1, oracle gain0.0708, Gaussian−0.0494, Student−0.0486 across100 paired seeds per level.",
+      "locator": "Noisy-source failure study; results/noisy-source-full/noisy-source-gains-table.tex",
+      "source": "https://github.com/ChorokLeeDev/regime-predictability-revision/blob/ad08f1e2aeef9e4ec667b787d8ae00430c60f65f/manuscript.tex"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "source": "https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/96d9616961e5ae8607373181d35262cb21a2b0d1/src/generate_n16_figure.py",
+  "columns": [
+    "task",
+    "concentration_percent",
+    "coverage_loss_percentage_points"
+  ],
+  "data": {
+    "salt_tasks": [
+      [
+        "s-shipcond",
+        50.7,
+        71.6
+      ],
+      [
+        "s-payterms",
+        54.2,
+        77.1
+      ],
+      [
+        "s-group",
+        47.3,
+        71.2
+      ],
+      [
+        "i-shippoint",
+        48.8,
+        18.5
+      ],
+      [
+        "s-office",
+        42.6,
+        0.1
+      ],
+      [
+        "i-incoterms",
+        28.9,
+        11.3
+      ],
+      [
+        "i-plant",
+        23.9,
+        10.6
+      ],
+      [
+        "s-incoterms",
+        23.7,
+        8.5
+      ]
+    ],
+    "ext_tasks": [
+      [
+        "Covertype",
+        49.78,
+        81.8
+      ],
+      [
+        "KDDCup99",
+        21.13,
+        15.9
+      ],
+      [
+        "Gas Sensor",
+        7.27,
+        -3.8
+      ],
+      [
+        "Avila",
+        20.49,
+        1.0
+      ],
+      [
+        "Shuttle",
+        30.66,
+        0.3
+      ],
+      [
+        "PAMAP2",
+        19.24,
+        -2.1
+      ],
+      [
+        "Pendigits",
+        14.45,
+        -1.7
+      ],
+      [
+        "Satimage",
+        9.04,
+        -0.3
+      ]
+    ]
+  }
+}

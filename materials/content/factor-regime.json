@@ -1,0 +1,428 @@
+{
+  "id": "factor-regime",
+  "title": "Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence",
+  "short_title": "Return-decay residuals and tail risk",
+  "category": "Financial forecasting and model evaluation",
+  "accent": "#007F83",
+  "source": {
+    "repository": "ChorokLeeDev/factor-regime-revision",
+    "commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
+    "path": "manuscript.tex",
+    "url": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex",
+    "version_note": "Current revision on revision/2026-09-26-factor-validity, pinned 29 September 2026; arXiv:2512.11913."
+  },
+  "summary": "A disappointing performance residual can look informative because of timing and model design; robust next-month tail-risk value remains unresolved.",
+  "slides": [
+    {
+      "title": "Can a disappointing strategy signal its next large loss?",
+      "layout": "cover",
+      "lead": "Return-decay residuals, forecast timing, and evidence across markets.",
+      "bullets": [
+        "Chorok Lee · KAIST",
+        "A forecast audit of monthly equity-factor returns",
+        "arXiv:2512.11913 · September 2026 revision"
+      ],
+      "notes": "The paper asks a practical question: if a strategy performs worse than an expected decay curve, does that shortfall warn of a large loss next month? The study treats the shortfall as a candidate forecasting feature. It does not assume that the feature measures investor crowding. The central challenge is to distinguish a signal that describes an already observed loss from one that improves predictions of a future loss. A second challenge is to distinguish new information from a useful representation of existing returns. The paper combines analytical counterexamples, a US reconstruction, a fixed geographic extension, and controlled diagnostics of model design. The result is qualified: some specifications improve, others deteriorate, and simultaneous intervals leave substantial uncertainty. This is evidence about an evaluated forecasting procedure, not a validated investment strategy.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Abstract; Introduction"
+      ]
+    },
+    {
+      "title": "Three quantities should stay separate",
+      "layout": "comparison",
+      "lead": "A curve, a performance statistic, and an economic mechanism answer different questions.",
+      "columns": [
+        {
+          "heading": "Economic edge",
+          "body": "The advantage from a trading opportunity. A stylized competition model can motivate decline, but returns alone do not identify participation."
+        },
+        {
+          "heading": "Rolling Sharpe",
+          "body": "Average recent return divided by recent volatility. Adjacent windows reuse nearly all their data."
+        },
+        {
+          "heading": "Decay residual",
+          "body": "Expected rolling performance minus observed rolling performance. It is a constructed feature, not a direct crowding measurement."
+        }
+      ],
+      "bullets": [
+        "A useful feature does not automatically establish its proposed economic explanation."
+      ],
+      "notes": "The word decay can refer to several different objects. Economic edge concerns an opportunity's underlying profitability. The observed rolling Sharpe ratio combines recent average returns with recent volatility. A residual then compares that statistic with a curve fitted to earlier observations. These quantities need not move together. For example, the rolling statistic can deteriorate because volatility rises even if a mean return does not fall. A stylized model in the paper motivates inverse-linear edge under restrictive conditions, but additional assumptions are needed to connect edge to Sharpe. Changing opportunities can also reproduce an edge path without changing participation. Therefore the empirical forecast test should come first: does the residual improve future loss probabilities relative to appropriate alternatives? Establishing crowding would additionally require independent participation measurements or an identification design.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Measurement and data; What a decay residual can and cannot establish; Appendix: Corrected quantity-competition motivation"
+      ]
+    },
+    {
+      "title": "The timeline determines whether this is a forecast",
+      "layout": "equation",
+      "lead": "Use month t to predict month t + 1.",
+      "equation": "C_t=\\widehat m_{t\\mid t-1}-\\widehat S_t",
+      "equation_plain": "Cₜ = curve prediction from earlier months − observed rolling Sharpe at t",
+      "bullets": [
+        "Cₜ: shortfall relative to an inverse-linear curve.",
+        "The curve uses Sharpe observations ending before t.",
+        "Observed Sharpe includes return t.",
+        "The tail event is return t + 1 below a fixed historical threshold."
+      ],
+      "notes": "The residual is the fitted curve prediction minus the current rolling Sharpe statistic. A large positive residual means observed performance is below the curve. The curve is fitted using strictly earlier rolling statistics, but the observed statistic still includes the return at the current month t. Thus the complete feature becomes known only after that return is observed. It can be evaluated as a predictor of next month's tail event. Using the same feature to classify a crash in month t instead asks a partly contemporaneous question. The empirical primary window spans 36 months, and the event threshold is a historical tenth percentile fixed before evaluation. The curve, threshold, feature scaling, and classifier all have their own fitting histories. Keeping these clocks explicit prevents a descriptive association from being mislabeled as advance warning.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Measurement and data; Retrospective public-data reconstruction: Data, estimands, and chronology"
+      ]
+    },
+    {
+      "title": "Strong-looking association can arise without predictability",
+      "layout": "table",
+      "lead": "Simplified Gaussian iid example: zero benchmark; high state means negative rolling Sharpe.",
+      "table": {
+        "headers": [
+          "Window",
+          "Same-month risk ratio",
+          "Next-month population ratio"
+        ],
+        "rows": [
+          [
+            "12 months",
+            "2.335",
+            "1.000"
+          ],
+          [
+            "36 months",
+            "1.606",
+            "1.000"
+          ],
+          [
+            "60 months",
+            "1.440",
+            "1.000"
+          ]
+        ]
+      },
+      "bullets": [
+        "Same-month association appears without predictable future returns.",
+        "This isolates timing; it does not reproduce the fitted nonzero curve.",
+        "For 36-month rolling means, adjacent correlation is 35/36 ≈ 0.972."
+      ],
+      "notes": "This table is an analytical null example supported by simulation, not financial data. Returns are independent Gaussian draws. A crash is a return below the distribution's tenth percentile, and the high state means the estimated Sharpe is negative. A poor current return both contributes to a crash and pulls down the rolling performance statistic, so a high-state crash association appears mechanically. At the 36-month window the exact same-month risk ratio is 1.606, even though both states have exactly the same next-month population crash probability. The simulated ratios fluctuate around the analytical values. Separately, adjacent 36-month rolling means share 35 returns, giving correlation 35/36. That formula is exact for rolling means, not estimated Sharpe ratios with a random denominator. Both examples show why smooth persistence and same-month tail association are insufficient evidence of forecastability.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Proposition: Timing alone creates a tail association; Table: Gaussian null; A null example for overlapping windows"
+      ]
+    },
+    {
+      "title": "Test the residual against matched alternatives",
+      "layout": "comparison",
+      "lead": "Same outcomes and evaluation dates; different representations of past returns.",
+      "columns": [
+        {
+          "heading": "Forecast design",
+          "body": "Separate ridge-logistic models predict each factor's next-month tail event. Thresholds, scaling, and penalty selection precede evaluation."
+        },
+        {
+          "heading": "Comparison models",
+          "body": "Historical event rate; return and volatility controls; controls plus residual; controls plus raw Sharpe; constant or linear residual alternatives."
+        },
+        {
+          "heading": "Geographic extension",
+          "body": "Six factors in Europe, Japan, and Asia Pacific excluding Japan. Train 2000–2009, validate 2010–2014, evaluate 2015–2024 and 2025–August 2026."
+        }
+      ],
+      "bullets": [
+        "Regional frozen and annual-refit protocols were fixed before their forecast outcomes were computed."
+      ],
+      "notes": "The primary US reconstruction uses eight factors and an earlier training history. The later geographic extension matches six factors and a common historical calendar across the three non-US regions. The key comparison adds one candidate feature to the same four controls: latest return, trailing mean, trailing standard deviation, and calendar age. Raw Sharpe and alternative residual constructions are important comparators because the hyperbolic residual is built from existing return information. Training uses 2000 through 2009, validation 2010 through 2014, and evaluation is split into a longer main era and a short later era. Frozen models use development data through 2014. Annual models update coefficients and scalers while retaining the preselected penalty. These are chronological research forecasts using retrospective data vintages. The regional panels are correlated and do not constitute independent replications.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Curve estimation and prediction models; Geographic transport and conditional forecast uncertainty: Frozen external evaluation"
+      ]
+    },
+    {
+      "title": "Regional log loss worsens in the main era",
+      "layout": "table",
+      "lead": "2015–2024 pooled regional forecasts; lower log loss is better.",
+      "table": {
+        "headers": [
+          "Model",
+          "Frozen fit",
+          "Annual refit"
+        ],
+        "rows": [
+          [
+            "Controls",
+            "0.30419",
+            "0.29941"
+          ],
+          [
+            "Controls + hyperbolic residual",
+            "0.31123",
+            "0.30174"
+          ],
+          [
+            "Controls + raw Sharpe",
+            "0.30228",
+            "0.29879"
+          ],
+          [
+            "Controls + constant residual",
+            "0.30137",
+            "0.29826"
+          ]
+        ]
+      },
+      "bullets": [
+        "Residual minus controls: +0.00704 frozen; +0.00233 annual.",
+        "Frozen Brier score improves slightly: 0.08673 → 0.08608."
+      ],
+      "notes": "This table averages forecasts equally over 18 series: six factors in each of three regions. It reports the main era, 2015 through 2024. A larger log loss means a worse probability forecast under the primary scoring rule. Adding the hyperbolic residual worsens log loss relative to the basic controls in both fitting modes. Raw Sharpe and a constant residual have lower observed log loss than the hyperbolic residual. However, the conclusion is score-specific. Under frozen fitting, the residual slightly improves the Brier score, another proper scoring rule. Different proper scores can order imperfect forecasts differently, so the paper does not claim universal dominance. These numbers describe the realized retained forecasts; whether their conditional expected differences are resolved is a separate question, addressed by the simultaneous intervals on the next slide.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Table: Pooled external scores, 2015–2024; Measured scores, uncertainty, and counterexamples"
+      ]
+    },
+    {
+      "title": "The uncertainty still permits useful gains",
+      "layout": "table",
+      "lead": "Residual-minus-controls log loss; negative values favor the residual.",
+      "table": {
+        "headers": [
+          "2015–2024 pooled fit",
+          "Observed difference",
+          "95% simultaneous interval"
+        ],
+        "rows": [
+          [
+            "Frozen",
+            "+0.00704",
+            "[−0.03003, +0.06172]"
+          ],
+          [
+            "Annual",
+            "+0.00233",
+            "[−0.01830, +0.03229]"
+          ]
+        ]
+      },
+      "bullets": [
+        "All 48 final intervals contain zero.",
+        "The target is a running conditional expected score difference.",
+        "No directional conclusion; no established practical equivalence."
+      ],
+      "notes": "The study applies established confidence-sequence methods to predictable paired log-loss contrasts. The family covers regions and their pool, three model contrasts, two fitting modes, and two eras. It permits dependence across months and factors under the stated boundedness and predictability conditions. All 48 final intervals include zero, as do all retained prefixes. For the main pooled comparison the lower endpoints still allow nontrivial benefits, while the upper endpoints allow deterioration. Therefore a failure to resolve a direction is not proof that the residual lacks predictive value. The target also conditions on disclosed prior US research information and sequential external observations. This is not the information set of a historical live trader, and it does not certify release-time availability. The construction supplies conditional inferential discipline but cannot erase prior research selection or establish independent confirmation.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — An established bound with a disclosed research filtration; Table: Pooled external score contrasts and confidence-sequence endpoints"
+      ]
+    },
+    {
+      "title": "Reasonable design choices can reverse the ranking",
+      "layout": "table",
+      "lead": "Post-results US diagnostic: the target definition and feature history interact.",
+      "table": {
+        "headers": [
+          "Threshold reference",
+          "Feature history",
+          "Residual − controls log loss"
+        ],
+        "rows": [
+          [
+            "Full historical reference",
+            "Full",
+            "−0.00561"
+          ],
+          [
+            "Full historical reference",
+            "Short",
+            "+0.03999"
+          ],
+          [
+            "Short historical reference",
+            "Full",
+            "−0.01384"
+          ],
+          [
+            "Short historical reference",
+            "Short",
+            "−0.04739"
+          ]
+        ]
+      },
+      "bullets": [
+        "Full feature history starts July 1963; short starts December 1990.",
+        "Threshold changes redefine events; rows across thresholds do not share identical labels.",
+        "Penalty selection also contributes; this diagnostic is descriptive."
+      ],
+      "notes": "This diagnostic holds six US factors and the 2015–2024 target months fixed while crossing feature-history and threshold-reference choices. It was designed after a ranking reversal was observed, so it is explanatory and descriptive rather than a new confirmation test. Under the full threshold reference, shortening feature history turns a modest residual advantage into a loss. Under the short reference, shortening history increases the observed advantage. The outcome labels differ across threshold rows, even when total event counts barely change. A further fixed-target mechanism study separates fitting observations from the admissible curve family and shows that penalty reselection matters substantially. Holding one setup's numerical penalties fixed largely removes the pooled reversal. Reversing the decomposition order changes the allocation between history and reselection. Thus the result does not identify a unique causal contribution of older observations or a universally better history.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Table: Post-results US setup diagnostic; Separating fitting history from the admissible curve family"
+      ]
+    },
+    {
+      "title": "A better representation is not new economic information",
+      "layout": "equation",
+      "lead": "A feature computed from X cannot add information conditional on all of X.",
+      "equation": "C_t=g(X_t)\\quad\\Rightarrow\\quad\\mathbb E[Y_{t+1}\\mid X_t,C_t]=\\mathbb E[Y_{t+1}\\mid X_t]",
+      "equation_plain": "If Cₜ is computed from Xₜ, conditioning on both gives the same information as conditioning on Xₜ.",
+      "bullets": [
+        "X includes all construction inputs, fitted history, and time; a simple learner may still benefit from the feature.",
+        "Equivalent feature bases can change ridge penalties and fitted probabilities.",
+        "Large gains over a weak comparator can disappear against raw Sharpe.",
+        "Independent holdings or flow evidence is needed for a crowding claim."
+      ],
+      "notes": "Here X includes every input used to create the residual: trailing returns, the curve's fitting history or fitted parameters, and time. Since the residual is a deterministic function of those inputs, it adds no conditional information once all of them are known. This does not imply that a restricted finite-sample model must perform equally well with every representation. A nonlinear summary can make patterns easier to fit, and ridge penalties depend on the chosen feature coordinates. The paper's equivalent-basis experiment isolates this regularization effect and retains both favorable and unfavorable cases. In some settings large differences between residual and component models mostly reflect poor component-model forecasts, with little improvement over controls plus raw Sharpe. The useful conclusion concerns the evaluated learning procedure. Inferring a crowding mechanism requires evidence beyond a transformed return history.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Information content versus predictive representation; Equivalent feature bases and penalty geometry"
+      ]
+    },
+    {
+      "title": "Requirements for a defensible forecast claim",
+      "layout": "takeaway",
+      "lead": "Timing, benchmarks, and uncertainty determine what the evidence supports.",
+      "bullets": [
+        "Separate current-loss description from next-month prediction.",
+        "Compare matched representations, histories, targets, and tuning rules.",
+        "Report scoring-rule reversals and unfavorable outcomes.",
+        "Treat crowding and trading value as questions still requiring independent evidence."
+      ],
+      "notes": "The paper's contribution is an auditable evaluation rather than a new universal crash predictor. The analytical example establishes that a contemporaneous risk ratio can emerge without future predictability. The empirical extension shows unfavorable main-era log-loss point estimates for the tested residual, while preserving Brier-score exceptions and favorable US setups. Simultaneous conditional intervals remain wide enough to permit both gains and deterioration. Mechanism diagnostics show why history, target definition, feature coordinates, and penalty selection can alter rankings. These findings do not demonstrate that every return-decay residual fails, nor do they establish an identified crowding signal or an operational trading benefit. A stronger follow-up would document actual release-time availability, isolate evaluation from prior research, compare robustly tuned simple alternatives, and measure participation independently when testing a crowding explanation.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex — Limitations and conclusion"
+      ]
+    }
+  ],
+  "poster": {
+    "headline": "A return-decay residual is a candidate feature, not a crowding measurement.",
+    "question": "Does performance falling below a fitted decay curve predict next-month factor tail losses after timing, matched baselines, and uncertainty are handled explicitly?",
+    "sections": [
+      {
+        "heading": "1 · Forecast target",
+        "text": "The signal equals a curve fitted to earlier Sharpe observations minus the current 36-month rolling Sharpe. Because it uses the current return, the valid forecast target is next month's tail event, defined against a fixed historical tenth-percentile threshold."
+      },
+      {
+        "heading": "2 · Timing counterexample",
+        "text": "A simplified zero-benchmark example defines the high state as negative rolling Sharpe. Independent Gaussian returns then give an exact same-month crash-risk ratio of 1.606 at a 36-month window, but next-month population ratio 1. This isolates timing; it neither reproduces the fitted curve nor quantifies how much of a historical association is mechanical."
+      },
+      {
+        "heading": "3 · Matched cross-market evaluation",
+        "text": "Six factors in Europe, Japan, and Asia Pacific excluding Japan; common histories, training and validation splits; frozen and annually refitted models. Retain 2015–2024 and January 2025–August 2026 separately. Regions share shocks and a provider, so they are not independent replications."
+      },
+      {
+        "heading": "4 · Results and inferential resolution",
+        "text": "Main-era residual augmentation worsens pooled log loss by 0.00704 under frozen fitting and 0.00233 under annual refitting. Frozen Brier score slightly improves. All 48 simultaneous conditional intervals include zero and permit nontrivial benefits; absence of resolution does not establish equivalence."
+      },
+      {
+        "heading": "5 · Why rankings change",
+        "text": "Post-results US diagnostics show that history and threshold choices can reverse model rankings. Threshold changes redefine labels; penalty reselection and feature-coordinate geometry also matter. These are procedure sensitivities, not identified crowding mechanisms."
+      }
+    ],
+    "key_numbers": [
+      {
+        "value": "18",
+        "label": "regional factor series"
+      },
+      {
+        "value": "48 / 48",
+        "label": "final intervals include zero"
+      },
+      {
+        "value": "+0.00704",
+        "label": "frozen main-era log-loss change"
+      }
+    ],
+    "table": {
+      "headers": [
+        "Main-era pooled fit",
+        "Residual − controls",
+        "95% simultaneous interval"
+      ],
+      "rows": [
+        [
+          "Frozen",
+          "+0.00704",
+          "[−0.03003, +0.06172]"
+        ],
+        [
+          "Annual",
+          "+0.00233",
+          "[−0.01830, +0.03229]"
+        ]
+      ]
+    },
+    "conclusion": "The evidence establishes sensitivity to timing, representation, target definition, and scoring rule. It does not establish universal proxy failure, identified crowding, or prospective investment value.",
+    "limitations": "Research uses retrospective data vintages; release-time availability is unverified. Conditional intervals include prior research information. Regional evidence is correlated, the extension is short, and favorable exceptions remain. No economic materiality or trading-utility guarantee follows from score differences."
+  },
+  "intro": {
+    "en": {
+      "hook": "A strategy has recently performed worse than its expected decline. Is that a warning that next month will bring a large loss—or does the warning simply reflect a loss already observed? This paper audits that distinction for equity-factor returns.",
+      "sections": [
+        {
+          "heading": "Question",
+          "text": "The proposed signal is a return-decay residual: a curve fitted to earlier rolling Sharpe ratios minus the currently observed rolling Sharpe. A large positive residual means performance has fallen below the curve. The paper asks whether this feature improves next-month tail-loss probabilities, with losses defined below a fixed historical tenth percentile. It separately asks what would justify interpreting the feature as investor crowding. These are different claims: predictive usefulness alone would not identify a participation mechanism."
+        },
+        {
+          "heading": "Why timing and benchmarks matter",
+          "text": "The current rolling Sharpe includes the current return. Using it to explain a crash in that month can create a mechanical association. In a simplified zero-benchmark example, independent Gaussian returns and a negative-Sharpe high state produce an exact same-month risk ratio of 1.606 for a 36-month window; the next-month population ratio is one. This isolates timing, without reproducing the fitted residual or quantifying the historical artifact. A residual adds no information conditional on all its generating inputs, although it may help a restricted learner."
+        },
+        {
+          "heading": "What the study does",
+          "text": "An eight-factor US reconstruction is followed by a fixed geographic extension covering six factors in Europe, Japan, and Asia Pacific excluding Japan. Ridge-logistic forecasts compare common return and volatility controls with residual, raw-Sharpe, and alternative-residual additions. The extension uses common histories, chronological training and validation, frozen and annually updated fits, and separate 2015–2024 and January 2025–August 2026 evaluations. Established simultaneous sequential bounds assess conditional expected score differences while allowing dependence under their stated assumptions."
+        },
+        {
+          "heading": "What the evidence supports",
+          "text": "For the main regional era, the hyperbolic residual increases pooled log loss by 0.00704 with frozen fitting and 0.00233 with annual refitting; lower loss is better. Yet frozen Brier score improves slightly, and matched-history US comparisons can favor the residual. All 48 final conditional intervals include zero and still allow nontrivial benefits. Post-results diagnostics show how history, event thresholds, penalty selection, and feature coordinates can reverse rankings. The findings support careful evaluation of the tested procedure, not universal proxy failure or crowding identification. Retrospective vintages, correlated regions, disclosed prior research information, and unverified release times limit confirmation and live-trading claims."
+        }
+      ],
+      "takeaway": "A disappointing performance residual may be useful, but timing-correct prediction, strong matched benchmarks, and uncertainty must establish that usefulness before an economic explanation is attached."
+    },
+    "ko": {
+      "title": "수익률 감소 잔차와 꼬리위험 예측: 시점의 착시, 조건부 추론, 시장 간 비교",
+      "hook": "어떤 투자전략의 최근 성적이 예상보다 나빠졌다면, 다음 달 큰 손실의 전조일까요? 아니면 이미 발생한 손실을 다시 표현한 것일까요? 이 논문은 두 해석을 구분해 검증합니다.",
+      "sections": [
+        {
+          "heading": "무엇을 묻는 연구인가?",
+          "text": "분석하는 신호는 ‘수익률 감소 잔차’입니다. 과거의 이동 샤프비율에 맞춘 곡선의 예상값에서 현재 이동 샤프비율을 뺀 값으로, 클수록 최근 성적이 예상보다 나쁘다는 뜻입니다. 논문은 이 신호가 과거 자료의 하위 10% 기준보다 낮은 다음 달 수익률의 확률을 더 잘 예측하게 하는지 묻습니다. 여기에 투자자가 몰리는 ‘쏠림’의 의미를 부여할 수 있는지는 별도 질문입니다. 예측에 도움이 되더라도 그 원인이 쏠림이라고 단정할 수는 없습니다."
+        },
+        {
+          "heading": "왜 시점과 비교 기준이 중요한가?",
+          "text": "현재 이동 샤프비율에는 이번 달 수익률이 들어갑니다. 그래서 이 값과 이번 달 폭락을 비교하면, 손실 자체가 신호를 나쁘게 만드는 기계적 관계가 생길 수 있습니다. 기준값을 0으로 놓고 샤프비율이 음수인 때를 고신호로 정의한 단순 예시에서, 서로 독립인 정규분포 수익률도 36개월 창의 같은 달 폭락위험비가 1.606입니다. 하지만 다음 달의 이론적 위험비는 1입니다. 이는 시점의 효과를 보여주는 예시이며 실제 적합 잔차를 재현하거나 과거 관계 중 착시의 비중을 계산한 것은 아닙니다. 잔차는 그 계산에 쓴 정보를 모두 알 때 새 정보를 더하지 않지만, 단순한 모형에 유용한 표현은 될 수 있습니다."
+        },
+        {
+          "heading": "어떻게 검증했는가?",
+          "text": "미국 8개 팩터를 재구성한 뒤, 유럽·일본·일본 제외 아시아태평양의 각 6개 팩터로 평가를 확장했습니다. 팩터는 가치·규모·모멘텀처럼 주식 수익률의 특성을 나타내는 포트폴리오입니다. 기본 수익률·변동성 변수에 잔차, 원래 샤프비율, 다른 잔차를 각각 추가해 비교했습니다. 확장 연구에서는 학습·검증 기간을 맞추고, 모형을 고정하거나 매년 갱신하며, 2015–2024년과 2025년–2026년 8월을 구분했습니다. 여러 비교를 동시에 고려하는 순차적 구간으로 불확실성도 평가했습니다."
+        },
+        {
+          "heading": "무엇을 알았고, 무엇은 아직 모르는가?",
+          "text": "주요 해외 평가기간에서 잔차를 추가하면 로그손실이 고정 모형에서 0.00704, 연간 갱신에서 0.00233 증가했습니다. 로그손실은 낮을수록 좋습니다. 다만 다른 확률예측 점수인 브라이어 점수는 일부 개선됐고, 과거 자료의 범위를 맞춘 미국 비교에서는 잔차가 유리하기도 했습니다. 최종 48개 구간은 모두 0을 포함하며 의미 있는 개선 가능성도 남깁니다. 후속 진단에서는 자료의 시작점, 손실 사건의 기준, 규제 강도 선택에 따라 순위가 뒤집혔습니다. 따라서 보편적 실패나 쏠림 측정을 입증한 결과는 아닙니다. 수정된 과거 자료, 서로 연관된 시장, 이전 연구 정보, 실제 공개 시점의 불확실성 때문에 실시간 투자 성과로도 해석할 수 없습니다."
+        }
+      ],
+      "takeaway": "‘최근 성적이 나쁘다’와 ‘앞으로 큰 손실을 예측한다’는 다릅니다. 시점을 맞춘 예측, 적절한 비교모형, 불확실성 검증을 거친 뒤 신호의 의미를 해석해야 합니다."
+    }
+  },
+  "claims": [
+    {
+      "claim": "Gaussian iid null, W=36: exact same-month RR 1.606; next-month population RR 1.",
+      "locator": "Proposition: Timing alone creates a tail association; results/synthetic-timing-table.tex",
+      "source": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex"
+    },
+    {
+      "claim": "Pooled external 2015–2024 log loss residual-minus-controls is +0.00704 frozen and +0.00233 annual.",
+      "locator": "Table external-models; results/external-inference-v7/table-models-main.tex",
+      "source": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex"
+    },
+    {
+      "claim": "Frozen main-era Brier changes from 0.08673 to 0.08608.",
+      "locator": "Table external-models",
+      "source": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex"
+    },
+    {
+      "claim": "All 48 final intervals and all 3,360 saved prefixes include zero.",
+      "locator": "Measured scores, uncertainty, and counterexamples",
+      "source": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex"
+    },
+    {
+      "claim": "Frozen pooled interval [-0.03003,0.06172]; annual [-0.01830,0.03229].",
+      "locator": "Table external-resolution",
+      "source": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex"
+    },
+    {
+      "claim": "US history and threshold crossings yield H-C contrasts -0.00561,+0.03999,-0.01384,-0.04739.",
+      "locator": "Table history; results/us-history-v7/table-history.tex",
+      "source": "https://github.com/ChorokLeeDev/factor-regime-revision/blob/87dced92128746b8f7c82c5ad1a659e2ff9ad929/manuscript.tex"
+    }
+  ]
+}

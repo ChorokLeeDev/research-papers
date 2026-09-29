@@ -4,6 +4,14 @@ Chorok Lee · Research catalogue · Updated 29 September 2026
 
 논문별 저장소, 기준 원고, 한 페이지 소개와 한·영 1분 스피치를 모았습니다. 금융 논문 세 편의 차이는 아래 비교표에서 확인할 수 있습니다. 아래 7개 항목은 프로젝트/버전 목록이며 독립적인 출판 논문 수를 뜻하지 않습니다.
 
+## Research communication materials
+
+[**Open the full collection**](materials/README.md) · [Download all files](materials/research_materials_2026-09-29.zip)
+
+각 논문별 **영어 10장 발표 슬라이드(PPTX·PDF), 영어 A0 포스터, 영어·한국어 각각 1쪽 소개서**를 제공합니다. 총 7세트이며, 아래의 기존 1분 스피치·소개서와 별도로 제작했습니다. 원고 기반 내용 검토와 에이전트 간 교차 피드백을 반영한 자료입니다.
+
+The collection records exact manuscript revisions and review changes. Factor Decay follows the original ten-page TeX preprint. [Source versions and review records](materials/README.md#source-versions).
+
 ## Papers
 
 ### Reliable prediction and statistical evaluation

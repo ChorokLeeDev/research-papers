@@ -1,0 +1,459 @@
+{
+  "id": "kg-uncertainty",
+  "title": "Role Support in Knowledge-Graph Error Ranking: Predictor Regimes and Evaluation Policies",
+  "short_title": "Role support and KG error ranking",
+  "category": "Knowledge graphs and error diagnosis",
+  "accent": "#7152A3",
+  "source": {
+    "repository": "ChorokLeeDev/kg-uncertainty-revision",
+    "commit": "208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18",
+    "path": "manuscript.tex",
+    "url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/manuscript.tex",
+    "version_note": "Revision draft 9 · 26 September 2026; empirical_results.tex read with source"
+  },
+  "summary": "Training-role counts can help rank a fixed knowledge-graph predictor's errors, but their value and interpretation depend on predictor regime and evaluation policy.",
+  "slides": [
+    {
+      "title": "Role support in knowledge-graph error ranking",
+      "layout": "cover",
+      "lead": "Does missing training support tell us which knowledge-graph predictions will be wrong?",
+      "bullets": [
+        "Chorok Lee · KAIST",
+        "Predictor regimes, feature representations, and decision policies",
+        "Static recorded-target recovery on two graphs"
+      ],
+      "notes": "A knowledge graph stores facts as a head entity, relation, and tail entity. A completion model answers a query such as a known head and relation with the tail missing. Once a model chooses an answer, an error-ranking system tries to identify which predictions deserve review or abstention. Training-role support is a natural clue: has this entity appeared in this relation's head or tail role before? This paper tests whether that clue has a stable meaning. The answer is nuanced. Learned continuous counts can improve error ranking, including beyond explicit ensemble disagreement. But a fixed penalty for missing support can reverse its ranking direction after the predictor changes. The study therefore centers the predictor, comparator, error definition, and acceptance policy as part of the result, rather than interpreting support as a universal uncertainty quantity.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/manuscript.tex — Abstract; §Introduction"
+      ]
+    },
+    {
+      "title": "First define what counts as an error",
+      "layout": "equation",
+      "lead": "The study scores recovery of recorded held-out answers.",
+      "equation": "L(h,r)=\\mathbf{1}\\{\\widehat{t}\\notin T_{h,r}\\}",
+      "equation_plain": "Error = 1 if predicted tail is absent from recorded targets",
+      "bullets": [
+        "T is the set of recorded held-out answers for one query.",
+        "An unrecorded true answer can still count as an observed-target error.",
+        "Features use the predicted tail; hidden answers cannot enter the decision."
+      ],
+      "notes": "The target outcome is specific. Freeze a predictor and a candidate policy. For a query consisting of head h and relation r, the model selects a predicted tail. The recorded held-out answers form a target set for that query. The binary error equals one if the selected tail is absent from that set. This is a recovery metric, not a complete factual-truth label: knowledge graphs omit true facts, so an answer can be true but unrecorded. Each grouped query receives equal weight. Endpoint features must be computed at the model's predicted tail, not a hidden correct tail. The paper gives an exact example showing how using the hidden answer could leak information, without claiming that it occurred in another method. Paired score comparisons must keep the predictor, candidates, targets, and queries fixed.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/manuscript.tex — §Prediction-error ranking and its information contract"
+      ]
+    },
+    {
+      "title": "Counts and missing-role bits are different representations",
+      "layout": "comparison",
+      "lead": "A zero-count indicator is determined by its count; it adds no new information.",
+      "columns": [
+        {
+          "heading": "Head-role count",
+          "body": "nH(h,r) counts training triples where h appears as the head of relation r."
+        },
+        {
+          "heading": "Tail-role count",
+          "body": "nT(t̂,r) counts training triples where the predicted tail appears in the tail role of relation r."
+        },
+        {
+          "heading": "Missing-role bits",
+          "body": "bH = 1[nH = 0] and bT = 1[nT = 0]. An explicit bit can change a fitted model without adding conditional information."
+        }
+      ],
+      "bullets": [
+        "The raw score U = (bH + bT) / 2 penalizes both missing roles equally.",
+        "An incomplete graph cannot establish falsehood from training absence."
+      ],
+      "notes": "The role distinction matters because the same entity can be well represented as a head for a relation and unseen as its tail. The study records both directional counts from the original training graph. It also forms binary indicators that equal one whenever a count is zero. The raw missing-role score averages those two indicators, giving three possible values: zero, one half, or one. This score assumes that both kinds of missing support should increase estimated error. Learned error heads can instead assign separate coefficients or nonlinear effects. A central information point is simple: when the exact count is already known, its zero indicator contains no additional information. It may still change the approximation of a regularized logistic model. That is a representation or fitting effect, not evidence of a newly discovered uncertainty component.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/manuscript.tex — §Training counts and role-support representations; Eq. eq:coverage"
+      ]
+    },
+    {
+      "title": "An audit across predictors and scorers",
+      "layout": "table",
+      "lead": "Every score comparison conditions on a defined prediction population.",
+      "table": {
+        "headers": [
+          "Component",
+          "Executed scope"
+        ],
+        "rows": [
+          [
+            "Static graphs",
+            "FB15k-237; WN18RR"
+          ],
+          [
+            "From-scratch predictors",
+            "12 DistMult / ComplEx runs"
+          ],
+          [
+            "Continued training",
+            "6 warm-start ComplEx stages"
+          ],
+          [
+            "Ensembles",
+            "6 fixed three-member ensembles"
+          ]
+        ]
+      },
+      "bullets": [
+        "Original test populations: 10,301 and 2,689 grouped queries.",
+        "Shared graphs, seeds, and warm starts are not independent replications."
+      ],
+      "notes": "The experiments use two static graphs and custom query populations. Training-known answers are excluded from candidates, but held-out facts do not filter operational predictions. The initial models comprise three seeds for each of two architectures on each graph, yielding twelve from-scratch runs. A later stage continues training from six original ComplEx checkpoints with reciprocal relations and a different objective, optimizer, and budget. It therefore adds six warm-start stages, not six independent architecture replications. Finally, the three seeds are grouped into one fixed ensemble for each dataset and model regime. Error scorers include logistic regression and histogram gradient boosting with nested confidence, frequency, disagreement, and role-feature sets. Development partitions separate scorer fitting, selection, and where applicable checkpoint choice. These separations govern individual analyses but do not undo earlier inspection of the same graphs.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex — §Empirical study: Prediction task; A matched-budget asymmetric predictor check; Reciprocal training; Ensembles"
+      ]
+    },
+    {
+      "title": "The raw missing-support score reverses direction",
+      "layout": "table",
+      "lead": "Across two FB15k-237 training regimes, higher accuracy accompanies a reversal in raw-score ranking.",
+      "table": {
+        "headers": [
+          "FB15k-237 regime",
+          "Accuracy",
+          "Missing-role AUROC"
+        ],
+        "rows": [
+          [
+            "Original ComplEx",
+            "10.05%",
+            "0.6893"
+          ],
+          [
+            "Continued ComplEx",
+            "44.35%",
+            "0.3639"
+          ],
+          [
+            "Direction reference",
+            "—",
+            "0.5 = chance ranking"
+          ]
+        ]
+      },
+      "bullets": [
+        "Higher U means more missing support; AUROC below 0.5 reverses that intended error ordering.",
+        "Training changes occur together; accuracy is not isolated as the cause."
+      ],
+      "notes": "This is the sharpest counterexample to a universal positive missing-support penalty. On the defined FB15k-237 population, original ComplEx models recover roughly ten percent of recorded targets. After a development-selected continued-training stage, mean recovery accuracy rises to 44.35 percent. Yet the raw missing-role score's error AUROC moves from 0.6893 to 0.3639, below one half in every continued-training run. Thus larger raw missing-support scores no longer rank errors in the assumed direction for these predictions. This does not prove that improving accuracy itself causes reversal. Several training choices change together, and different predicted tails alter support populations. It establishes a measured boundary: a fixed positive penalty does not retain its interpretation across these two regimes. We next ask whether learning from the directional counts can remain useful despite that raw-score failure.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex — §Empirical study: A more accurate predictor changes the support–error relationship"
+      ]
+    },
+    {
+      "title": "Learned counts can still help beyond disagreement",
+      "layout": "table",
+      "lead": "Selected fixed-ensemble comparisons: adding continuous role counts reduces AURC.",
+      "table": {
+        "headers": [
+          "Ensemble / dataset",
+          "LR ΔAURC",
+          "HGB ΔAURC"
+        ],
+        "rows": [
+          [
+            "DistMult / FB15k-237",
+            "−0.071931",
+            "−0.032414"
+          ],
+          [
+            "ComplEx / FB15k-237",
+            "−0.070314",
+            "−0.035930"
+          ],
+          [
+            "Continued / FB15k-237",
+            "−0.008947",
+            "−0.004599"
+          ],
+          [
+            "Continued / WN18RR",
+            "−0.000438",
+            "−0.000932"
+          ]
+        ]
+      },
+      "bullets": [
+        "LR = logistic regression; HGB = histogram gradient boosting. Comparator includes confidence, frequencies, and disagreement.",
+        "Counts improve AURC and Brier in all 12 ensemble/head comparisons; operating-point dominance does not follow."
+      ],
+      "notes": "A failed raw penalty does not imply that role evidence is useless. These comparisons hold each ensemble's predictions fixed and add continuous role counts to an error head that already has confidence, endpoint and relation frequencies, and explicit disagreement measures. The table shows four of the six fixed ensemble tasks, with negative differences indicating lower area under the risk-coverage curve. Logistic and histogram-gradient-boosting heads both benefit on AURC and Brier across all twelve ensemble/head comparisons. These are descriptive results, not twelve independent graph replications. The size of the increment varies substantially by regime. AURC summarizes selective error over a range of answer fractions, whereas Brier evaluates error-probability scoring. Better aggregate values do not ensure lower risk at every operating point. Indeed, the manuscript reports unfavorable risk85 and binary-feature comparisons alongside these positive findings.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex — §Empirical study: Does role evidence remain useful beyond explicit ensemble disagreement?; Table tab:ensemble-role"
+      ]
+    },
+    {
+      "title": "High-coverage results can run out of headroom",
+      "layout": "comparison",
+      "lead": "The best possible risk depends on how many correct predictions the fixed model already made.",
+      "columns": [
+        {
+          "heading": "Hindsight floor",
+          "body": "If c predictions are correct and k answers are retained, minimum possible error is max(0, 1 − c/k). It uses correctness after the fact."
+        },
+        {
+          "heading": "Original runs",
+          "body": "Counts logistic regression reaches the 85%-answer-rate floor in all 12 original predictor runs."
+        },
+        {
+          "heading": "Continued runs",
+          "body": "It reaches the floor in none of the 6 continued-training runs, although remaining high-coverage headroom is small."
+        }
+      ],
+      "bullets": [
+        "A hindsight floor explains an endpoint; it is not a deployable selector.",
+        "Binary additions can help one metric and worsen another."
+      ],
+      "notes": "Suppose a fixed predictor made only a small number of correct predictions. If we insist on answering eighty-five percent of queries, even a perfect error ranker must retain many mistakes. The hindsight floor computes that minimum possible error after all labels are known. It is useful for interpreting a high absolute risk and the limited space for improvement; it cannot be used operationally. Continuous-count logistic models reach this floor in all twelve original runs. Therefore that particular endpoint cannot support an additional binary-feature advantage over the stronger count comparator. The exact saturation disappears for the continued-training checkpoints, showing that it was regime-specific. Across other losses and answer fractions, feature additions can help or hurt. The lesson is to report the intended operating point and full comparison context, rather than using one favorable risk reduction as evidence of general superiority.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex — §Empirical study: Measured gains; Role representation; Strong comparator controls in the improved regime"
+      ]
+    },
+    {
+      "title": "Candidate restrictions can help one graph and harm another",
+      "layout": "table",
+      "lead": "Restricting tails to training-supported roles changes the predictor itself.",
+      "table": {
+        "headers": [
+          "Original DistMult",
+          "FB15k-237",
+          "WN18RR"
+        ],
+        "rows": [
+          [
+            "Original accuracy",
+            "10.56%",
+            "38.16%"
+          ],
+          [
+            "Restricted accuracy",
+            "25.79%",
+            "28.05%"
+          ],
+          [
+            "All recorded answers excluded",
+            "6.63%",
+            "27.67%"
+          ]
+        ]
+      },
+      "bullets": [
+        "All test queries stay in the denominator, including unreachable targets.",
+        "Observed role support is not a hard truth constraint."
+      ],
+      "notes": "This sensitivity analysis changes the candidate policy, so it must not be described as the same prediction with a better abstention score. Each original DistMult checkpoint is rerun while only training-supported tails are allowed for the relation, still respecting the training-known mask. Error features and scorers are refit for the changed predictions. On FB15k-237, mean observed-target accuracy improves markedly. On WN18RR, it falls. The restriction removes every recorded answer for more than a quarter of WN18RR queries. Those queries remain in the evaluation denominator, making the cost visible rather than dropping difficult cases. The result illustrates the open-world problem: a true held-out fact may use an entity in a role never observed during training. A favorable result on one graph therefore cannot justify a universal support-based filtering rule.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex — §Empirical study: Changing the prediction policy: training-supported candidates"
+      ]
+    },
+    {
+      "title": "A fixed threshold changes the decision being evaluated",
+      "layout": "table",
+      "lead": "A development rule targeting 85% answers does not necessarily answer 85% on test.",
+      "table": {
+        "headers": [
+          "DistMult policy",
+          "Test answer rate",
+          "Test error ratio"
+        ],
+        "rows": [
+          [
+            "FB15k-237: base LR",
+            "87.41%",
+            "88.40%"
+          ],
+          [
+            "FB15k-237: + binary",
+            "82.86%",
+            "87.33%"
+          ],
+          [
+            "WN18RR: base LR",
+            "82.97%",
+            "55.18%"
+          ],
+          [
+            "WN18RR: + binary",
+            "83.67%",
+            "55.30%"
+          ]
+        ]
+      },
+      "bullets": [
+        "Lower error may accompany fewer answers; compare achieved rates.",
+        "Reported error ratio uses expected error and acceptance counts under boundary randomization."
+      ],
+      "notes": "A batch-ranking experiment fixes how many test predictions are accepted. An operational threshold chosen earlier is different: when scores shift, its test answer rate changes. The paper fixes each DistMult score threshold on development-selection data to give eighty-five percent expected acceptance, then applies the unchanged threshold to test. On FB15k-237, binary augmentation has a lower error ratio but answers 4.55 percentage points fewer queries. On WN18RR, it answers somewhat more and has a slightly higher mean error ratio. These are policies at different achieved answer rates, so their numbers do not establish superiority at an equal service level. Because boundary ties may be randomized, the displayed error is the ratio of expected error and accepted counts, not the expected realized random ratio. No conformal or finite-sample deployment guarantee follows.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex — §Empirical study: Changing the acceptance policy: development-fixed thresholds"
+      ]
+    },
+    {
+      "title": "Support as a predictor-specific diagnostic",
+      "layout": "takeaway",
+      "lead": "Role support is a conditional feature to test, not an invariant uncertainty label.",
+      "bullets": [
+        "Freeze the predictor, candidates, target definition, and information available at decision time.",
+        "Compare continuous counts against confidence, frequencies, and disagreement.",
+        "Report ranking, probability scoring, and achieved answer rates separately.",
+        "Test new graphs and temporal transfer before making deployment claims."
+      ],
+      "notes": "The paper provides both a caution and a positive contribution. The caution is that a fixed raw missing-support penalty can reverse its error ordering when the predictor regime changes. The positive result is that learned continuous directional counts can improve specified error-ranking and probability-scoring metrics beyond strong baselines, including explicit ensemble disagreement. Neither finding supplies a universal uncertainty decomposition or factual-truth probability. The experiments concern custom static recorded-target populations on two previously inspected graphs. Shared entities, repeated seeds, and warm starts limit independence, and historical headline results are preserved separately as unreproduced. The practical value lies in an inspectable evaluation contract: know what is predicted, which answers are possible, what counts as wrong, and how acceptance is decided. That makes the measured feature benefit meaningful and its limits visible.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/manuscript.tex — §Limitations and conclusion; §Empirical study: Reproducibility and remaining scope"
+      ]
+    }
+  ],
+  "poster": {
+    "headline": "Missing support has no fixed error meaning",
+    "question": "When do training-role counts improve error ranking for a fixed knowledge-graph predictor, and how does the answer change across predictor and decision policies?",
+    "sections": [
+      {
+        "heading": "Outcome and information",
+        "text": "Predict a tail for each (head, relation) query. Error means the prediction is absent from the recorded held-out target set. This is recorded-answer recovery, not factual falsehood. Counts use training data; endpoint features use the predicted tail, never a hidden answer."
+      },
+      {
+        "heading": "Raw-score failure",
+        "text": "On FB15k-237, original versus continued ComplEx raises mean observed-target accuracy from 10.05% to 44.35%, while the positive missing-role score's error AUROC reverses from 0.6893 to 0.3639. Multiple training changes occur together; accuracy is not isolated as the cause."
+      },
+      {
+        "heading": "Positive feature result",
+        "text": "Continuous role counts improve AURC (error across answer rates) and Brier (error-probability scoring) beyond confidence, frequency, and ensemble disagreement in all 12 fixed-ensemble/error-head comparisons. This is conditional on six fixed ensembles and two error-head families, not independent graph replication or uniform operating-point dominance."
+      },
+      {
+        "heading": "Representation matters",
+        "text": "Zero-count bits are deterministic functions of counts. They add no conditional information, but can change a regularized fit. Counts logistic regression reaches the 85%-answer-rate hindsight floor in all 12 original runs and none of the six continued-training runs."
+      },
+      {
+        "heading": "Policy matters",
+        "text": "Restricting candidates to training-supported tails raises DistMult accuracy on FB15k-237 but lowers it on WN18RR. A development-fixed acceptance threshold also changes the test answer fraction, so a lower error ratio can accompany fewer answers."
+      }
+    ],
+    "key_numbers": [
+      {
+        "value": "0.689 → 0.364",
+        "label": "raw-score AUROC across FB15k-237 regimes"
+      },
+      {
+        "value": "12 / 12",
+        "label": "ensemble/head AURC and Brier gains from counts"
+      },
+      {
+        "value": "2",
+        "label": "static graphs; exploratory reuse"
+      }
+    ],
+    "table": {
+      "headers": [
+        "Role-restricted candidates",
+        "FB15k-237",
+        "WN18RR"
+      ],
+      "rows": [
+        [
+          "Accuracy before",
+          "10.56%",
+          "38.16%"
+        ],
+        [
+          "Accuracy after",
+          "25.79%",
+          "28.05%"
+        ],
+        [
+          "Targets unreachable",
+          "6.63%",
+          "27.67%"
+        ]
+      ]
+    },
+    "conclusion": "Learn from role counts when they help the specified predictor and decision policy. Do not assign training absence a universal uncertainty or factual-truth interpretation.",
+    "limitations": "Custom recorded-target populations; two inspected static graphs; no temporal transfer or independent confirmation. Seeds and ensembles are not graph replications. Training changes do not identify a causal mechanism. Historical results remain unreproduced. No conformal guarantee, posterior uncertainty decomposition, or calibrated factual-truth claim."
+  },
+  "intro": {
+    "en": {
+      "hook": "A knowledge graph may never have seen an entity in a particular relation role. Does that make a new prediction unreliable? This paper shows why the answer depends on the predictor and the decision being evaluated, while identifying settings where learning from role counts remains useful.",
+      "sections": [
+        {
+          "heading": "The question",
+          "text": "Knowledge-graph completion predicts a missing entity in a triple. An error ranker then orders predictions for acceptance or review. The study asks whether relation-specific training support improves that ranking beyond confidence, frequency, and ensemble disagreement. Its outcome is recovery of recorded held-out answers: an unrecorded true fact can count as an error, so the experiment does not measure factual falsehood."
+        },
+        {
+          "heading": "The approach",
+          "text": "Head-role and tail-role counts measure how often the relevant entity appeared in that relation role in training. Missing-role bits indicate a zero count. Features are evaluated at the predicted tail, without using hidden answers. The experiments cover 12 from-scratch DistMult/ComplEx predictors, six continued-training stages, and six fixed three-member ensembles on FB15k-237 and WN18RR. Logistic and nonlinear error heads compare nested feature sets on fixed predictions; candidate and acceptance policies are tested separately."
+        },
+        {
+          "heading": "The main result",
+          "text": "On FB15k-237, a continued ComplEx regime raises mean recorded-target accuracy from 10.05% to 44.35%. Yet the raw positive missing-role penalty reverses its error-ranking direction: mean AUROC falls from 0.6893 to 0.3639. This comparison changes multiple training choices and predicted answers; it does not isolate accuracy as the cause. Learned counts still help. Adding continuous role counts beyond confidence, frequency, and explicit disagreement improves AURC (error across answer rates) and Brier (error-probability scoring) in all 12 fixed-ensemble/error-head comparisons. Gains do not imply lower selective risk at every answer rate."
+        },
+        {
+          "heading": "Why the evaluation policy matters",
+          "text": "A missing-role bit is a deterministic function of its count, so it adds no conditional information; it can still change how a restricted scorer fits. At an 85% batch answer rate, count-based logistic models reach the hindsight error floor in all original runs but none of the continued-training runs. Candidate restrictions also have mixed effects: training-supported tails improve DistMult accuracy on FB15k-237 but reduce it on WN18RR, where 27.67% of queries lose every recorded target. Development-fixed thresholds produce unequal test answer rates, changing the tradeoff being compared."
+        },
+        {
+          "heading": "What this contributes",
+          "text": "The contribution is an inspectable evaluation of when established support features help and when their interpretation fails. It does not establish a new uncertainty decomposition or calibrated factual truth. The two static graphs were repeatedly inspected; optimizer seeds and warm starts are not independent graph replications. New graphs, temporal transfer, more complete answer labels, and reproduction of historical results remain open."
+        }
+      ],
+      "takeaway": "Treat role support as a predictor-dependent feature. Judge it against strong comparators under the exact candidate, error, and acceptance policy that matters."
+    },
+    "ko": {
+      "title": "지식그래프의 역할별 학습 이력은 오류를 알려 주는가: 예측기와 평가 정책의 영향",
+      "hook": "지식그래프에서 어떤 개체가 특정 관계 역할로 등장한 적이 없다면, 그 예측은 덜 믿을 만할까요? 이 논문은 답이 예측 모델과 의사결정 방식에 따라 달라진다는 점을 보이며, 학습 이력의 횟수를 활용하면 도움이 되는 조건도 살펴봅니다.",
+      "sections": [
+        {
+          "heading": "어떤 문제인가",
+          "text": "지식그래프 완성은 ‘머리 개체–관계–꼬리 개체’ 중 빠진 답을 예측합니다. 그다음 오류 점수로 예측들을 정렬해 일부만 답하거나 검토 대상으로 보낼 수 있습니다. 이 연구는 관계별 학습 이력이 모델 확신도, 등장 빈도, 앙상블 불일치를 넘어 오류 순위에 도움이 되는지 묻습니다. 여기서 오류는 보류 데이터에 기록된 답을 맞히지 못했다는 뜻입니다. 실제로 참이지만 기록되지 않은 답도 오류가 될 수 있습니다."
+        },
+        {
+          "heading": "어떻게 접근했나",
+          "text": "학습 그래프에서 개체가 해당 관계의 머리와 꼬리 역할로 등장한 횟수를 따로 셉니다. 등장하지 않았다는 지표는 이 횟수가 0인지 표시한 값입니다. 숨겨진 정답 대신 모델이 실제로 예측한 꼬리에서 피처를 계산합니다. 두 정적 그래프에서 처음부터 학습한 DistMult·ComplEx 12개, 추가 학습 단계 6개, 고정된 3개 모델 앙상블 6개를 평가했습니다. 같은 예측에 여러 오류 점수 모형을 적용하고, 후보 제한과 답변 수락 정책은 별도로 비교했습니다."
+        },
+        {
+          "heading": "무엇을 발견했나",
+          "text": "FB15k-237에서 추가 학습된 ComplEx의 기록된 정답 회수율은 평균 10.05%에서 44.35%로 올랐습니다. 그런데 학습 이력이 없을수록 위험하다고 가정한 단순 점수의 오류 AUROC는 0.6893에서 0.3639로 내려가 순위 방향이 뒤집혔습니다. 학습 방식과 예측 답이 함께 달라지므로, 정확도 향상 자체가 원인이라는 뜻은 아닙니다. 한편 역할별 등장 횟수를 학습해서 활용하면, 확신도·빈도·불일치를 이미 포함한 기준 모형보다 앙상블/오류 모형 12개 비교 모두에서 AURC(답변 비율별 오류를 종합한 점수)와 Brier(오류확률 예측 점수)가 개선됐습니다."
+        },
+        {
+          "heading": "왜 비교 조건이 중요한가",
+          "text": "횟수가 주어지면 ‘0회인가’라는 지표는 새로운 정보를 추가하지 않습니다. 그래도 제한된 모형의 피팅 방식은 바꿀 수 있습니다. 또한 전체 질문의 85%에 답할 때와 미리 고정한 임계값으로 답할 때는 평가 대상이 다릅니다. 후자는 테스트에서 실제 답변 비율이 달라집니다. 학습에서 관찰된 꼬리만 후보로 남기는 방식도 한 그래프에서는 정확도를 높이고 다른 그래프에서는 낮췄습니다. WN18RR에서는 질문의 27.67%가 기록된 정답 후보를 모두 잃었습니다."
+        },
+        {
+          "heading": "어떤 의미가 있나",
+          "text": "이 연구의 기여는 기존의 학습 이력 피처가 어떤 조건에서 유용하고 어디서 해석이 무너지는지 점검하는 것입니다. 새로운 불확실성 분해나 사실의 참일 확률을 보장하지 않습니다. 같은 두 정적 그래프를 반복해서 살폈고, 시드와 추가 학습은 독립적인 그래프 검증이 아닙니다. 새로운 그래프, 시간에 따른 변화, 더 완전한 정답 정보, 과거 결과의 재현이 후속 과제로 남습니다."
+        }
+      ],
+      "takeaway": "학습 이력은 예측기와 평가 정책에 맞춰 검증할 피처입니다. 등장한 적이 없다는 이유만으로 예측이 틀렸거나 불확실하다고 단정하면 안 됩니다."
+    }
+  },
+  "claims": [
+    {
+      "claim": "Original to continued ComplEx FB15k-237 accuracy10.05%→44.35%; raw missing-role AUROC0.6893→0.3639",
+      "locator": "empirical_results.tex §A more accurate predictor; sign reversal paragraph",
+      "source": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex"
+    },
+    {
+      "claim": "Continuous role counts improve AURC and Brier in all12 fixed-ensemble/error-head comparisons",
+      "locator": "empirical_results.tex §Ensembles; Table tab:ensemble-role",
+      "source": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex"
+    },
+    {
+      "claim": "Counts LR reaches85% hindsight floor12/12 original but0/6 continued runs",
+      "locator": "empirical_results.tex §Role representation and §Strong comparator controls in improved regime",
+      "source": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex"
+    },
+    {
+      "claim": "Candidate restriction accuracy10.56→25.79 FB15k-237 and38.16→28.05 WN18RR; unreachable targets6.63%,27.67%",
+      "locator": "empirical_results.tex §Changing prediction policy",
+      "source": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/empirical_results.tex"
+    },
+    {
+      "claim": "The loss is observed-target recovery; no calibrated truth or independent-confirmation claim",
+      "locator": "manuscript.tex §Information contract and §Limitations",
+      "source": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18/manuscript.tex"
+    }
+  ]
+}

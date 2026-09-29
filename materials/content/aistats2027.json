@@ -1,0 +1,435 @@
+{
+  "id": "aistats2027",
+  "title": "When Marginal Shift Magnitudes Cannot Identify Conformal Coverage Loss",
+  "short_title": "When drift does not identify coverage loss",
+  "category": "Reliable prediction and statistical evaluation",
+  "accent": "#784FC4",
+  "source": {
+    "repository": "ChorokLeeDev/conformal-coverage-identification-aistats2027",
+    "commit": "76661fdf862959345ea22ea2ab5494a4171a6eab",
+    "path": "paper_aistats2027/reliance_alignment.tex",
+    "url": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex",
+    "version_note": "Current scientific manuscript, pinned 29 September 2026. Research communication; no acceptance claim."
+  },
+  "slides": [
+    {
+      "title": "When Marginal Shift Magnitudes Cannot Identify Conformal Coverage Loss",
+      "layout": "cover",
+      "notes": "Conformal prediction returns sets intended to include the true label at a specified rate. Once the deployment distribution changes, a monitoring system may detect drift without telling us how much this coverage has changed. This paper asks what information two common summaries preserve: rotation-invariant measures of covariate change, and the distribution of a frozen model’s confidence. Its first result gives a restricted impossibility example and then a positive characterization under a known binary logistic label law. Its second result removes that known-link assumption and derives the exact range of coverage consistent with source calibration, target confidence, and a density-ratio cap. The distinction is between detection, exact identification, and sensitivity bounds. The experiments illustrate and check those distinctions; they do not demonstrate a general method that guarantees coverage under arbitrary distribution shift.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Abstract; Introduction"
+      ],
+      "lead": "A drift magnitude or unchanged confidence distribution can leave target coverage unidentified; the answer depends on the retained information and assumptions.",
+      "bullets": [
+        "Chorok Lee · KAIST",
+        "Drift detection, coverage identification, and sensitivity analysis answer different questions."
+      ]
+    },
+    {
+      "title": "The same drift magnitude can mean different coverage",
+      "layout": "comparison",
+      "notes": "Begin with a frozen binary linear score and a symmetric Gaussian source. Construct two target distributions by translating the source by the same distance: one translation follows the model’s score direction, while the other is orthogonal to it. Rotation-invariant source-to-target discrepancy values, such as the specified radial-kernel MMD, agree for these two targets. Yet the orthogonal translation leaves the score and coverage unchanged, whereas the aligned translation can change coverage. The theorem restricts the observation to those invariant summary values. It does not say that the raw target datasets are identical or indistinguishable by every method. Indeed, raw target-to-target testing can separate them. Both source-to-target shifts can also trigger a drift alarm. The result explains why an equally strong alarm need not identify an equally harmful change for a particular frozen model.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Theorem: Coverage identification from invariant summaries; Why a drift alarm is compatible with the theorem"
+      ],
+      "lead": "Equal source-to-target discrepancy values can discard the direction that matters to the predictor.",
+      "columns": [
+        {
+          "heading": "Aligned translation",
+          "body": "The shift follows the model’s score direction. Scores change, and prediction-set coverage can change."
+        },
+        {
+          "heading": "Orthogonal translation",
+          "body": "The equally large shift is perpendicular to the score direction. Scores and coverage stay unchanged."
+        },
+        {
+          "heading": "What the monitor sees",
+          "body": "Rotation-invariant drift magnitudes agree. Raw target samples still retain direction and can distinguish the two laws."
+        }
+      ]
+    },
+    {
+      "title": "The harmful gap can approach 40 percentage points",
+      "layout": "table",
+      "notes": "This table reports population calculations, not measured deployment frequencies. At alpha equal to 0.1, the source is population-calibrated to ten percent error. For each source Gaussian scale tau, the aligned translation is b equal to the square root of tau, and the source threshold is recalibrated. The aligned target’s excess miscoverage rises from about 1.74 percentage points at unit scale to 37.50 points at tau equal to 0.01. The corresponding orthogonal gap is exactly zero. The theorem establishes the sharp limiting upper bound one half minus alpha, which is forty percentage points here; quadrature alone does not prove it. Although the absolute translation gets smaller, it becomes larger relative to the source scale. The source law and threshold also change. This is therefore not an example of an undetectable shift, total-variation closeness, or the typical size of failures in practice.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Theorem: Sharp harmful gap in a calibrated symmetric family; Table: Population calibration at alpha=0.1"
+      ],
+      "lead": "Gaussian construction with source error 10%, b = √τ; orthogonal excess error is always zero.",
+      "table": {
+        "headers": [
+          "Source scale τ",
+          "Absolute shift b",
+          "Aligned excess error"
+        ],
+        "rows": [
+          [
+            "1.00",
+            "1.000",
+            "1.74 percentage points"
+          ],
+          [
+            "0.50",
+            "0.707",
+            "8.46 percentage points"
+          ],
+          [
+            "0.25",
+            "0.500",
+            "18.83 percentage points"
+          ],
+          [
+            "0.10",
+            "0.316",
+            "30.90 percentage points"
+          ],
+          [
+            "0.01",
+            "0.100",
+            "37.50 percentage points"
+          ]
+        ]
+      },
+      "bullets": [
+        "The theorem’s limiting gap is 40 points; standardized shift diverges as τ → 0."
+      ]
+    },
+    {
+      "title": "With a known label law, confidence is enough",
+      "layout": "equation",
+      "notes": "A positive result follows under a strong, explicit assumption: the conditional chance of class one is the logistic function of the frozen score, in both source and target. Then, at a nonnegative threshold, error is possible only when the score magnitude exceeds the threshold, and its conditional probability is the logistic function of the negative magnitude. Averaging that loss over target magnitudes gives target miscoverage. More strongly, the distribution of the absolute score determines the entire coverage curve, and equal coverage curves imply equal absolute-score distributions. Because maximum predictive confidence is a one-to-one function of magnitude in this binary model, the confidence law contains exactly that information. The largest difference between complete coverage curves lies between one half and one times the Kolmogorov distance of magnitude laws. These statements depend on the known label law and all thresholds; they are not consequences of source calibration alone.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Theorem: Exact coverage-equivalence quotient; Proposition: Stable comparison of whole coverage curves"
+      ],
+      "lead": "Assume P(Y = 1 | X) = σ(s(X)) in source and target; let T = |s(X)|.",
+      "equation": "\\theta_q(Q)=\\mathbb{E}_Q[\\sigma(-T)\\,\\mathbf{1}\\{T>q\\}],\\quad q\\geq0",
+      "bullets": [
+        "θq: target miscoverage; q: set threshold; σ: logistic function; the displayed formula uses q ≥ 0.",
+        "The equivalence between absolute-score laws and complete coverage curves uses all real thresholds.",
+        "This requires the known link, not source calibration alone."
+      ],
+      "equation_plain": "θq(Q) = E_Q[σ(−T) · 1{T > q}],  q ≥ 0"
+    },
+    {
+      "title": "Perfect source calibration can still hide target error",
+      "layout": "table",
+      "notes": "The counterexample deliberately gives every case the same confidence, 0.9, with a constant positive score equal to log nine. The source is perfectly calibrated because ten percent of cases belong to a hidden covariate group that the classifier gets wrong. Under ordinary covariate shift, the label law given the full covariates is unchanged; only the mixture of those groups changes. A density-ratio cap Gamma equal to two permits one target to upweight the error group and attain twenty percent error. Another target gives that group zero weight and attains zero error. Both keep exactly the same signed-score distribution as the source. Thus confidence calibration identifies a source average within a score level, but not the hidden variation inside it. For every threshold from zero up to log nine, the prediction set is the singleton classifier prediction, so those classification errors are also its miscoverage rates.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Perfect source calibration does not suffice; Appendix: Exact condition for confidence sufficiency"
+      ],
+      "lead": "A constructed covariate-shift example: Γ = 2, unchanged full signed-score distribution.",
+      "table": {
+        "headers": [
+          "Distribution",
+          "Confidence for every case",
+          "Miscoverage"
+        ],
+        "rows": [
+          [
+            "Source",
+            "90%",
+            "10%"
+          ],
+          [
+            "Target: upweight hidden error group",
+            "90%",
+            "20%"
+          ],
+          [
+            "Target: remove hidden error group",
+            "90%",
+            "0%"
+          ]
+        ]
+      },
+      "bullets": [
+        "Applies for 0 ≤ q < log 9; the full conditional label law stays unchanged."
+      ]
+    },
+    {
+      "title": "Without the link, compute a sharp interval",
+      "layout": "equation",
+      "notes": "The second main result replaces the known logistic link with partial identification. Let T be score magnitude, m of t the source classifier error probability conditional on that magnitude, and a of t the target-to-source ratio of magnitude frequencies. The full covariate density ratio is allowed to vary between zero and a supplied cap Gamma while matching those target confidence frequencies. Within each confidence level, the smallest feasible target error mass is the larger of zero and a minus Gamma times one minus m. The largest is the smaller of a and Gamma times m. Integrating these limits above the threshold yields the exact interval of target miscoverage compatible with the compressed information. The same two target laws attain the lower and upper endpoints at every threshold. For a fixed full source kernel, confidence suffices precisely when conditional error has no hidden within-level variation, except degenerate weight constraints and zero-score cases. The middle quantity is E_P[ωe given T], a mass density relative to the source magnitude law. At a positive a, dividing it by a gives target conditional error.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Theorem: Sharp bounds from source confidence calibration; Appendix: Exact envelope and common extremizers"
+      ],
+      "lead": "From compressed source calibration, target confidence frequencies, and a specified density-ratio cap Γ.",
+      "equation": "\\max\\{0,a-\\Gamma(1-m)\\}\\;\\leq\\;\\mathbb{E}_P[\\omega e\\mid T]\\;\\leq\\;\\min\\{a,\\Gamma m\\}",
+      "bullets": [
+        "e(X): error probability given full covariates; m(T): source average of e at magnitude T.",
+        "a(T): target/source magnitude-frequency ratio; ω: covariate density ratio.",
+        "The middle term is error mass per unit source magnitude mass, not target conditional error.",
+        "Integrating over source magnitudes above q is sharp for these compressed quantities; fixed full source kernels can yield tighter bounds."
+      ],
+      "equation_plain": "max{0, a − Γ(1 − m)} ≤ E_P[ωe | T] ≤ min{a, Γm}"
+    },
+    {
+      "title": "Finite samples produce simultaneous sensitivity bands",
+      "layout": "text",
+      "notes": "A population envelope is not yet a usable finite-data statement. The paper specifies a finite procedure that starts with a frozen score and confidence bins chosen independently of the audit samples. Source labeled data estimate each bin’s correct and incorrect masses, while unlabeled target scores estimate its target frequency. Concentration bounds expand these estimated masses before applying the density-ratio constraints. A union bound makes the resulting error intervals simultaneous across the prespecified threshold grid. The evaluator may therefore choose a threshold after seeing these audit data and still use the same simultaneous guarantee. If no finite grid threshold has an upper error bound below the target, including both labels is the conservative fallback. The cap Gamma remains an externally supplied sensitivity assumption. The intervals may be wide, and repeated unrestricted monitoring is outside this fixed-sample statement. Sharpness belongs to the population envelope, not the finite-sample slack.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — A finite-sample sensitivity procedure; Appendix: Finite-sample confidence-bin sensitivity intervals"
+      ],
+      "lead": "Source labels + unlabeled target scores + a specified cap → a coverage sensitivity interval.",
+      "bullets": [
+        "Freeze the score, confidence bins, and candidate threshold grid.",
+        "Estimate source correct/error masses and target bin frequencies.",
+        "Add simultaneous concentration slack before applying the sharp population bounds.",
+        "Choose only thresholds whose upper error bound meets the target; Γ remains an assumption."
+      ]
+    },
+    {
+      "title": "Drift detection and twin discrimination are different",
+      "layout": "table",
+      "notes": "The simulation uses a fixed-bandwidth Gaussian MMD permutation test at nominal level five percent. It runs eighty independent replications, with one hundred sixty observations per group and one hundred ninety-nine random permutations per test. Raw-vector comparisons reject all eighty times for source versus either target and also for aligned versus orthogonal targets. This is exactly compatible with the theoretical equal-discrepancy result: equality of two source-to-target magnitude values is not equality of the target distributions. A radius representation removes orientation; it rejects aligned versus orthogonal targets six times in eighty, with a wide Wilson interval containing the nominal level. The frozen score detects the aligned shift but has an equal-distribution null for the orthogonal one. These outcomes illustrate what each observation retains. They are rejection fractions across repeated simulations, not coverage probabilities and not universal performance claims about MMD.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Drift versus twin discrimination; Table: Observed MMD permutation rejections at level 0.05"
+      ],
+      "lead": "Simulation: 80 repetitions, 160 observations/group, 199 permutations, fixed bandwidth.",
+      "table": {
+        "headers": [
+          "Comparison",
+          "Representation",
+          "Rejections / 80"
+        ],
+        "rows": [
+          [
+            "Source / aligned target",
+            "Raw features",
+            "80"
+          ],
+          [
+            "Source / orthogonal target",
+            "Raw features",
+            "80"
+          ],
+          [
+            "Aligned / orthogonal targets",
+            "Raw features",
+            "80"
+          ],
+          [
+            "Aligned / orthogonal targets",
+            "Radius",
+            "6"
+          ],
+          [
+            "Source / aligned target",
+            "Frozen score",
+            "80"
+          ],
+          [
+            "Source / orthogonal target",
+            "Frozen score",
+            "6"
+          ]
+        ]
+      },
+      "bullets": [
+        "Wilson 95% intervals: 80/80 → [0.95, 1.00]; 6/80 → [0.03, 0.15]."
+      ]
+    },
+    {
+      "title": "Learned-score replay supports intervals, not point claims",
+      "layout": "table",
+      "notes": "The learned-score experiment uses UCI Spambase and Bank Marketing with separate training, design, and finite reference splits. The study excludes Bank’s post-call duration and chooses target tilts using an error proxy trained on the independent design split, not the reference labels. Three seeds, four tilts, and three ratio caps create seventy-two conditions. Each is replayed one hundred times with ten thousand source and ten thousand target observations, giving seven thousand two hundred simultaneous band containments out of seven thousand two hundred. This is controlled finite-population replay under imposed assumptions, not independent deployment validation. Within-bin shifts keep the observed confidence histogram unchanged while changing target error; the source-bin point benchmark has worst absolute bias 0.0174. Only nine of seventy-two conditions tighten risk-only population bounds, and finite intervals remain conservative. These limitations prevent interpreting perfect replay containment as evidence of narrow or accurate unlabeled point estimates.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Learned-score replay without an oracle link; Appendix: Learned-score replay"
+      ],
+      "lead": "Controlled replay on two UCI datasets; 72 conditions and 100 replays per condition.",
+      "table": {
+        "headers": [
+          "Reported quantity",
+          "Result",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Simultaneous band containment",
+            "7,200 / 7,200",
+            "Under the imposed replay model"
+          ],
+          [
+            "Worst source-bin point bias",
+            "0.0174",
+            "Unchanged bins can hide error change"
+          ],
+          [
+            "Conditions improving risk-only bounds",
+            "9 / 72",
+            "Refinement is not universal"
+          ],
+          [
+            "Largest population-bound tightening",
+            "0.1661",
+            "Finite intervals remain conservative"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Information requirements for coverage monitoring",
+      "layout": "takeaway",
+      "notes": "The main contribution is a hierarchy of information rather than a single universal monitoring score. Rotation-invariant shift magnitudes can detect a change while failing to identify its coverage consequence. Under a known binary logistic conditional law, the entire confidence distribution is enough to identify the complete coverage curve, with a sharp stability comparison. Once that conditional law is unknown, even perfect source calibration and an unchanged signed-score law can leave target coverage ambiguous. Source calibration, target confidence, and an explicit density-ratio cap then support a sharp population interval and a conservative finite-sample sensitivity procedure. Each level uses different assumptions, and the conclusions should not be exchanged. In particular, unlabeled confidence cannot establish the ratio cap or exclude a changing conditional label law. The practical message is to report the information and assumption set alongside the monitoring result, rather than interpreting a drift alarm as a coverage estimate.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex — Limitations and conclusion"
+      ],
+      "lead": "Match the conclusion to the information retained and the assumptions supplied.",
+      "bullets": [
+        "Drift magnitude: a change alarm can leave coverage loss unidentified.",
+        "Known binary link: confidence identifies the entire coverage curve.",
+        "Source calibration + ratio cap: report an identified interval.",
+        "Unchanged confidence alone is not a target coverage certificate."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Equal rotation-invariant source-to-target summaries can coexist with zero orthogonal and nonzero aligned coverage gaps.",
+      "locator": "Theorem: Coverage identification from invariant summaries",
+      "source": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex"
+    },
+    {
+      "claim": "The Gaussian calibrated construction approaches excess miscoverage 1/2-alpha.",
+      "locator": "Theorem: Sharp harmful gap in a calibrated symmetric family",
+      "source": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex"
+    },
+    {
+      "claim": "Under the known logistic link, absolute-score distributions and complete coverage curves determine each other.",
+      "locator": "Theorem: Exact coverage-equivalence quotient",
+      "source": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex"
+    },
+    {
+      "claim": "Source calibration, target confidence and a density-ratio cap yield sharp simultaneous endpoint envelopes.",
+      "locator": "Theorem: Sharp bounds from source confidence calibration",
+      "source": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex"
+    },
+    {
+      "claim": "Controlled learned-score replay has 7200/7200 simultaneous band containments; 9/72 conditions improve risk-only population bounds.",
+      "locator": "Learned-score replay without an oracle link",
+      "source": "https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/76661fdf862959345ea22ea2ab5494a4171a6eab/paper_aistats2027/reliance_alignment.tex"
+    }
+  ],
+  "summary": "A drift magnitude or unchanged confidence distribution can leave target coverage unidentified; the answer depends on the retained information and assumptions.",
+  "poster": {
+    "headline": "Equal drift and unchanged confidence can conceal different coverage.",
+    "question": "Which distribution summaries identify target prediction-set coverage, and what remains uncertain when the conditional label law is unknown?",
+    "sections": [
+      {
+        "heading": "Equal magnitude, different consequence",
+        "text": "For a symmetric source, equal-length aligned and orthogonal shifts have identical rotation-invariant source-to-target discrepancies. The orthogonal shift preserves scores and coverage; the aligned shift can change coverage. Raw target observations can still distinguish these laws."
+      },
+      {
+        "heading": "A sharp restricted construction",
+        "text": "Under a known binary logistic label law and population calibration, a Gaussian scale family approaches excess miscoverage 1/2 − α. At α = 0.1, that is 40 percentage points. The standardized shift diverges; this is not an undetectable-drift example."
+      },
+      {
+        "heading": "When confidence determines coverage",
+        "text": "With the known link, the absolute-score distribution is equivalent to the whole coverage curve. Maximum confidence is a one-to-one transformation of score magnitude. This positive result requires the conditional label law, not merely source calibration."
+      },
+      {
+        "heading": "Beyond the known link",
+        "text": "Compressed source confidence calibration, target confidence frequencies, and a supplied density-ratio cap yield a sharp target-error interval over compatible hidden source structures. Two target laws attain its lower and upper endpoints simultaneously at every threshold. A fixed full source kernel can give tighter bounds; hidden error variation within confidence levels explains the remaining ambiguity."
+      },
+      {
+        "heading": "Finite-data evidence",
+        "text": "Frozen confidence bins yield simultaneous sensitivity intervals from source labels and unlabeled target scores. Controlled learned-score replay gives 7,200/7,200 band containments, but finite bands remain conservative and only 9/72 conditions improve risk-only population bounds."
+      }
+    ],
+    "key_numbers": [
+      {
+        "value": "40 pp",
+        "label": "Sharp limiting gap at α = 0.1 in the Gaussian construction"
+      },
+      {
+        "value": "0–20%",
+        "label": "Possible errors with unchanged 90% confidence in the Γ = 2 example"
+      },
+      {
+        "value": "7,200 / 7,200",
+        "label": "Simultaneous band containments in controlled replay"
+      }
+    ],
+    "table": {
+      "headers": [
+        "Constructed distribution",
+        "Constant confidence",
+        "Error"
+      ],
+      "rows": [
+        [
+          "Perfectly calibrated source",
+          "90%",
+          "10%"
+        ],
+        [
+          "Target reweights hidden errors up",
+          "90%",
+          "20%"
+        ],
+        [
+          "Target removes hidden error group",
+          "90%",
+          "0%"
+        ]
+      ]
+    },
+    "conclusion": "Treat drift detection, exact coverage identification, and sensitivity intervals as separate tasks. State which assumptions make each conclusion possible.",
+    "limitations": "Exact confidence sufficiency uses a known binary link. Partial identification retains covariate shift and a specified density-ratio cap, neither certified by unlabeled confidence. Gaussian and replay examples are controlled constructions, not deployment validation. Finite threshold selection uses a fixed grid, not unrestricted repeated looks."
+  },
+  "intro": {
+    "en": {
+      "hook": "A deployment dataset can move far from training data without harming a particular predictor, or move in a consequential direction that a generic drift magnitude does not reveal. This paper asks when common monitoring summaries actually determine prediction-set coverage.",
+      "sections": [
+        {
+          "heading": "Question",
+          "text": "Coverage is the probability that a prediction set contains the true label. A drift test instead asks whether data distributions differ. The paper studies what is lost when deployment data are reduced to rotation-invariant discrepancy values or to a frozen classifier’s confidence distribution. It separates a change alarm from an estimate of the coverage consequence, then asks what additional assumptions can restore identification."
+        },
+        {
+          "heading": "Equal drift can have unequal effects",
+          "text": "Under a known binary logistic label law, two equal-length Gaussian translations can produce identical source-to-target drift magnitudes. One follows the model’s score direction and can change coverage; the other is orthogonal and leaves it unchanged. A calibrated scale construction approaches excess miscoverage 1/2 − α, or 40 percentage points at α = 0.1. This is a sharp mathematical example, not a typical failure rate. Its standardized shift diverges, and raw target observations can still distinguish the two target laws."
+        },
+        {
+          "heading": "When confidence is sufficient",
+          "text": "With the known logistic conditional label law, the distribution of absolute scores determines the complete coverage curve; equal curves also imply equal absolute-score distributions. Maximum predictive confidence carries exactly the same information in this binary model. This is stronger than detecting drift, but it relies on the known label law. Perfect source calibration alone is insufficient: the paper constructs targets with the same constant 90% confidence and unchanged signed scores but error rates of either 0% or 20%, while source error is 10%. The full conditional label law remains unchanged; hidden covariate groups are reweighted."
+        },
+        {
+          "heading": "What can be said without the link",
+          "text": "Given source confidence calibration, target confidence frequencies, and a specified bound Γ on the covariate density ratio, the paper derives a sharp interval of possible target errors. The same two target laws attain its lower and upper endpoints at every threshold. With a fixed full source kernel, confidence becomes sufficient when conditional errors have no hidden variation within nondegenerate confidence levels. A finite-sample version uses labeled source data and unlabeled target scores, allowing threshold choice within a prespecified grid."
+        },
+        {
+          "heading": "Evidence and limits",
+          "text": "Simulations and independent optimization checks support the formulas. Controlled learned-score replay on two UCI datasets records 7,200/7,200 simultaneous band containments across 72 conditions, but the intervals are conservative; only nine conditions improve risk-only population bounds. These are sensitivity results under an imposed cap, not deployment validation. Confidence observations cannot establish Γ or rule out conditional-label shift. The finite guarantee is fixed-sample and does not cover unrestricted repeated monitoring."
+        }
+      ],
+      "takeaway": "A useful monitor must report what its data and assumptions identify: a distribution change, an exact coverage curve, or only a defensible interval."
+    },
+    "ko": {
+      "title": "주변 분포 변화의 크기만으로는 컨포멀 예측의 커버리지 감소를 알 수 없는 경우",
+      "hook": "배포 데이터가 많이 달라졌다고 해서 특정 모델의 성능이 반드시 크게 나빠지는 것은 아닙니다. 반대로, 변화의 크기가 같아도 모델에 미치는 영향은 다를 수 있습니다. 이 논문은 어떤 요약 정보가 예측집합의 커버리지를 실제로 결정하는지 묻습니다.",
+      "sections": [
+        {
+          "heading": "무엇을 묻는가",
+          "text": "커버리지는 예측집합에 실제 정답이 포함될 확률입니다. 반면 분포 변화 검정은 학습 데이터와 배포 데이터의 분포가 다른지를 묻습니다. 논문은 데이터를 회전 방향에 무관한 분포 차이의 크기나 모델 신뢰도의 분포로 요약할 때 어떤 정보가 사라지는지 분석합니다. 변화가 있다는 경고와 커버리지가 얼마나 달라졌다는 결론은 서로 다릅니다."
+        },
+        {
+          "heading": "같은 변화 크기, 다른 결과",
+          "text": "알려진 이진 로지스틱 정답 생성 법칙 아래에서, 대칭적인 정규분포를 같은 거리만큼 두 방향으로 이동시킵니다. 모델 점수 방향의 이동은 커버리지를 바꿀 수 있지만, 그에 수직인 이동은 점수와 커버리지를 그대로 둡니다. 두 이동의 회전 불변 분포 차이 값은 같습니다. 특정한 크기 조절 구성에서는 원래 오류율이 10%일 때 추가 오류율이 40%포인트에 가까워집니다. 이는 수학적 극한 예시이며, 실제 실패의 빈도나 탐지 불가능한 변화를 뜻하지 않습니다."
+        },
+        {
+          "heading": "신뢰도만으로 충분한 조건",
+          "text": "조건부 정답 확률이 모델 점수의 로지스틱 함수라는 법칙을 알고 있다면, 절댓값 점수의 분포는 모든 임계값에서의 커버리지를 결정합니다. 이 이진 모형에서는 최대 예측 신뢰도의 분포도 같은 정보를 가집니다. 하지만 원래 데이터에서 신뢰도가 잘 보정되어 있다는 사실만으로는 충분하지 않습니다. 논문은 모든 사례의 신뢰도가 90%이고 점수 분포도 그대로인데, 배포 오류율은 0% 또는 20%가 되는 예를 제시합니다. 원래 오류율은 10%이며, 전체 특성이 주어졌을 때의 정답 법칙은 바뀌지 않습니다."
+        },
+        {
+          "heading": "법칙을 모르면 구간으로 말한다",
+          "text": "원래 데이터의 신뢰도별 오류율, 배포 신뢰도의 빈도, 특성 분포 밀도비의 상한 Γ가 주어지면 가능한 배포 오류율의 정확한 범위를 구할 수 있습니다. 같은 두 배포 분포가 모든 임계값에서 각각 하한과 상한을 달성합니다. 같은 신뢰도 안에 숨은 조건부 오류율 차이가 없다면, 퇴화된 경우를 제외하고 이러한 모호성이 사라집니다. 유한 표본에서는 원래 데이터의 정답과 배포 점수만 이용해 민감도 구간을 만들고, 미리 정한 후보 중 임계값을 선택할 수 있습니다."
+        },
+        {
+          "heading": "근거와 한계",
+          "text": "모의실험과 독립적인 최적화 계산으로 공식을 확인했습니다. 두 UCI 데이터셋의 통제된 재표집 실험에서는 72개 조건, 총 7,200회 모두 동시 구간이 참값을 포함했습니다. 그러나 구간은 보수적이고, 72개 중 9개 조건만 위험 정보만 쓴 모집단 범위를 더 좁혔습니다. 실제 배포 환경을 검증한 결과는 아닙니다. 신뢰도 관측만으로 밀도비 상한이나 정답 법칙의 유지 여부를 증명할 수 없으며, 반복해서 계속 확인하는 모니터링까지 보장하지 않습니다."
+        }
+      ],
+      "takeaway": "분포 변화 경고, 정확한 커버리지 계산, 가능한 커버리지 구간을 구분하고, 각각을 정당화하는 정보와 가정을 함께 제시해야 합니다."
+    }
+  }
+}

@@ -1,0 +1,406 @@
+{
+  "id": "icaif2026",
+  "title": "Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion",
+  "short_title": "Predicting Factor Decay",
+  "category": "Financial forecasting and model evaluation",
+  "accent": "#B46439",
+  "source": {
+    "repository": "ChorokLeeDev/factor-decay-icaif2026",
+    "commit": "a0bd43ea47898011d0661710975658a8969299d5",
+    "path": "arxiv/original-source-20260929/main.tex",
+    "url": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex",
+    "version_note": "Original ten-page TeX preprint edition, prepared 29 September 2026. Separate from the archived five-page submission."
+  },
+  "summary": "This exploratory study asks whether the weakening of predictive relationships between equity factors can itself be forecast.",
+  "slides": [
+    {
+      "title": "Predicting Factor Decay",
+      "layout": "cover",
+      "lead": "How long will an observed predictive relationship remain useful?",
+      "bullets": [
+        "Chorok Lee, KAIST",
+        "Original ten-page preprint edition"
+      ],
+      "notes": "This study examines the durability of predictive relationships between equity factors. A factor summarizes returns associated with an investment characteristic, such as value or size. The motivating example asks whether past value-factor returns help predict the size factor, and whether that relationship weakens over time. The study combines regime-specific statistical analysis with survival models for decay. The evidence is exploratory: the decay data contain only seven events, and the main US relationship does not survive corrected tests in the later period. This presentation follows the original ten-page TeX preprint edition, prepared on 29 September 2026, rather than the separate five-page submission. It separates what the manuscript reports from what those results can establish.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; Abstract; §Predictive Models; §Limitations"
+      ]
+    },
+    {
+      "title": "Equity factors and predictive relationships",
+      "layout": "comparison",
+      "lead": "Six daily factor series define 30 directed relationships over 1990–2024.",
+      "columns": [
+        {
+          "heading": "Source information",
+          "body": "HML captures value relative to growth. Past HML returns may help forecast another factor."
+        },
+        {
+          "heading": "Forecast target",
+          "body": "SMB captures small relative to large firms. The target is its later return, conditional on its own history."
+        },
+        {
+          "heading": "Meaning of a relationship",
+          "body": "Granger tests ask whether source lags add predictive content. They do not identify a structural causal effect."
+        }
+      ],
+      "bullets": [
+        "The six-factor panel combines Fama–French five factors with momentum.",
+        "The paper reports 8,817 trading days."
+      ],
+      "notes": "The panel contains the market excess return, size, value, profitability, investment, and momentum. With six factors and no self-pairs, there are six times five, or thirty, possible directed relationships. The paper focuses on HML as a source and SMB as a target. The direction matters: knowing past value returns may have different predictive value for size than knowing past size returns has for value. Granger predictability concerns additional information relative to a specified history and model. It does not establish that changing one factor would causally change the other. The focal relationship was selected after a scan of the thirty pairs, so the analysis and resulting communication retain that exploratory scope.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; §Methodology, Data and Per-regime Granger testing; Pair selection transparency"
+      ]
+    },
+    {
+      "title": "Regimes, predictive tests, and decay models",
+      "layout": "comparison",
+      "columns": [
+        {
+          "heading": "Regime discovery",
+          "body": "Student-t hidden Markov models group return behavior into three statistical states. Fifty random starts assess sensitivity to local optima."
+        },
+        {
+          "heading": "Relationship measurement",
+          "body": "Within each state, Granger tests measure source-lag contribution. Rolling statistics track how that evidence changes."
+        },
+        {
+          "heading": "Decay prediction",
+          "body": "Classifiers predict a loss of significance within five years. Survival models rank the time until a decay event."
+        }
+      ],
+      "lead": "The regime labels describe fitted distributions, not fixed economic event categories.",
+      "notes": "A hidden Markov model assigns a latent state to each period using return distributions and persistence across time. Student-t emissions allow heavier tails than a Gaussian model. The paper calls its states Normal, Elevated, and Crisis, but the last name is a statistical label. Under the primary fit, the Crisis state does not coincide with the 2008 global financial crisis. The second stage evaluates cross-factor predictability within these states. The third stage uses features of the resulting signal history to predict whether or when the signal will fall below a significance threshold. Estimation at every stage can affect the apparent decay. A further timing limitation is that the source gives inconsistent descriptions of the window used to select the number of states.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; §Methodology; Student-t HMM footnote; §Predictive Models"
+      ]
+    },
+    {
+      "title": "Predictive evidence changes over time",
+      "layout": "figure",
+      "lead": "The paper's rolling analysis shows episodic changes in value-to-size predictability.",
+      "figure": {
+        "path": "assets/icaif2026/rolling_granger.png",
+        "caption": "Original manuscript figure: rolling three-year unconditional Granger evidence, using lags 1–9 and regime-colored background.",
+        "source": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; Figure rolling_granger / §The Structural Break"
+      },
+      "bullets": [
+        "The plotted quantity is −log10(p), not a trading return.",
+        "Nine lags describe the included history, not nine-day advance warning."
+      ],
+      "notes": "The vertical axis transforms a p-value so that larger values represent stronger evidence against the specified Granger null. The plot uses rolling three-year windows, an unconditional test, and nine lagged observations. This differs from the paper's primary regime-specific analysis, where the BIC-selected lag is one. The figure is useful for seeing how the evidence changes through time, but it does not report investment profit, forecast accuracy, or nine-day-ahead warnings. The manuscript separately estimates a primary change point around June 1998 and further weakening around 2008. An association between a detected change point and a historical financial event does not identify the economic mechanism responsible. The figure is reproduced from the source rather than generated from new experimental runs.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; §The Structural Break; Figure rolling_granger"
+      ]
+    },
+    {
+      "title": "Learning which relationships may weaken",
+      "layout": "text",
+      "lead": "Each observation is a directed factor pair. F summarizes evidence that source lags improve prediction.",
+      "bullets": [
+        "Train on 20 pairs and evaluate on 10 held-out pairs.",
+        "Use initial F strength, rolling F behavior, correlation, and relative volatility.",
+        "A binary event means F loses significance within five years.",
+        "Survival analysis models event timing, with seven events among thirty pairs."
+      ],
+      "notes": "The decay model turns the relationship between two factors into an observation. Features include the initial F-statistic, its rolling mean and standard deviation, its momentum, factor correlation, and the volatility ratio. The classifier asks whether the statistic drops below significance within five years. Cox proportional-hazards and random survival forest models also address timing. Initial F strength is the leading reported feature. This could help motivate monitoring unusually strong initial signals, but the small sample does not establish a general behavioral or economic law. Factor pairs also share underlying series, so a split over pairs differs from a clean separation over future time. The study's criterion concerns a statistic crossing a threshold; this is a narrower operational definition than the disappearance of all useful predictive information.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; §Predictive Models, Decay Prediction Model"
+      ]
+    },
+    {
+      "title": "Strong CV ranking, limited holdout evidence",
+      "layout": "table",
+      "lead": "Only seven decay events support the reported model comparison.",
+      "table": {
+        "headers": [
+          "Evaluation",
+          "Metric",
+          "Reported result"
+        ],
+        "rows": [
+          [
+            "Random Survival Forest, 5-fold CV",
+            "C-index",
+            "0.933 ± 0.097"
+          ],
+          [
+            "Logistic regression, 5-fold CV",
+            "AUC",
+            "0.933 ± 0.133"
+          ],
+          [
+            "Separate ten-pair holdout",
+            "Accuracy",
+            "60% (6/10)"
+          ]
+        ]
+      },
+      "bullets": [
+        "C-index evaluates the ordering of event times.",
+        "The CV standard deviation is not a confidence interval.",
+        "Pair-level validation does not establish future-time deployment performance."
+      ],
+      "notes": "A concordance index measures how well a model orders event times among comparable observations. It is not a percentage of future returns predicted correctly. AUC evaluates discrimination for the binary decay label and is a different metric. The reported plus-or-minus values in this table are variability across the five validation folds, not confidence intervals for the population effect. The separate holdout result is six correct classifications among ten factor pairs. These results must travel together: reporting only a C-index near 0.93 would conceal the small event count and weaker holdout evidence. The manuscript explicitly calls the decay model hypothesis-generating. Its abstract uses held-out terminology for the high score, whereas the detailed model table identifies it as five-fold cross-validation; this presentation uses the detailed evaluation labels.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; Table Decay Prediction Model: 5-Fold CV Performance; §Predictive Models"
+      ]
+    },
+    {
+      "title": "Regime detection has a speed–accuracy tradeoff",
+      "layout": "table",
+      "table": {
+        "headers": [
+          "Method",
+          "Delay",
+          "Accuracy",
+          "F1"
+        ],
+        "rows": [
+          [
+            "Online HMM",
+            "0.2 days",
+            "50.5%",
+            "0.22"
+          ],
+          [
+            "Monthly rolling HMM",
+            "6.6 days",
+            "47.6%",
+            "0.39"
+          ],
+          [
+            "Volatility threshold",
+            "18.3 days",
+            "53.0%",
+            "0.48"
+          ]
+        ]
+      },
+      "lead": "Detection delay measures recognition of a regime change after it occurs.",
+      "bullets": [
+        "The fastest method has the lowest reported F1.",
+        "These numbers concern regime classification, not factor-decay forecasting."
+      ],
+      "notes": "This comparison addresses a separate operational task: recognizing changes in the fitted market regime while new observations arrive. An incremental online HMM reacts quickly, a monthly rolling model reacts more slowly, and a volatility threshold baseline reacts slowest. Fast detection does not imply a better overall classifier. The volatility threshold has the largest reported accuracy and F1 in this comparison. The manuscript interprets the rolling HMM as balancing responsiveness and stability, but the table does not establish a universally optimal method. An application would need to specify the cost of delay relative to false state changes. In particular, the 6.6-day number is a delay after a regime transition. It is not a claim that the system can forecast decay 6.6 days ahead.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; Table Online Regime Detection: Speed-Accuracy Tradeoff"
+      ]
+    },
+    {
+      "title": "The US relationship fails corrected OOS tests",
+      "layout": "table",
+      "lead": "The HMM is fitted on 1990–2012 and frozen for the 2013–2024 evaluation.",
+      "table": {
+        "headers": [
+          "Regime",
+          "HAC p-value",
+          "Incremental R²"
+        ],
+        "rows": [
+          [
+            "Normal",
+            "0.152",
+            "0.32%"
+          ],
+          [
+            "Elevated",
+            "0.041",
+            "0.73%"
+          ],
+          [
+            "Crisis",
+            "0.290",
+            "0.09%"
+          ]
+        ]
+      },
+      "bullets": [
+        "Elevated p = 0.041 exceeds the 0.0167 correction for three regimes.",
+        "The result is also sensitive to bandwidth and regime prevalence.",
+        "Failure to reject does not prove that predictive information is absent."
+      ],
+      "notes": "The central US relationship does not generalize under the manuscript's corrected tests. The Elevated state has an unadjusted HAC p-value of 0.041, but a family threshold of 0.05 divided by three is approximately 0.0167. It therefore does not pass even this regime-level correction. The broader specification search adds further interpretation concerns. Reweighting the test sample to the earlier regime prevalence also weakens the result, and the p-value changes with the HAC bandwidth. These results are compatible with weakening predictability, but other explanations remain possible, including estimation error, limited power, and changes in the fitted regime model. The paper's retrospective pattern and its later-period test answer different questions. Neither result alone identifies why economic predictability changes. These values reproduce the reported frozen-OOS table. Elsewhere the manuscript notes that return scaling changes fitted regime assignments and reports different regime counts, so this table should not imply a uniquely stable deployment classifier.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; Table Frozen OOS (2013–2024); §Frozen OOS (Exploratory)"
+      ]
+    },
+    {
+      "title": "Cross-market effects vary by region and state",
+      "layout": "comparison",
+      "columns": [
+        {
+          "heading": "Selected crisis-state effects",
+          "body": "Developed ex-US and Asia-Pacific ex-Japan show HAC p < 0.001 in the reported later-period crisis-state tests."
+        },
+        {
+          "heading": "Limits to generalization",
+          "body": "Europe and Japan show in-sample evidence but later-period nulls. Regional significance is not evidence of a universal decay predictor."
+        }
+      ],
+      "lead": "The two crisis-state results survive the reported 12-comparison threshold of 0.0042.",
+      "notes": "The manuscript extends the frozen framework to four non-US regions. It reports crisis-state HAC p-values below 0.001 for Developed ex-US and Asia-Pacific ex-Japan. These lie below its correction for four regions times three states. Europe and Japan instead show in-sample significance and later-period null results in the accompanying narrative. The source table displays the in-sample Europe and Japan rows alongside out-of-sample rows for the other regions, so this slide explicitly separates those evidence types. The geographic results concern a particular HML-to-SMB relationship under a fitted regime framework. They do not validate the pair-level survival model across all markets, establish a structural causal mechanism, or show that a deployable trading strategy earns positive returns after costs.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; International replication paragraph and table"
+      ]
+    },
+    {
+      "title": "Signal durability remains an exploratory target",
+      "layout": "takeaway",
+      "lead": "The contribution is a framework for studying when measured predictability weakens.",
+      "bullets": [
+        "Seven events and shared factors limit precision and independence.",
+        "Some pre-2012 decay fits use full-sample regime assignments.",
+        "Post-hoc pair selection and model choices complicate inference.",
+        "A fully prospective study would refit all stages using only available history."
+      ],
+      "notes": "The research question is useful: a forecasting system should assess whether a previously useful relationship may stop working. The manuscript offers a combination of statistical diagnostics and survival-style modeling for that purpose. The present evidence supports exploratory monitoring research, not a validated investment rule. The major next step is a genuinely chronological evaluation that estimates the number of states, regime model, features, and decay model at each historical training cutoff. The source's own limitations acknowledge full-sample HMM assignments in a purportedly prospective decay fit, while the state-selection window is described inconsistently. A future study could also apply complete source-exclusion comparisons, as in the separate regime-predictability audit, to verify that the measured relationship reflects incremental source information. Such additions are future work, not results established in this edition.",
+      "sources": [
+        "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; §Discussion, Limitations; original ten-page edition a0bd43ea4789"
+      ]
+    }
+  ],
+  "poster": {
+    "headline": "Forecasting the weakening of factor relationships remains exploratory",
+    "question": "Can the past behavior of a predictive relationship indicate when it will lose statistical significance?",
+    "sections": [
+      {
+        "heading": "Motivation",
+        "text": "A cross-factor signal can look useful in one period and weak in another. This study asks whether that weakening can itself be modeled. The main example uses past value-factor returns (HML) to predict the size factor (SMB). Granger predictability describes incremental information within a specified model."
+      },
+      {
+        "heading": "Study design",
+        "text": "The primary panel contains six daily equity factors over 1990–2024. Student-t hidden Markov models identify statistical regimes. Granger tests characterize 30 directed factor pairs. Classifiers predict a loss of significance within five years, while survival models model the timing of a decay event."
+      },
+      {
+        "heading": "Decay model",
+        "text": "Features describe initial F strength, rolling signal behavior, correlation, and relative volatility. The manuscript reports strong cross-validated ranking, but only seven decay events underpin the analysis. A separate test on ten factor pairs yields six correct classifications. Pair splits do not establish performance on future dates. The displayed variation is a fold standard deviation, not a confidence interval."
+      },
+      {
+        "heading": "Later-period evidence",
+        "text": "For the main US value-to-size relationship, the 2013–2024 evaluation fails corrected significance tests. Selected crisis-state results in Developed ex-US and Asia-Pacific ex-Japan survive the reported regional correction. These relationship-level results do not independently validate the survival predictor. The source notes that return scaling changes regime assignments."
+      },
+      {
+        "heading": "Operational distinction",
+        "text": "The rolling HMM detects regime changes with a reported mean delay of 6.6 days, accuracy of 47.6%, and F1 of 0.39. This measures detection after a regime transition. It does not represent advance warning of future factor decay."
+      }
+    ],
+    "key_numbers": [
+      {
+        "value": "30",
+        "label": "directed factor pairs"
+      },
+      {
+        "value": "7",
+        "label": "decay events"
+      },
+      {
+        "value": "6/10",
+        "label": "correct holdout classifications"
+      }
+    ],
+    "figure": {
+      "path": "assets/icaif2026/rolling_granger.png",
+      "caption": "Original rolling Granger figure. Vertical axis: −log10(p). Three-year windows, source lags 1–9. Evidence of predictability varies through time.",
+      "source": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex; Figure rolling_granger",
+      "raster_only": true
+    },
+    "table": {
+      "headers": [
+        "Evaluation",
+        "Reported metric (± fold SD)"
+      ],
+      "rows": [
+        [
+          "Survival forest, 5-fold CV",
+          "C-index 0.933 ± 0.097"
+        ],
+        [
+          "Logistic model, 5-fold CV",
+          "AUC 0.933 ± 0.133"
+        ],
+        [
+          "Ten-pair holdout",
+          "Accuracy 60%"
+        ]
+      ]
+    },
+    "conclusion": "The framework motivates monitoring the durability of predictive relationships. The current evidence is exploratory and does not establish a profitable trading rule or a structural causal mechanism.",
+    "limitations": "Only seven events; shared factors across pairs; post-hoc selection; broad specification search. Some decay fits use full-sample regime assignments. The manuscript gives inconsistent state-selection windows. Fully chronological refitting remains necessary."
+  },
+  "intro": {
+    "en": {
+      "hook": "A financial relationship can help a forecasting model for years and then weaken. This paper asks whether the change in that relationship can itself be anticipated.",
+      "sections": [
+        {
+          "heading": "The research question",
+          "text": "A factor is a return series representing an investment characteristic, such as value, size, or momentum. The motivating example asks whether past value-factor returns (HML) help predict the size factor (SMB), and how long that predictive contribution lasts. The focus is statistical predictability and its durability, rather than the economic cause of a factor's return."
+        },
+        {
+          "heading": "How the study works",
+          "text": "The primary analysis covers six daily factors over 1990–2024 and 30 directed pairs. A Student-t hidden Markov model groups observations into statistical regimes. Within those regimes, Granger tests examine whether source-factor lags add information beyond the target's own history. Features such as initial signal strength and rolling variability then feed classifiers and survival models. The operational decay label concerns a loss of statistical significance within five years."
+        },
+        {
+          "heading": "What the paper reports",
+          "text": "A random survival forest achieves a five-fold cross-validation C-index of 0.933, with a fold standard deviation of 0.097. That metric measures ordering of event times, not return prediction accuracy. The analysis contains only seven decay events among thirty pairs. On a separate ten-pair holdout, classification accuracy is 60%, or six correct predictions. The main US value-to-size relationship fails corrected tests in the 2013–2024 evaluation. Some regional crisis-state effects remain, but they do not independently validate the decay model."
+        },
+        {
+          "heading": "What the findings mean",
+          "text": "The results motivate studying signal durability as a monitoring problem. They do not yet establish reliable future-time performance. Factor pairs share underlying series, the focal pair was selected after inspection, and some pre-2012 decay fits use regime assignments estimated with the full sample. The manuscript also describes the state-selection window inconsistently. A fully prospective evaluation would refit every stage using only data available at each training date. The separate 6.6-day rolling-HMM result measures regime detection delay after a change, not advance warning of factor decay."
+        }
+      ],
+      "takeaway": "The distinct question is when an observed predictive relationship weakens. The available evidence supports further exploratory testing, with uncertainty and information timing central to the next study."
+    },
+    "ko": {
+      "title": "팩터 예측관계의 약화 시점 예측: 팩터 간 예측력 감소를 위한 머신러닝",
+      "hook": "몇 년 동안 도움이 되던 금융 예측관계가 어느 순간 약해질 수 있습니다. 이 논문은 관계의 과거 모습을 보고 그 약화를 미리 예상할 수 있는지 묻습니다.",
+      "sections": [
+        {
+          "heading": "무엇을 연구하나요?",
+          "text": "팩터는 가치주, 소형주, 모멘텀처럼 공통된 투자 특성을 나타내는 수익률입니다. 대표 질문은 “과거 가치주 팩터(HML)의 움직임이 소형주 팩터(SMB)의 수익률 예측에 도움이 되는가, 그리고 그 도움은 얼마나 오래 유지되는가?”입니다. 경제적 원인을 밝히기보다 관측된 예측관계의 지속기간에 초점을 맞춥니다."
+        },
+        {
+          "heading": "어떻게 분석하나요?",
+          "text": "1990–2024년의 일별 팩터 6개로 방향이 있는 관계 30개를 분석합니다. 숨은 마르코프 모형(HMM)으로 수익률의 통계적 국면을 나누고, Granger 검정으로 상대 팩터의 과거 정보가 예측에 기여하는지 확인합니다. 초기 신호 강도와 변동성 등을 분류·생존모형에 넣어, 5년 안에 통계적 유의성을 잃는지와 그 시점을 탐색합니다."
+        },
+        {
+          "heading": "어떤 결과가 나왔나요?",
+          "text": "랜덤 생존 포리스트의 5겹 교차검증 C-index는 0.933, 교차검증 폴드 간 표준편차는 0.097입니다. C-index는 사건 발생 순서를 얼마나 잘 구분하는지 나타내며 수익률 예측 정확도가 아닙니다. 감쇠 사건은 30개 관계 중 7개뿐이고, 별도로 남긴 10개 관계에서는 6개를 맞혔습니다. 핵심 미국 관계는 2013–2024년 평가에서 다중검정을 보정한 기준을 통과하지 못했습니다."
+        },
+        {
+          "heading": "어디까지 해석할 수 있나요?",
+          "text": "신호의 지속기간을 모니터링하는 탐색적 연구입니다. 관계들이 같은 팩터를 공유하고, 관심 관계를 사후에 선택했으며, 일부 과거 감쇠모형에는 전체 기간으로 추정한 국면 정보가 쓰였습니다. 국면 개수 선택 기간도 원고에서 일관되게 설명되지 않습니다. 실제 미래 예측력을 확인하려면 각 시점에 이용 가능한 데이터만으로 모든 단계를 다시 학습해야 합니다. 별도로 보고한 6.6일은 국면 변화 후 탐지 지연으로, 감쇠를 그만큼 미리 예고한다는 뜻이 아닙니다."
+        }
+      ],
+      "takeaway": "이 논문의 고유한 질문은 “관측된 예측관계가 언제 약해지는가?”입니다. 현재 결과는 추가 검증의 출발점이며, 안정적인 매매 수익이나 인과기제를 입증하지는 않습니다."
+    }
+  },
+  "claims": [
+    {
+      "claim": "30 directed pairs from six factors, primary1990–2024 panel,8817days",
+      "locator": "Methodology, Data;30-pair decay analysis",
+      "source": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex"
+    },
+    {
+      "claim": "Random Survival Forest CV Cindex .933, std .097; logistic AUC .933,std .133;7events;6/10holdout",
+      "locator": "Predictive Models;Table Decay Prediction Model",
+      "source": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex"
+    },
+    {
+      "claim": "Rolling HMM delay6.6days,accuracy47.6%,F1.39",
+      "locator": "Table Online Regime Detection",
+      "source": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex"
+    },
+    {
+      "claim": "US frozen OOS HAC p .152,.041,.290 fails corrected thresholds",
+      "locator": "Table Frozen OOS;accompanying discussion",
+      "source": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex"
+    },
+    {
+      "claim": "Fullsample assignments enter pre2012decay fit;state selection window inconsistency",
+      "locator": "Limitations and Student-t HMM footnote",
+      "source": "https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/a0bd43ea47898011d0661710975658a8969299d5/arxiv/original-source-20260929/main.tex"
+    }
+  ]
+}

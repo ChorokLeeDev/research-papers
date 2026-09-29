@@ -1,0 +1,5 @@
+output/
+publish/
+qa/
+.deck-build/
+__pycache__/
