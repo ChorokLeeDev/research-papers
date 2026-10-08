@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-08",
+  "paper_repositories": {
+    "ChorokLeeDev/selective-labels-minimax-iclr2027": "09d03cf1bf112639531a14924585e87705517e51",
+    "ChorokLeeDev/conformal-coverage-identification-aistats2027": "1a797c291a5a4f31bd109c39c102eac68b934b88",
+    "ChorokLeeDev/conformal-covid-uai2026": "ba3e968d71fea58c118e80c46bdf4944744bb4bd",
+    "ChorokLeeDev/kg-uncertainty-revision": "19d5f072c5595af4dce4999ae58d984e9baf5dfc",
+    "ChorokLeeDev/factor-regime-revision": "de88bc61edaff2a9071236b5fed4cfd4d23aebc3",
+    "ChorokLeeDev/regime-predictability-revision": "3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39",
+    "ChorokLeeDev/factor-decay-icaif2026": "7c45a212175b523db99ad54a8458682ce63eed50"
+  },
+  "note": "Exact reviewed source commits. Remote main equality is checked separately during publication; no force push or venue submission."
+}

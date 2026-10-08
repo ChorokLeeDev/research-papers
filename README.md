@@ -1,10 +1,26 @@
 # Research Papers
 
-Chorok Lee · Research catalogue · Updated 29 September 2026
+Chorok Lee · Research catalogue · Updated 8 October 2026
 
 논문별 저장소, 기준 원고, 한 페이지 소개와 한·영 1분 스피치를 모았습니다. 금융 논문 세 편의 차이는 아래 비교표에서 확인할 수 있습니다. 아래 7개 항목은 프로젝트/버전 목록이며 독립적인 출판 논문 수를 뜻하지 않습니다.
 
-## Research communication materials
+## Statistical audit and current revisions
+
+[**2026-10-08 audit: all seven papers**](audit/2026-10-08/README.md). 검증된 수정과 앞선 연구 작업을 각 저장소의 `main`에 통합했습니다. 통계적 오류, 재현된 결과, 미확보 증거를 논문별로 구분합니다.
+
+The briefs, speeches and presentation collection below are historical September summaries. They have not been scientifically rewritten after this audit. Consult the audit and the revised artifacts before reusing their claims, particularly the ICAIF performance estimates and UAI inferential explanations. A reported historical number is not a newly reproduced result.
+
+| Project | Current audited artifact | Finding and limit |
+| --- | --- | --- |
+| **ICLR 2027** | [Revision / version map](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/09d03cf1bf112639531a14924585e87705517e51/v33/README.md) · [Audit](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/09d03cf1bf112639531a14924585e87705517e51/audit/2026-10-08/initial-review.md) | Manuscript binding repaired; complementary robust-frontier and V33 extensions preserved and checked without claiming fresh CIFAR training. |
+| **AISTATS 2027** | [Revision / version map](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/1a797c291a5a4f31bd109c39c102eac68b934b88/revision/2026-10-08/aistats_submission.pdf) · [Audit](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/1a797c291a5a4f31bd109c39c102eac68b934b88/audit/2026-10-08/initial-review.md) | Positive-score exception restored in the identification claim; numerical evidence reproduced. |
+| **UAI 2026** | [Revision / version map](https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/ba3e968d71fea58c118e80c46bdf4944744bb4bd/audit/2026-10-08/revision/uai-statistical-audit-revision.pdf) · [Audit](https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/ba3e968d71fea58c118e80c46bdf4944744bb4bd/audit/2026-10-08/initial-review.md) | APS/theorem and statistical interpretation corrected; historical experiments remain unreproduced. |
+| **KG uncertainty revision** | [Revision / version map](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/19d5f072c5595af4dce4999ae58d984e9baf5dfc/output/kg-uncertainty-two-graph-draft9-20261008.pdf) · [Audit](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/19d5f072c5595af4dce4999ae58d984e9baf5dfc/audit/2026-10-08/initial-review.md) | Verified two-graph source/PDF separated from an unsupported expanded three-graph archive. |
+| **Factor/crowding revision** | [Revision / version map](https://github.com/ChorokLeeDev/factor-regime-revision/blob/de88bc61edaff2a9071236b5fed4cfd4d23aebc3/output/factor-crowding-statistical-audit-20261008.pdf) · [Audit](https://github.com/ChorokLeeDev/factor-regime-revision/blob/de88bc61edaff2a9071236b5fed4cfd4d23aebc3/audit/2026-10-08/initial-review.md) | Missing v10 raw evidence disclosed; six retained older empirical runs replayed. |
+| **Regime predictability revision** | [Revision / version map](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39/output/regime-predictability-statistical-audit-20261008.pdf) · [Audit](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39/audit/2026-10-08/initial-review.md) | Four omitted tests integrated; missing 800 intervention artifacts disclosed; historical recovery preserved. |
+| **ICAIF 2026** | [Revision / version map](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/7c45a212175b523db99ad54a8458682ce63eed50/revisions/2026-10-08/statistical-erratum.md) · [Audit](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/7c45a212175b523db99ad54a8458682ce63eed50/audit/2026-10-08/initial-review.md) | Statistical erratum withdraws unsupported predictive interpretations; replacement performance not estimated. |
+
+## Historical research communication materials
 
 [**Open the full collection**](materials/README.md) · [Download all files](materials/research_materials_2026-09-29.zip)
 
@@ -12,35 +28,37 @@ Chorok Lee · Research catalogue · Updated 29 September 2026
 
 The collection records exact manuscript revisions and review changes. Factor Decay follows the original ten-page TeX preprint. [Source versions and review records](materials/README.md#source-versions).
 
-## Papers
+## Historical manuscript and summary index
+
+The tables below preserve the September manuscript packages and status labels used by the historical summaries. Their PDF and ZIP links are pre-audit records; use the current audited-artifact table above for October corrections and revised manuscripts.
 
 ### Reliable prediction and statistical evaluation
 
 *예측 신뢰성과 통계적 평가*
 
-| Paper / version | Manuscript | arXiv source | One-pager |
+| Paper / historical status | Historical manuscript | Historical arXiv source | Historical one-pager |
 | --- | --- | --- | --- |
-| **ICLR 2027** · [How Many More Labels Are Needed? Minimax Evaluation under Selective Labels](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/tree/main)<br>Submitted to ICLR 2027 · Decision pending (not accepted) | [PDF](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/main/artifacts/iclr2027.pdf) | [ZIP](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/main/artifacts/arxiv-source.zip) | [EN / KO PDF](one-pagers/iclr2027.pdf) |
-| **AISTATS 2027** · [When Marginal Shift Magnitudes Cannot Identify Conformal Coverage Loss](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/tree/main)<br>AISTATS 2027 submission 644 | [PDF](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/main/submission/aistats_submission.pdf) | [ZIP](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/main/arxiv/reliance_alignment_arxiv_source.zip) | [EN / KO PDF](one-pagers/aistats2027.pdf) |
-| **UAI 2026** · [Diagnosing Conformal Prediction Failures Under Distribution Shift: A COVID-19 Case Study](https://github.com/ChorokLeeDev/conformal-covid-uai2026/tree/main)<br>UAI 2026 camera-ready source | [PDF](https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/main/paper/main.pdf) | — | [EN / KO PDF](one-pagers/uai2026.pdf) |
+| **ICLR 2027** · [How Many More Labels Are Needed? Minimax Evaluation under Selective Labels](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/tree/main)<br>Submitted to ICLR 2027 · Decision pending (not accepted) | [Historical PDF](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/main/artifacts/iclr2027.pdf) | [Historical ZIP](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/main/artifacts/arxiv-source.zip) | [EN / KO PDF](one-pagers/iclr2027.pdf) |
+| **AISTATS 2027** · [When Marginal Shift Magnitudes Cannot Identify Conformal Coverage Loss](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/tree/main)<br>AISTATS 2027 submission 644 | [Historical PDF](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/main/submission/aistats_submission.pdf) | [Historical ZIP](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/main/arxiv/reliance_alignment_arxiv_source.zip) | [EN / KO PDF](one-pagers/aistats2027.pdf) |
+| **UAI 2026** · [Diagnosing Conformal Prediction Failures Under Distribution Shift: A COVID-19 Case Study](https://github.com/ChorokLeeDev/conformal-covid-uai2026/tree/main)<br>UAI 2026 camera-ready source | [Historical PDF](https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/main/paper/main.pdf) | — | [EN / KO PDF](one-pagers/uai2026.pdf) |
 
 ### Knowledge graphs and error diagnosis
 
 *지식 그래프와 오류 진단*
 
-| Paper / version | Manuscript | arXiv source | One-pager |
+| Paper / historical status | Historical manuscript | Historical arXiv source | Historical one-pager |
 | --- | --- | --- | --- |
-| **KG uncertainty revision** · [Role Support in Knowledge-Graph Error Ranking: Predictor Regimes and Evaluation Policies](https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/revision/confirmation-resume-20260926)<br>Active revision | [PDF](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/revision/confirmation-resume-20260926/output/kg-uncertainty-revised.pdf) | [ZIP](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/revision/confirmation-resume-20260926/output/kg-uncertainty-arxiv-source.zip) | [EN / KO PDF](one-pagers/kg-uncertainty.pdf) |
+| **KG uncertainty revision** · [Role Support in Knowledge-Graph Error Ranking: Predictor Regimes and Evaluation Policies](https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/main)<br>Active revision | [Historical PDF](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/main/output/kg-uncertainty-revised.pdf) | [Historical expanded ZIP — evidence unavailable](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/main/output/kg-uncertainty-arxiv-source.zip) | [EN / KO PDF](one-pagers/kg-uncertainty.pdf) |
 
 ### Financial forecasting and model evaluation
 
 *금융 예측과 모델 평가*
 
-| Paper / version | Manuscript | arXiv source | One-pager |
+| Paper / historical status | Historical manuscript | Historical arXiv source | Historical one-pager |
 | --- | --- | --- | --- |
-| **Factor/crowding revision** · [Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence](https://github.com/ChorokLeeDev/factor-regime-revision/tree/revision/2026-09-26-factor-validity)<br>Active revision | [PDF](https://github.com/ChorokLeeDev/factor-regime-revision/blob/revision/2026-09-26-factor-validity/output/factor-crowding-revised.pdf) · [arXiv](https://arxiv.org/abs/2512.11913) | [ZIP](https://github.com/ChorokLeeDev/factor-regime-revision/blob/revision/2026-09-26-factor-validity/output/factor-paper-arxiv-source.zip) | [EN / KO PDF](one-pagers/factor-regime.pdf) |
-| **Regime predictability revision** · [Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability](https://github.com/ChorokLeeDev/regime-predictability-revision/tree/revision/pi-interview-arxiv-20260926)<br>Active revision | [PDF](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/revision/pi-interview-arxiv-20260926/output/regime-predictability-revised.pdf) · [arXiv](https://arxiv.org/abs/2601.10732) | [ZIP](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/revision/pi-interview-arxiv-20260926/output/regime-predictability-arxiv-source.zip) | [EN / KO PDF](one-pagers/regime-predictability.pdf) |
-| **ICAIF 2026** · [Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main)<br>ICAIF 2026 submission 239 · Decision pending | [Preprint · 10 pages](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf)<br>[Submission · 5 pages](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/submission/main_icaif_submission.pdf) | [ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip) | [EN / KO PDF](one-pagers/icaif2026.pdf) |
+| **Factor/crowding revision** · [Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence](https://github.com/ChorokLeeDev/factor-regime-revision/tree/main)<br>Active revision | [Historical PDF](https://github.com/ChorokLeeDev/factor-regime-revision/blob/main/output/factor-crowding-revised.pdf) · [arXiv](https://arxiv.org/abs/2512.11913) | [Historical ZIP](https://github.com/ChorokLeeDev/factor-regime-revision/blob/main/output/factor-paper-arxiv-source.zip) | [EN / KO PDF](one-pagers/factor-regime.pdf) |
+| **Regime predictability revision** · [Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability](https://github.com/ChorokLeeDev/regime-predictability-revision/tree/main)<br>Active revision | [Historical PDF](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/main/output/regime-predictability-revised.pdf) · [arXiv](https://arxiv.org/abs/2601.10732) | [Historical ZIP](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/main/output/regime-predictability-arxiv-source.zip) | [EN / KO PDF](one-pagers/regime-predictability.pdf) |
+| **ICAIF 2026** · [Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main)<br>ICAIF 2026 submission 239 · Decision pending | [Historical preprint · 10 pages](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf)<br>[Submission record · 5 pages](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/submission/main_icaif_submission.pdf) | [Historical ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip) | [EN / KO PDF](one-pagers/icaif2026.pdf) |
 
 ### How the three finance papers differ
 
@@ -61,19 +79,21 @@ The distinction is **future loss risk**, **the predictive contribution of a sour
 ### Version notes
 
 - **ICLR:** the current repository is `selective-labels-minimax-iclr2027`; manuscript and source links use its cleaned `artifacts/` and `paper/` layout.
-- **Factor Decay preprint:** the current [PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf) and [arXiv source ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip), prepared on 29 September 2026, use the **ten-page original TeX edition**, with six figures and 21 references. This replaces the earlier reconstructed upload package. The abstract and research text are preserved from the original TeX; author details and the publication wrapper were updated, and the missing figure was recovered from the original reference PDF. [Editable source](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main/arxiv/original-source-20260929) · [Provenance](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/PROVENANCE.md). Package preparation does not establish arXiv publication or newly validate the experiments.
+- **Historical Factor Decay preprint:** the September [PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf) and [arXiv source ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip), prepared on 29 September 2026, use the **ten-page original TeX edition**, with six figures and 21 references. This replaces the earlier reconstructed upload package. The abstract and research text are preserved from the original TeX; author details and the publication wrapper were updated, and the missing figure was recovered from the original reference PDF. [Editable source](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main/arxiv/original-source-20260929) · [Provenance](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/PROVENANCE.md). Package preparation does not establish arXiv publication or newly validate the experiments.
 - **ICAIF submission record:** the separate five-page submitted PDF remains authoritative for that submission. The existing ICAIF one-pager and one-minute introduction below describe that five-page version; they are not new summaries of the ten-page preprint. The exact submitted LaTeX source was not located.
 - **Research lineage:** ICAIF and the regime-predictability revision share earlier research history. Their current claims and versions are tracked separately; later revision findings are not retroactively attributed to the ICAIF submission.
-- **Revision branches:** the three revision projects link to their active branches rather than possibly older default-branch manuscripts. Summaries record the exact source commits in [papers.json](papers.json). Live branch links may advance after the summary date.
+- **Maintained branches:** the audited projects are integrated on `main`. September summaries retain their exact historical source commits in [papers.json](papers.json); the October audit separately records reviewed versions and limitations. Live branch links may advance after either date.
 - **Status:** venue labels identify the tracked version. Only explicitly stated decisions should be read as conference outcomes. Repository preparation does not upload or alter a conference submission.
 
-## One-minute research introductions
+## Historical one-minute research introductions
+
+These September scripts and their manuscript links predate the statistical audit; they are retained as historical communication records. Consult the current audited artifacts above before reusing their claims.
 
 English scripts contain approximately 130 words each. English and Korean versions are intended as natural spoken introductions; timing varies with speaking pace. The linked one-pagers give the question, method, findings, limits and source version.
 
 ### ICLR 2027: How Many More Labels Are Needed? Minimax Evaluation under Selective Labels
 
-[Repository](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/tree/main) · [Paper PDF](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/main/artifacts/iclr2027.pdf) · [One-pager](one-pagers/iclr2027.pdf)
+[Repository](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/tree/main) · [Historical paper PDF](https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027/blob/main/artifacts/iclr2027.pdf) · [Historical one-pager](one-pagers/iclr2027.pdf)
 
 **English · about one minute**
 
@@ -85,7 +105,7 @@ Suppose a model looks accurate, but the difficult cases are exactly the ones who
 
 ### AISTATS 2027: When Marginal Shift Magnitudes Cannot Identify Conformal Coverage Loss
 
-[Repository](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/tree/main) · [Paper PDF](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/main/submission/aistats_submission.pdf) · [One-pager](one-pagers/aistats2027.pdf)
+[Repository](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/tree/main) · [Historical paper PDF](https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027/blob/main/submission/aistats_submission.pdf) · [Historical one-pager](one-pagers/aistats2027.pdf)
 
 **English · about one minute**
 
@@ -97,7 +117,7 @@ A distribution-shift alarm tells us that deployment data have changed. But does 
 
 ### UAI 2026: Diagnosing Conformal Prediction Failures Under Distribution Shift: A COVID-19 Case Study
 
-[Repository](https://github.com/ChorokLeeDev/conformal-covid-uai2026/tree/main) · [Paper PDF](https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/main/paper/main.pdf) · [One-pager](one-pagers/uai2026.pdf)
+[Repository](https://github.com/ChorokLeeDev/conformal-covid-uai2026/tree/main) · [Historical paper PDF](https://github.com/ChorokLeeDev/conformal-covid-uai2026/blob/main/paper/main.pdf) · [Historical one-pager](one-pagers/uai2026.pdf)
 
 **English · about one minute**
 
@@ -109,7 +129,7 @@ Why can the same distribution shift barely affect one prediction task and seriou
 
 ### KG uncertainty revision: Role Support in Knowledge-Graph Error Ranking: Predictor Regimes and Evaluation Policies
 
-[Repository](https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/revision/confirmation-resume-20260926) · [Paper PDF](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/revision/confirmation-resume-20260926/output/kg-uncertainty-revised.pdf) · [One-pager](one-pagers/kg-uncertainty.pdf)
+[Repository](https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/main) · [Historical paper PDF](https://github.com/ChorokLeeDev/kg-uncertainty-revision/blob/main/output/kg-uncertainty-revised.pdf) · [Historical one-pager](one-pagers/kg-uncertainty.pdf)
 
 **English · about one minute**
 
@@ -121,7 +141,7 @@ In a knowledge graph, an entity may have little or no observed support for a par
 
 ### Factor/crowding revision: Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence
 
-[Repository](https://github.com/ChorokLeeDev/factor-regime-revision/tree/revision/2026-09-26-factor-validity) · [Paper PDF](https://github.com/ChorokLeeDev/factor-regime-revision/blob/revision/2026-09-26-factor-validity/output/factor-crowding-revised.pdf) · [One-pager](one-pagers/factor-regime.pdf)
+[Repository](https://github.com/ChorokLeeDev/factor-regime-revision/tree/main) · [Historical paper PDF](https://github.com/ChorokLeeDev/factor-regime-revision/blob/main/output/factor-crowding-revised.pdf) · [Historical one-pager](one-pagers/factor-regime.pdf)
 
 **English · about one minute**
 
@@ -133,7 +153,7 @@ A financial indicator can look predictive for reasons that have little to do wit
 
 ### Regime predictability revision: Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability
 
-[Repository](https://github.com/ChorokLeeDev/regime-predictability-revision/tree/revision/pi-interview-arxiv-20260926) · [Paper PDF](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/revision/pi-interview-arxiv-20260926/output/regime-predictability-revised.pdf) · [One-pager](one-pagers/regime-predictability.pdf)
+[Repository](https://github.com/ChorokLeeDev/regime-predictability-revision/tree/main) · [Historical paper PDF](https://github.com/ChorokLeeDev/regime-predictability-revision/blob/main/output/regime-predictability-revised.pdf) · [Historical one-pager](one-pagers/regime-predictability.pdf)
 
 **English · about one minute**
 
@@ -145,7 +165,7 @@ If we remove a variable from a forecasting model, have we really removed its inf
 
 ### ICAIF 2026: Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion
 
-[Repository](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main) · [Paper PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/submission/main_icaif_submission.pdf) · [One-pager](one-pagers/icaif2026.pdf)
+[Repository](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main) · [Historical paper PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/submission/main_icaif_submission.pdf) · [Historical one-pager](one-pagers/icaif2026.pdf)
 
 **English · about one minute**
 
@@ -157,6 +177,6 @@ A factor relationship may work for years and then stop being useful. Can we fore
 
 ## Maintenance
 
-- Edit `papers.json` for links, statuses and source identities; edit `briefs.json` for the reviewed summaries and speeches.
+- Edit `papers.json` for links, statuses, source identities and current audit records; `briefs.json` retains the dated September summaries and speeches.
 - Rebuild only this README with `python tools/build_briefs.py --readme-only`, or include the PDFs with `python tools/build_briefs.py`. The finance comparison and version notes are maintained in the README builder. See [one-pager build notes](one-pagers/README.md) for fonts and dependencies.
 - Update the source commit and review the scientific claims whenever a summary changes. Preserve submitted artifacts and distinguish reported results from newly reproduced evidence.

@@ -22,7 +22,16 @@
       "summary_source_commit": "34d30f12fa1d916e89a7eeba123c879e6c7c4db4",
       "one_pager": "one-pagers/iclr2027.pdf",
       "category": "Reliable prediction and statistical evaluation",
-      "status": "Submitted to ICLR 2027 · Decision pending (not accepted)"
+      "status": "Submitted to ICLR 2027 · Decision pending (not accepted)",
+      "audit": {
+        "date": "2026-10-08",
+        "report": "audit/2026-10-08/initial-review.md",
+        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "revised_artifact": "v33/README.md",
+        "commit": "09d03cf1bf112639531a14924585e87705517e51",
+        "summary": "Manuscript binding repaired; complementary robust-frontier and V33 extensions preserved and checked without claiming fresh CIFAR training.",
+        "historical_summaries_rewritten": false
+      }
     },
     {
       "id": "aistats2027",
@@ -39,7 +48,16 @@
       "summary_source_commit": "76661fdf862959345ea22ea2ab5494a4171a6eab",
       "one_pager": "one-pagers/aistats2027.pdf",
       "category": "Reliable prediction and statistical evaluation",
-      "status": "AISTATS 2027 submission 644"
+      "status": "AISTATS 2027 submission 644",
+      "audit": {
+        "date": "2026-10-08",
+        "report": "audit/2026-10-08/initial-review.md",
+        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "revised_artifact": "revision/2026-10-08/aistats_submission.pdf",
+        "commit": "1a797c291a5a4f31bd109c39c102eac68b934b88",
+        "summary": "Positive-score exception restored in the identification claim; numerical evidence reproduced.",
+        "historical_summaries_rewritten": false
+      }
     },
     {
       "id": "uai2026",
@@ -56,60 +74,96 @@
       "summary_source_commit": "96d9616961e5ae8607373181d35262cb21a2b0d1",
       "one_pager": "one-pagers/uai2026.pdf",
       "category": "Reliable prediction and statistical evaluation",
-      "status": "UAI 2026 camera-ready source"
+      "status": "UAI 2026 camera-ready source",
+      "audit": {
+        "date": "2026-10-08",
+        "report": "audit/2026-10-08/initial-review.md",
+        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "revised_artifact": "audit/2026-10-08/revision/uai-statistical-audit-revision.pdf",
+        "commit": "ba3e968d71fea58c118e80c46bdf4944744bb4bd",
+        "summary": "APS/theorem and statistical interpretation corrected; historical experiments remain unreproduced.",
+        "historical_summaries_rewritten": false
+      }
     },
     {
       "id": "kg-uncertainty",
       "label": "KG uncertainty revision",
       "title": "Role Support in Knowledge-Graph Error Ranking: Predictor Regimes and Evaluation Policies",
       "repository": "ChorokLeeDev/kg-uncertainty-revision",
-      "branch": "revision/confirmation-resume-20260926",
+      "branch": "main",
       "manuscript": "output/kg-uncertainty-revised.pdf",
       "source": "manuscript.tex",
       "arxiv_source": "output/kg-uncertainty-arxiv-source.zip",
       "repository_url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision",
-      "working_branch_url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/revision/confirmation-resume-20260926",
+      "working_branch_url": "https://github.com/ChorokLeeDev/kg-uncertainty-revision/tree/main",
       "verified_date": "2026-09-27",
       "summary_source_commit": "208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18",
       "one_pager": "one-pagers/kg-uncertainty.pdf",
       "category": "Knowledge graphs and error diagnosis",
-      "status": "Active revision"
+      "status": "Active revision",
+      "audit": {
+        "date": "2026-10-08",
+        "report": "audit/2026-10-08/initial-review.md",
+        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "revised_artifact": "output/kg-uncertainty-two-graph-draft9-20261008.pdf",
+        "commit": "19d5f072c5595af4dce4999ae58d984e9baf5dfc",
+        "summary": "Verified two-graph source/PDF separated from an unsupported expanded three-graph archive.",
+        "historical_summaries_rewritten": false
+      }
     },
     {
       "id": "factor-regime",
       "label": "Factor/crowding revision",
       "title": "Return-Decay Residuals and Tail-Risk Forecasting: Timing Artifacts, Conditional Inference, and Cross-Market Evidence",
       "repository": "ChorokLeeDev/factor-regime-revision",
-      "branch": "revision/2026-09-26-factor-validity",
+      "branch": "main",
       "manuscript": "output/factor-crowding-revised.pdf",
       "source": "manuscript.tex",
       "arxiv_source": "output/factor-paper-arxiv-source.zip",
       "repository_url": "https://github.com/ChorokLeeDev/factor-regime-revision",
-      "working_branch_url": "https://github.com/ChorokLeeDev/factor-regime-revision/tree/revision/2026-09-26-factor-validity",
+      "working_branch_url": "https://github.com/ChorokLeeDev/factor-regime-revision/tree/main",
       "verified_date": "2026-09-27",
       "summary_source_commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
       "one_pager": "one-pagers/factor-regime.pdf",
       "category": "Financial forecasting and model evaluation",
       "status": "Active revision",
-      "arxiv_url": "https://arxiv.org/abs/2512.11913"
+      "arxiv_url": "https://arxiv.org/abs/2512.11913",
+      "audit": {
+        "date": "2026-10-08",
+        "report": "audit/2026-10-08/initial-review.md",
+        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "revised_artifact": "output/factor-crowding-statistical-audit-20261008.pdf",
+        "commit": "de88bc61edaff2a9071236b5fed4cfd4d23aebc3",
+        "summary": "Missing v10 raw evidence disclosed; six retained older empirical runs replayed.",
+        "historical_summaries_rewritten": false
+      }
     },
     {
       "id": "regime-predictability",
       "label": "Regime predictability revision",
       "title": "Source Exclusion in Regime-Gated Forecasting: A Cross-Market Audit of Equity-Factor Predictability",
       "repository": "ChorokLeeDev/regime-predictability-revision",
-      "branch": "revision/pi-interview-arxiv-20260926",
+      "branch": "main",
       "manuscript": "output/regime-predictability-revised.pdf",
       "source": "manuscript.tex",
       "arxiv_source": "output/regime-predictability-arxiv-source.zip",
       "repository_url": "https://github.com/ChorokLeeDev/regime-predictability-revision",
-      "working_branch_url": "https://github.com/ChorokLeeDev/regime-predictability-revision/tree/revision/pi-interview-arxiv-20260926",
+      "working_branch_url": "https://github.com/ChorokLeeDev/regime-predictability-revision/tree/main",
       "verified_date": "2026-09-27",
       "summary_source_commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
       "one_pager": "one-pagers/regime-predictability.pdf",
       "category": "Financial forecasting and model evaluation",
       "status": "Active revision",
-      "arxiv_url": "https://arxiv.org/abs/2601.10732"
+      "arxiv_url": "https://arxiv.org/abs/2601.10732",
+      "audit": {
+        "date": "2026-10-08",
+        "report": "audit/2026-10-08/initial-review.md",
+        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "revised_artifact": "output/regime-predictability-statistical-audit-20261008.pdf",
+        "commit": "3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39",
+        "summary": "Four omitted tests integrated; missing 800 intervention artifacts disclosed; historical recovery preserved.",
+        "historical_summaries_rewritten": false
+      }
     },
     {
       "id": "icaif2026",
@@ -139,8 +193,17 @@
       "arxiv_editable_source": "arxiv/original-source-20260929/main.tex",
       "arxiv_source_commit": "a0bd43ea47898011d0661710975658a8969299d5",
       "arxiv_prepared_date": "2026-09-29",
-      "arxiv_page_count": 10
+      "arxiv_page_count": 10,
+      "audit": {
+        "date": "2026-10-08",
+        "report": "audit/2026-10-08/initial-review.md",
+        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "revised_artifact": "revisions/2026-10-08/statistical-erratum.md",
+        "commit": "7c45a212175b523db99ad54a8458682ce63eed50",
+        "summary": "Statistical erratum withdraws unsupported predictive interpretations; replacement performance not estimated.",
+        "historical_summaries_rewritten": false
+      }
     }
   ],
-  "updated": "2026-09-29"
+  "updated": "2026-10-08"
 }

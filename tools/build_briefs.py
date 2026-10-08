@@ -36,33 +36,57 @@ def url(p, key):
 def readme(papers, briefs):
     lines = [
         '# Research Papers', '',
-        'Chorok Lee · Research catalogue · Updated 29 September 2026', '',
+        'Chorok Lee · Research catalogue · Updated 8 October 2026', '',
         '논문별 저장소, 기준 원고, 한 페이지 소개와 한·영 1분 스피치를 모았습니다. '
         '금융 논문 세 편의 차이는 아래 비교표에서 확인할 수 있습니다. '
         '아래 7개 항목은 프로젝트/버전 목록이며 독립적인 출판 논문 수를 뜻하지 않습니다.', '',
-        "## Research communication materials",
+        "## Statistical audit and current revisions",
+        "",
+        "[**2026-10-08 audit: all seven papers**](audit/2026-10-08/README.md). 검증된 수정과 앞선 연구 작업을 각 저장소의 `main`에 통합했습니다. 통계적 오류, 재현된 결과, 미확보 증거를 논문별로 구분합니다.",
+        "",
+        "The briefs, speeches and presentation collection below are historical September summaries. They have not been scientifically rewritten after this audit. Consult the audit and the revised artifacts before reusing their claims, particularly the ICAIF performance estimates and UAI inferential explanations. A reported historical number is not a newly reproduced result.",
+        "",
+        "## Historical research communication materials",
         "",
         "[**Open the full collection**](materials/README.md) · [Download all files](materials/research_materials_2026-09-29.zip)",
         "",
         "각 논문별 **영어 10장 발표 슬라이드(PPTX·PDF), 영어 A0 포스터, 영어·한국어 각각 1쪽 소개서**를 제공합니다. 총 7세트이며, 아래의 기존 1분 스피치·소개서와 별도로 제작했습니다. 원고 기반 내용 검토와 에이전트 간 교차 피드백을 반영한 자료입니다.",
         "",
         "The collection records exact manuscript revisions and review changes. Factor Decay follows the original ten-page TeX preprint. [Source versions and review records](materials/README.md#source-versions).",
-        '', '## Papers', '',
+        '', '## Historical manuscript and summary index', '',
+        'The tables below preserve the September manuscript packages and status labels used by the historical summaries. Their PDF and ZIP links are pre-audit records; use the current audited-artifact table above for October corrections and revised manuscripts.', '',
     ]
+    if all(p.get('audit') for p in papers):
+        audit_rows = [
+            '| Project | Current audited artifact | Finding and limit |',
+            '| --- | --- | --- |',
+        ]
+        for p in papers:
+            audit = p['audit']
+            base = f"{p['repository_url']}/blob/{audit['commit']}/"
+            audit_rows.append(
+                f"| **{p['label']}** | [Revision / version map]({base}{audit['revised_artifact']}) · "
+                f"[Audit]({base}{audit['report']}) | {audit['summary']} |"
+            )
+        audit_rows.append('')
+        insertion = lines.index('## Historical research communication materials')
+        lines[insertion:insertion] = audit_rows
     for category, ko in CATEGORY_KO.items():
         lines += [f'### {category}', '', f'*{ko}*', '',
-                  '| Paper / version | Manuscript | arXiv source | One-pager |',
+                  '| Paper / historical status | Historical manuscript | Historical arXiv source | Historical one-pager |',
                   '| --- | --- | --- | --- |']
         for p in papers:
             if p['category'] != category:
                 continue
-            arxiv = f"[ZIP]({url(p, 'arxiv_source')})" if p.get('arxiv_source') else '—'
-            manuscript = f"[PDF]({url(p, 'manuscript')})"
+            arxiv = f"[Historical ZIP]({url(p, 'arxiv_source')})" if p.get('arxiv_source') else '—'
+            if p['id'] == 'kg-uncertainty':
+                arxiv = f"[Historical expanded ZIP — evidence unavailable]({url(p, 'arxiv_source')})"
+            manuscript = f"[Historical PDF]({url(p, 'manuscript')})"
             if p.get('arxiv_url'):
                 manuscript += f" · [arXiv]({p['arxiv_url']})"
             if p['id'] == 'icaif2026':
-                manuscript = (f"[Preprint · 10 pages]({url(p, 'arxiv_pdf')})<br>"
-                              f"[Submission · 5 pages]({url(p, 'manuscript')})")
+                manuscript = (f"[Historical preprint · 10 pages]({url(p, 'arxiv_pdf')})<br>"
+                              f"[Submission record · 5 pages]({url(p, 'manuscript')})")
             lines += [f"| **{p['label']}** · [{p['title']}]({p['working_branch_url']})<br>{p['status']} | {manuscript} | {arxiv} | [EN / KO PDF]({p['one_pager']}) |"]
         lines.append('')
     lines += [
@@ -78,22 +102,23 @@ def readme(papers, briefs):
         '**Evidence limits:** the two audit papers do not establish a robust general forecasting advantage. Factor Decay reports exploratory results based on only seven decay events; the comparison above describes research questions, not proven trading benefits.', '',
         '### Version notes', '',
         '- **ICLR:** the current repository is `selective-labels-minimax-iclr2027`; manuscript and source links use its cleaned `artifacts/` and `paper/` layout.',
-        '- **Factor Decay preprint:** the current [PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf) and [arXiv source ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip), prepared on 29 September 2026, use the **ten-page original TeX edition**, with six figures and 21 references. This replaces the earlier reconstructed upload package. The abstract and research text are preserved from the original TeX; author details and the publication wrapper were updated, and the missing figure was recovered from the original reference PDF. [Editable source](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main/arxiv/original-source-20260929) · [Provenance](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/PROVENANCE.md). Package preparation does not establish arXiv publication or newly validate the experiments.',
+        '- **Historical Factor Decay preprint:** the September [PDF](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv.pdf) and [arXiv source ZIP](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/factor_decay_arxiv_source.zip), prepared on 29 September 2026, use the **ten-page original TeX edition**, with six figures and 21 references. This replaces the earlier reconstructed upload package. The abstract and research text are preserved from the original TeX; author details and the publication wrapper were updated, and the missing figure was recovered from the original reference PDF. [Editable source](https://github.com/ChorokLeeDev/factor-decay-icaif2026/tree/main/arxiv/original-source-20260929) · [Provenance](https://github.com/ChorokLeeDev/factor-decay-icaif2026/blob/main/arxiv/PROVENANCE.md). Package preparation does not establish arXiv publication or newly validate the experiments.',
         '- **ICAIF submission record:** the separate five-page submitted PDF remains authoritative for that submission. The existing ICAIF one-pager and one-minute introduction below describe that five-page version; they are not new summaries of the ten-page preprint. The exact submitted LaTeX source was not located.',
         '- **Research lineage:** ICAIF and the regime-predictability revision share earlier research history. Their current claims and versions are tracked separately; later revision findings are not retroactively attributed to the ICAIF submission.',
-        '- **Revision branches:** the three revision projects link to their active branches rather than possibly older default-branch manuscripts. Summaries record the exact source commits in [papers.json](papers.json). Live branch links may advance after the summary date.',
+        '- **Maintained branches:** the audited projects are integrated on `main`. September summaries retain their exact historical source commits in [papers.json](papers.json); the October audit separately records reviewed versions and limitations. Live branch links may advance after either date.',
         '- **Status:** venue labels identify the tracked version. Only explicitly stated decisions should be read as conference outcomes. Repository preparation does not upload or alter a conference submission.', '',
-        '## One-minute research introductions', '',
+        '## Historical one-minute research introductions', '',
+        'These September scripts and their manuscript links predate the statistical audit; they are retained as historical communication records. Consult the current audited artifacts above before reusing their claims.', '',
         'English scripts contain approximately 130 words each. English and Korean versions are intended as natural spoken introductions; timing varies with speaking pace. The linked one-pagers give the question, method, findings, limits and source version.', '',
     ]
     for p in papers:
         b = briefs[p['id']]
         lines += [f"### {p['label']}: {p['title']}", '',
-                  f"[Repository]({p['working_branch_url']}) · [Paper PDF]({url(p, 'manuscript')}) · [One-pager]({p['one_pager']})", '',
+                  f"[Repository]({p['working_branch_url']}) · [Historical paper PDF]({url(p, 'manuscript')}) · [Historical one-pager]({p['one_pager']})", '',
                   '**English · about one minute**', '', b['speech_en'], '',
                   '**한국어 · 약 1분**', '', b['speech_ko'], '']
     lines += ['## Maintenance', '',
-              '- Edit `papers.json` for links, statuses and source identities; edit `briefs.json` for the reviewed summaries and speeches.',
+              '- Edit `papers.json` for links, statuses, source identities and current audit records; `briefs.json` retains the dated September summaries and speeches.',
               '- Rebuild only this README with `python tools/build_briefs.py --readme-only`, or include the PDFs with `python tools/build_briefs.py`. The finance comparison and version notes are maintained in the README builder. See [one-pager build notes](one-pagers/README.md) for fonts and dependencies.',
               '- Update the source commit and review the scientific claims whenever a summary changes. Preserve submitted artifacts and distinguish reported results from newly reproduced evidence.', '']
     (ROOT / 'README.md').write_text('\n'.join(lines), encoding='utf-8')

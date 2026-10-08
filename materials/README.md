@@ -2,6 +2,8 @@
 
 Chorok Lee, KAIST. Prepared 29 September 2026.
 
+**Historical collection:** these files predate the [8 October statistical audit](../audit/2026-10-08/README.md). They have not been rewritten to incorporate its scientific corrections. Use the audit's revised manuscripts and ICAIF erratum for current claim status; document-layout checks do not validate the original research results.
+
 Seven source-grounded presentation sets: each includes an English 10-slide deck, an English A0 poster, and separate English and Korean A4 introductions. Each introduction is exactly one page.
 
 [Download all 35 presentation files](research_materials_2026-09-29.zip)

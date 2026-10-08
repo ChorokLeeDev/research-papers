@@ -3,6 +3,8 @@
 Seven source-grounded English/Korean PDFs accompany the one-minute scripts in
 the root README. They are explanatory briefs, not replacements for the papers.
 
+These September briefs predate the [8 October statistical audit](../audit/2026-10-08/README.md). They are retained as historical summaries, not corrected current evidence. In particular, the ICAIF performance estimates were not reproduced and the UAI statistical interpretation required corrections; read the linked audit and current manuscripts before reusing these PDFs.
+
 ## Rebuild
 
 Use Python 3 with `reportlab`. Set `BRIEF_FONT_DIR` to a directory containing

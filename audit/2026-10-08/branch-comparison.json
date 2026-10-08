@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-08",
+  "phase": "after integration",
+  "method": "All live remote branch tips compared against the reviewed main commit; ancestry does not independently validate historical claims.",
+  "repositories": [
+    {
+      "repository": "ChorokLeeDev/selective-labels-minimax-iclr2027",
+      "main": "09d03cf1bf112639531a14924585e87705517e51",
+      "clean": true,
+      "remote_main_matches": true,
+      "remote_branches": [
+        {
+          "ref": "refs/heads/codex/research-quality-20260913",
+          "commit": "007534b75e54c1683b62a43dc52f0e5df708a9a2",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/codex/v7-ai-disclosure",
+          "commit": "200b6fdadc9abddf76c75a3cbd504f7fad9a3176",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/codex/v7-anonymous-bundle",
+          "commit": "e86ac15c3dff616bf86ce7e00fa3e274bb0554f1",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/codex/v7-evidence-integration",
+          "commit": "c69982af626a0e6d0e82cd2e3030b6a7fe1c4365",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/codex/v7-trusted-audit",
+          "commit": "1814e91b270db70c59e62da4f96721abc14a82a0",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/main",
+          "commit": "09d03cf1bf112639531a14924585e87705517e51",
+          "object_available": true,
+          "ancestor_of_main": true
+        }
+      ]
+    },
+    {
+      "repository": "ChorokLeeDev/conformal-coverage-identification-aistats2027",
+      "main": "1a797c291a5a4f31bd109c39c102eac68b934b88",
+      "clean": true,
+      "remote_main_matches": true,
+      "remote_branches": [
+        {
+          "ref": "refs/heads/cleanup/2026-09-27-submission",
+          "commit": "76661fdf862959345ea22ea2ab5494a4171a6eab",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/main",
+          "commit": "1a797c291a5a4f31bd109c39c102eac68b934b88",
+          "object_available": true,
+          "ancestor_of_main": true
+        }
+      ]
+    },
+    {
+      "repository": "ChorokLeeDev/conformal-covid-uai2026",
+      "main": "ba3e968d71fea58c118e80c46bdf4944744bb4bd",
+      "clean": true,
+      "remote_main_matches": true,
+      "remote_branches": [
+        {
+          "ref": "refs/heads/main",
+          "commit": "ba3e968d71fea58c118e80c46bdf4944744bb4bd",
+          "object_available": true,
+          "ancestor_of_main": true
+        }
+      ]
+    },
+    {
+      "repository": "ChorokLeeDev/kg-uncertainty-revision",
+      "main": "19d5f072c5595af4dce4999ae58d984e9baf5dfc",
+      "clean": true,
+      "remote_main_matches": true,
+      "remote_branches": [
+        {
+          "ref": "refs/heads/main",
+          "commit": "19d5f072c5595af4dce4999ae58d984e9baf5dfc",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/revision/confirmation-resume-20260926",
+          "commit": "208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/revision/decision-time-validation-20260926",
+          "commit": "b9618eb56962e35dc4d1259d39faed784d60d675",
+          "object_available": true,
+          "ancestor_of_main": true
+        }
+      ]
+    },
+    {
+      "repository": "ChorokLeeDev/factor-regime-revision",
+      "main": "de88bc61edaff2a9071236b5fed4cfd4d23aebc3",
+      "clean": true,
+      "remote_main_matches": true,
+      "remote_branches": [
+        {
+          "ref": "refs/heads/main",
+          "commit": "de88bc61edaff2a9071236b5fed4cfd4d23aebc3",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/revision/2026-09-26-factor-validity",
+          "commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
+          "object_available": true,
+          "ancestor_of_main": true
+        }
+      ]
+    },
+    {
+      "repository": "ChorokLeeDev/regime-predictability-revision",
+      "main": "3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39",
+      "clean": true,
+      "remote_main_matches": true,
+      "remote_branches": [
+        {
+          "ref": "refs/heads/main",
+          "commit": "3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/revision/chronological-validation-20260926",
+          "commit": "80ad089e008098c27f0046f778f7b302fd84fa55",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/revision/independent-audit-20260926",
+          "commit": "1f32a52517449ed3341453d3fe6e0d2ef735e426",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/revision/pi-interview-arxiv-20260926",
+          "commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
+          "object_available": true,
+          "ancestor_of_main": true
+        },
+        {
+          "ref": "refs/heads/revision/support-cap-audit-20260926",
+          "commit": "ccba4af3b957b3f3edae1789fb9c1017545a0825",
+          "object_available": true,
+          "ancestor_of_main": true
+        }
+      ]
+    },
+    {
+      "repository": "ChorokLeeDev/factor-decay-icaif2026",
+      "main": "7c45a212175b523db99ad54a8458682ce63eed50",
+      "clean": true,
+      "remote_main_matches": true,
+      "remote_branches": [
+        {
+          "ref": "refs/heads/main",
+          "commit": "7c45a212175b523db99ad54a8458682ce63eed50",
+          "object_available": true,
+          "ancestor_of_main": true
+        }
+      ]
+    }
+  ]
+}
