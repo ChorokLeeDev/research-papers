@@ -18,7 +18,9 @@
         "updated_at": "2026-10-08T15:38:18.925Z",
         "evidence_commit": "533814f27add9dd05bcebb74e71ea21bfeb76649",
         "state": "Todo"
-      }
+      },
+      "latest_review_commit": "72132d32f8671fa099711211a5f54f0f55b22caf",
+      "latest_review_report": "audit/2026-10-09/revision-record.md"
     },
     {
       "key": "kg-arxiv-correction",
@@ -35,7 +37,9 @@
         "updated_at": "2026-10-08T15:38:31.418Z",
         "evidence_commit": "af000ebf0c896c4ab0a75ad0f8874077c1eece0a",
         "state": "Todo"
-      }
+      },
+      "latest_review_commit": "ccb42b3af333424b5e9d70e9d7cde774e6d9ce63",
+      "latest_review_report": "audit/2026-10-09/next-cycle/review.md"
     }
   ],
   "no_substantial_update_required": [
@@ -48,7 +52,7 @@
       "reason": "All800 original raw hashes restored; scientific source/results unchanged."
     }
   ],
-  "next_review_cycle": "Linear persistence confirmed; the next bounded seven-paper review is now authorized to start. No new scientific validation is claimed by this tracking update.",
+  "next_review_cycle": "Completed one bounded seven-paper cycle after verified Linear sync; see next-cycle-20261009.md. UAI/AISTATS corrections and all seven review checkpoints pushed with remote blob verification.",
   "sync": {
     "date_kst": "2026-10-09",
     "verified_at_utc": "2026-10-08T15:40:51.635Z",
@@ -100,6 +104,29 @@
       "title": "Predicting Factor Decay: ML Models for Cross-Factor Predictability Erosion",
       "type": "New",
       "status": "on hold"
+    }
+  ],
+  "latest_linear_readbacks": [
+    {
+      "id": "YEO-169",
+      "url": "https://linear.app/yeondu/issue/YEO-169/arxiv-260100908v2-통계-정정과-복구-자료-재검증을-반영한-개정본-준비",
+      "updated_at": "2026-10-08T16:01:28.997Z",
+      "status": "Todo",
+      "readback_verified": true
+    },
+    {
+      "id": "YEO-170",
+      "url": "https://linear.app/yeondu/issue/YEO-170/arxiv-251222318v3-v4-사전-검증-주장-정정과-재구성-실험수정-표-반영",
+      "updated_at": "2026-10-08T16:01:30.927Z",
+      "status": "Todo",
+      "readback_verified": true
+    },
+    {
+      "id": "YEO-7",
+      "url": "https://linear.app/yeondu/issue/YEO-7/aistats-644-제출-이력후속-안내",
+      "updated_at": "2026-10-08T16:01:33.148Z",
+      "status": "Backlog",
+      "readback_verified": true
     }
   ]
 }

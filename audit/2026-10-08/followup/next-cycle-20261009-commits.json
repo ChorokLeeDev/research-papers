@@ -1,0 +1,56 @@
+{
+  "date_kst": "2026-10-09",
+  "verified_at_utc": "2026-10-08T16:04:56.443Z",
+  "scope": "One bounded next-cycle review, after confirmed Linear persistence. Original publication artifacts preserved.",
+  "papers": {
+    "ChorokLeeDev/kg-uncertainty-revision": {
+      "baseline": "af000ebf0c896c4ab0a75ad0f8874077c1eece0a",
+      "commit": "ccb42b3af333424b5e9d70e9d7cde774e6d9ce63",
+      "file_count": 3,
+      "blob_hashes_verified": true,
+      "review": "audit/2026-10-09/next-cycle/review.md"
+    },
+    "ChorokLeeDev/factor-decay-icaif2026": {
+      "baseline": "4b088580b5b1756c180c4064640f1dcc558dd825",
+      "commit": "63a03a95f4150b4af38d0eeb625743d83d4bb86a",
+      "file_count": 6,
+      "blob_hashes_verified": true,
+      "review": "audit/2026-10-09/next-cycle/review.md"
+    },
+    "ChorokLeeDev/factor-regime-revision": {
+      "baseline": "d6f6d1e7410c4961126d8be759431b3eb9287da7",
+      "commit": "823d6cc42b4ff9f6e1f336e472c77ead75362b2c",
+      "file_count": 5,
+      "blob_hashes_verified": true,
+      "review": "audit/2026-10-09/next-cycle/review.md"
+    },
+    "ChorokLeeDev/regime-predictability-revision": {
+      "baseline": "bbf84ffaac9aca05e434884e517027f57d324e4f",
+      "commit": "bfc8c61ca5f31fbb598454d072f6767cb3bd6c62",
+      "file_count": 4,
+      "blob_hashes_verified": true,
+      "review": "audit/2026-10-09/next-cycle/review.md"
+    },
+    "ChorokLeeDev/selective-labels-minimax-iclr2027": {
+      "baseline": "21588a434f920ae1d6769ba9145df2017218df63",
+      "commit": "51ecd493f952b51b58ea2d26b5962cf2c4073f3d",
+      "file_count": 3,
+      "blob_hashes_verified": true,
+      "review": "audit/2026-10-09/next-cycle/review.md"
+    },
+    "ChorokLeeDev/conformal-coverage-identification-aistats2027": {
+      "baseline": "c9d1f21510df33eb28a785efba476ca9425517b9",
+      "commit": "caa312a59285365e273fd602636017b627d51d22",
+      "file_count": 21,
+      "blob_hashes_verified": true,
+      "review": "audit/2026-10-09/next-cycle/review.md"
+    },
+    "ChorokLeeDev/conformal-covid-uai2026": {
+      "baseline": "533814f27add9dd05bcebb74e71ea21bfeb76649",
+      "commit": "72132d32f8671fa099711211a5f54f0f55b22caf",
+      "file_count": 15,
+      "blob_hashes_verified": true,
+      "review": "audit/2026-10-09/revision-record.md"
+    }
+  }
+}

@@ -31,6 +31,22 @@
         "commit": "21588a434f920ae1d6769ba9145df2017218df63",
         "summary": "Raw inputs recovered; fresh model, 10,000 predictions and 48 exact audit probabilities checked. Historical confidence-order mismatch remains explicitly preserved.",
         "historical_summaries_rewritten": false
+      },
+      "arxiv_tracking": {
+        "as_of_kst": "2026-10-09",
+        "submission_id": "8134764",
+        "type": "New",
+        "status": "on hold",
+        "source": "User-provided arXiv account dashboard",
+        "public_article_id": null,
+        "submitted_payload_matches_current_revision": "not_checked"
+      },
+      "next_cycle_audit": {
+        "date": "2026-10-09",
+        "commit": "51ecd493f952b51b58ea2d26b5962cf2c4073f3d",
+        "baseline": "21588a434f920ae1d6769ba9145df2017218df63",
+        "report": "audit/2026-10-09/next-cycle/review.md",
+        "remote_blob_hashes_verified": true
       }
     },
     {
@@ -57,6 +73,22 @@
         "commit": "c9d1f21510df33eb28a785efba476ca9425517b9",
         "summary": "Protocol timing qualified; all 27 cited primary metadata records and nine full-text versions checked. Numerical results unchanged.",
         "historical_summaries_rewritten": false
+      },
+      "arxiv_tracking": {
+        "as_of_kst": "2026-10-09",
+        "submission_id": "8147722",
+        "type": "New",
+        "status": "on hold",
+        "source": "User-provided arXiv account dashboard",
+        "public_article_id": null,
+        "submitted_payload_matches_current_revision": "not_checked"
+      },
+      "next_cycle_audit": {
+        "date": "2026-10-09",
+        "commit": "caa312a59285365e273fd602636017b627d51d22",
+        "baseline": "c9d1f21510df33eb28a785efba476ca9425517b9",
+        "report": "audit/2026-10-09/next-cycle/review.md",
+        "remote_blob_hashes_verified": true
       }
     },
     {
@@ -83,6 +115,22 @@
         "commit": "533814f27add9dd05bcebb74e71ea21bfeb76649",
         "summary": "Recovered 24-model follow-up fully refitted; negative eight-task association, date-truncated join defect and unsupported experiment claims documented. Original 50-seed results remain unrecovered.",
         "historical_summaries_rewritten": false
+      },
+      "arxiv_tracking": {
+        "as_of_kst": "2026-10-09",
+        "public_version": "2601.00908v2",
+        "source": "Official arXiv abstract page checked in this session",
+        "correction_issue": "YEO-169",
+        "correction_issue_url": "https://linear.app/yeondu/issue/YEO-169",
+        "correction_state": "Todo",
+        "replacement_submitted": "not_verified"
+      },
+      "next_cycle_audit": {
+        "date": "2026-10-09",
+        "commit": "72132d32f8671fa099711211a5f54f0f55b22caf",
+        "baseline": "533814f27add9dd05bcebb74e71ea21bfeb76649",
+        "report": "audit/2026-10-09/revision-record.md",
+        "remote_blob_hashes_verified": true
       }
     },
     {
@@ -109,6 +157,22 @@
         "commit": "af000ebf0c896c4ab0a75ad0f8874077c1eece0a",
         "summary": "Public expanded v3 identified; three-graph results reconstructed and independently checked. Proposed v4 withdraws unsupported pretest/original-checker claims and records numerical deviations.",
         "historical_summaries_rewritten": false
+      },
+      "arxiv_tracking": {
+        "as_of_kst": "2026-10-09",
+        "public_version": "2512.22318v3",
+        "source": "Official arXiv abstract page checked in this session",
+        "correction_issue": "YEO-170",
+        "correction_issue_url": "https://linear.app/yeondu/issue/YEO-170",
+        "correction_state": "Todo",
+        "replacement_submitted": "not_verified"
+      },
+      "next_cycle_audit": {
+        "date": "2026-10-09",
+        "commit": "ccb42b3af333424b5e9d70e9d7cde774e6d9ce63",
+        "baseline": "af000ebf0c896c4ab0a75ad0f8874077c1eece0a",
+        "report": "audit/2026-10-09/next-cycle/review.md",
+        "remote_blob_hashes_verified": true
       }
     },
     {
@@ -136,6 +200,13 @@
         "commit": "d6f6d1e7410c4961126d8be759431b3eb9287da7",
         "summary": "Complete v10 reconstruction: 5,040 fits, 648,000 entries; 166 stable fields and table match exactly. New evidence is distinguished from missing original archive bytes.",
         "historical_summaries_rewritten": false
+      },
+      "next_cycle_audit": {
+        "date": "2026-10-09",
+        "commit": "823d6cc42b4ff9f6e1f336e472c77ead75362b2c",
+        "baseline": "d6f6d1e7410c4961126d8be759431b3eb9287da7",
+        "report": "audit/2026-10-09/next-cycle/review.md",
+        "remote_blob_hashes_verified": true
       }
     },
     {
@@ -163,6 +234,13 @@
         "commit": "bbf84ffaac9aca05e434884e517027f57d324e4f",
         "summary": "All 800 raw files restored to original hashes; 400-run reconstruction and independent loss/interval replay pass. Scientific results unchanged.",
         "historical_summaries_rewritten": false
+      },
+      "next_cycle_audit": {
+        "date": "2026-10-09",
+        "commit": "bfc8c61ca5f31fbb598454d072f6767cb3bd6c62",
+        "baseline": "bbf84ffaac9aca05e434884e517027f57d324e4f",
+        "report": "audit/2026-10-09/next-cycle/review.md",
+        "remote_blob_hashes_verified": true
       }
     },
     {
@@ -202,8 +280,24 @@
         "commit": "4b088580b5b1756c180c4064640f1dcc558dd825",
         "summary": "New chronological reconstruction independently checks 1,830 regressions and 240 cohorts. Held-out AUC/C-index are undefined with 3 and 1 eligible events; original 0.933 is not validated.",
         "historical_summaries_rewritten": false
+      },
+      "arxiv_tracking": {
+        "as_of_kst": "2026-10-09",
+        "submission_id": "8147946",
+        "type": "New",
+        "status": "on hold",
+        "source": "User-provided arXiv account dashboard",
+        "public_article_id": null,
+        "submitted_payload_matches_current_revision": "not_checked"
+      },
+      "next_cycle_audit": {
+        "date": "2026-10-09",
+        "commit": "63a03a95f4150b4af38d0eeb625743d83d4bb86a",
+        "baseline": "4b088580b5b1756c180c4064640f1dcc558dd825",
+        "report": "audit/2026-10-09/next-cycle/review.md",
+        "remote_blob_hashes_verified": true
       }
     }
   ],
-  "updated": "2026-10-08"
+  "updated": "2026-10-09"
 }

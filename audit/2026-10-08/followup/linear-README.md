@@ -8,7 +8,7 @@ The user supplied an arXiv account dashboard identifying three **new submissions
 
 The official public pages still list UAI v2 and KG v3 when checked in this session. The dashboard reports the three-active-submission block. [Official policy](https://info.arxiv.org/help/moderation/index.html#submission-rate) distinguishes two new submissions per month from replacement rate rules; it does not clearly settle whether a pending replacement is blocked by the active cap. [On-hold guidance](https://info.arxiv.org/help/submit_status.html) says to await instructions and avoid duplicate/delete-and-resubmit actions. No account action was performed.
 
-The next bounded seven-paper review can now begin. Historical verification counts below describe the previous cycle, not new reruns.
+The [next bounded seven-paper review is complete](next-cycle-20261009.md). Historical verification counts below describe the previous cycle; the new report separates actual reruns, corrections and remaining limits.
 
 ## Original request details
 

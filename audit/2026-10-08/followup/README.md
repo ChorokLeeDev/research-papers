@@ -14,7 +14,7 @@ The user supplied an arXiv account dashboard identifying three **new submissions
 
 The official public pages still list UAI v2 and KG v3 when checked in this session. The dashboard reports the three-active-submission block. [Official policy](https://info.arxiv.org/help/moderation/index.html#submission-rate) distinguishes two new submissions per month from replacement rate rules; it does not clearly settle whether a pending replacement is blocked by the active cap. [On-hold guidance](https://info.arxiv.org/help/submit_status.html) says to await instructions and avoid duplicate/delete-and-resubmit actions. No account action was performed.
 
-The next bounded seven-paper review can now begin. Historical verification counts below describe the previous cycle, not new reruns.
+The [next bounded seven-paper review is complete](next-cycle-20261009.md). Historical verification counts below describe the previous cycle; the new report separates actual reruns, corrections and remaining limits.
 
 ## Current outcomes
 
@@ -41,4 +41,4 @@ Actual public-version PDFs and source packages were retrieved before deciding wh
 
 [Two concrete Linear requests](linear-README.md) include current corrected artifacts, independent review links and completion criteria. **They are now written to Linear and read back:** UAI YEO-169 and KG YEO-170. No arXiv replacement submission is claimed.
 
-The user's latest instruction sequences the **next whole-paper review cycle after confirmed Linear updates**. The Linear prerequisite is now complete; the next cycle is being initiated. The current recovery/revision milestone is complete; historical evidence that cannot be authenticated remains explicitly distinguished from valid new reconstruction, withdrawal of unsupported claims and genuinely verified original bytes. No arXiv or venue submission has been performed.
+The user's latest instruction sequences the **next whole-paper review cycle after confirmed Linear updates**. The Linear prerequisite was completed before the [next cycle](next-cycle-20261009.md), which has now finished. The current recovery/revision milestone is complete; historical evidence that cannot be authenticated remains explicitly distinguished from valid new reconstruction, withdrawal of unsupported claims and genuinely verified original bytes. No arXiv or venue submission has been performed.
