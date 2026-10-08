@@ -5,7 +5,18 @@ import path from 'node:path';
 import {pathToFileURL, fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 const ROOT=process.env.RESEARCH_MATERIALS_ROOT || path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const SKILL='/root/.codex/skills/builtins/presentations';
+const skillCandidates=process.env.RESEARCH_PRESENTATION_SKILL
+  ? [process.env.RESEARCH_PRESENTATION_SKILL]
+  : ['/opt/codex/skills/builtins/presentations','/root/.codex/skills/builtins/presentations'];
+let SKILL;
+for(const candidate of skillCandidates){
+  try{
+    await fs.access(path.join(candidate,'container_tools/runtime_helpers.mjs'));
+    SKILL=candidate;
+    break;
+  }catch{}
+}
+if(!SKILL)throw Error('Presentation helpers unavailable. Set RESEARCH_PRESENTATION_SKILL to the installed presentations skill directory.');
 process.env.RUNTIME_NODE=process.env.CODEX_PRIMARY_RUNTIME_NODE;
 process.env.RUNTIME_NODE_MODULES=process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES;
 process.env.RUNTIME_PYTHON=process.env.CODEX_PRIMARY_RUNTIME_PYTHON;

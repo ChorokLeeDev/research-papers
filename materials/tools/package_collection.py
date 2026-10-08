@@ -96,6 +96,7 @@ def main():
               '- English and Korean introduction Markdown files sit beside the PDFs. Shared content is in [content/](content/).',
               '- Print PDFs use `python tools/build_print.py` with ReportLab, PyMuPDF and Pillow. Font files and their licenses are in `assets/fonts/`.',
               '- Slides use `tools/build_decks.mjs` with the OpenAI artifact-tool runtime and LibreOffice. This builder requires that runtime and its presentation validation helpers; the editable PPTX files do not.',
+              '- Presentation helpers are discovered in the standard `/opt/codex` or `/root/.codex` locations; set `RESEARCH_PRESENTATION_SKILL` for another installation. Set `XDG_CACHE_HOME` to a writable directory when the default font cache is unavailable. `python tools/check_deck_pdfs.py` returns a failing status for missing text or glyphs, clipped text, replacement characters, or an empty collection.',
               '- Builders write into `output/`; `python tools/package_collection.py` stages prefixed final filenames and the ZIP under `publish/materials/`.',
               '- [manifest.json](manifest.json) records source identities, page counts, file sizes and SHA-256 hashes.', '',
               'The posters are A0 portrait (841 × 1189 mm). Print at actual size. Slides are 16:9. No conference acceptance or arXiv publication status is inferred from preparation of these materials.', '']

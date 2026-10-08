@@ -18,6 +18,7 @@ out=[]
 for f in sorted((ROOT/'content').glob('*.json')):
     doc=json.loads(f.read_text());id=doc['id'];pdf=fitz.open(ROOT/'output'/id/'slides_en.pdf')
     assert len(pdf)==10,(id,len(pdf))
+    assert len(doc['slides'])==len(pdf),(id,'content/PDF slide count mismatch',len(doc['slides']),len(pdf))
     checks=[]
     for i,(page,slide) in enumerate(zip(pdf,doc['slides'])):
         assert abs(page.rect.width/page.rect.height-16/9)<.005
@@ -62,3 +63,9 @@ for f in sorted((ROOT/'content').glob('*.json')):
 (ROOT/'qa'/'deck_pdf_checks.json').write_text(json.dumps(out,ensure_ascii=False,indent=2))
 for item in out:
  print(item['id'], 'pages=',item['page_count'],'rendered=',item['rendered_pages'],'missing_items=',sum(len(c['missing_extracted_text']) for c in item['checks']),'offpage=',sum(len(c['out_of_page_spans']) for c in item['checks']))
+if not out:
+ raise SystemExit('No slide decks were checked; content/*.json is empty.')
+if any(c[key] for item in out for c in item['checks'] for key in (
+ 'missing_extracted_text','fallback_symbol_shortfalls','out_of_page_spans','replacement_characters'
+)):
+ raise SystemExit('Slide PDF validation failed; see qa/deck_pdf_checks.json.')

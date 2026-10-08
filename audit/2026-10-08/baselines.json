@@ -1,0 +1,222 @@
+{
+  "catalogue_baseline": "a04e9fdd062133dd8c4c44cefc8e828e76409c65",
+  "papers": [
+    {
+      "id": "iclr2027",
+      "repository": "ChorokLeeDev/selective-labels-minimax-iclr2027",
+      "source_branch": "main",
+      "baseline_commit": "38b792da07a174980303e6cb9272e5f5e3bd9bac",
+      "catalogue_summary_commit": "34d30f12fa1d916e89a7eeba123c879e6c7c4db4",
+      "artifacts": [
+        {
+          "kind": "manuscript",
+          "path": "artifacts/iclr2027.pdf",
+          "present": true,
+          "sha256": "0fa4072b0b63484a488b5e5f0f74dc8d8e57f872c89a081eab9ccefe0efc7446",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "source",
+          "path": "paper/main.tex",
+          "present": true,
+          "sha256": "b17581ad72d732b8e278969d3cc84cf4a410c53dfabf01606081e2d4154ec505",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_pdf",
+          "path": "artifacts/arxiv.pdf",
+          "present": true,
+          "sha256": "a8fedfb64648a5b0fe17469f760dc67ed48d6cedba436e4ba0917ff1cf0a0cf9",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_source",
+          "path": "artifacts/arxiv-source.zip",
+          "present": true,
+          "sha256": "4b9a1e2bf67288b624f17a7b7f088d2ab0b2a5aee494101cb865c8e37c722c1e",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "submission_source",
+          "path": "artifacts/iclr2027-source.zip",
+          "present": true,
+          "sha256": "d2c9be710048d1a33553a92691c47f749adc2a91d3c95565e27a0f05ec3524ca",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        }
+      ]
+    },
+    {
+      "id": "aistats2027",
+      "repository": "ChorokLeeDev/conformal-coverage-identification-aistats2027",
+      "source_branch": "main",
+      "baseline_commit": "76661fdf862959345ea22ea2ab5494a4171a6eab",
+      "catalogue_summary_commit": "76661fdf862959345ea22ea2ab5494a4171a6eab",
+      "artifacts": [
+        {
+          "kind": "manuscript",
+          "path": "submission/aistats_submission.pdf",
+          "present": true,
+          "sha256": "179f49e746e8d1d4a5d3fb359270b9343d079955c5739e014ce49ae44dc51650",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "source",
+          "path": "paper_aistats2027/reliance_alignment.tex",
+          "present": true,
+          "sha256": "678f1152d8e4fa40142df7b3e9f3fb44684b9b42913da17448d0edbbd18715e7",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_source",
+          "path": "arxiv/reliance_alignment_arxiv_source.zip",
+          "present": true,
+          "sha256": "f13bd107670bc02419cc9a73b50a65f9254025e8dfd6305f0298439bcc762bb0",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        }
+      ]
+    },
+    {
+      "id": "uai2026",
+      "repository": "ChorokLeeDev/conformal-covid-uai2026",
+      "source_branch": "main",
+      "baseline_commit": "96d9616961e5ae8607373181d35262cb21a2b0d1",
+      "catalogue_summary_commit": "96d9616961e5ae8607373181d35262cb21a2b0d1",
+      "artifacts": [
+        {
+          "kind": "manuscript",
+          "path": "paper/main.pdf",
+          "present": true,
+          "sha256": "578db042a75d5734d2ca41c780a57b20c5e592a873cee80e565dd89f517558ae",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "source",
+          "path": "paper/main.tex",
+          "present": true,
+          "sha256": "8b7456b576cbcb5631345f761fff384d86c7e67b3e59b7915b8ffc95e65f7fbe",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        }
+      ]
+    },
+    {
+      "id": "kg-uncertainty",
+      "repository": "ChorokLeeDev/kg-uncertainty-revision",
+      "source_branch": "revision/confirmation-resume-20260926",
+      "baseline_commit": "208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18",
+      "catalogue_summary_commit": "208f21270f44cb5fe1e26a8b0e0b9dbab88f4a18",
+      "artifacts": [
+        {
+          "kind": "manuscript",
+          "path": "output/kg-uncertainty-revised.pdf",
+          "present": true,
+          "sha256": "6a2a85d4bd6412cdbb5a904e93d32e4b62981c9962a6210d02be37eb225075cc",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "source",
+          "path": "manuscript.tex",
+          "present": true,
+          "sha256": "4d7e2231ff932125822aac9d305c014e12710118d8942d0c14d7b98b1a73e082",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_source",
+          "path": "output/kg-uncertainty-arxiv-source.zip",
+          "present": true,
+          "sha256": "b86e3ec293f1df4136dbf81905a9ed06166acce6d89f225e813618e7b8cebbb8",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        }
+      ]
+    },
+    {
+      "id": "factor-regime",
+      "repository": "ChorokLeeDev/factor-regime-revision",
+      "source_branch": "revision/2026-09-26-factor-validity",
+      "baseline_commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
+      "catalogue_summary_commit": "87dced92128746b8f7c82c5ad1a659e2ff9ad929",
+      "artifacts": [
+        {
+          "kind": "manuscript",
+          "path": "output/factor-crowding-revised.pdf",
+          "present": true,
+          "sha256": "96d65c2998b2ccd53a92c19580597c1d9624da026b9f4b6186d73b50347e0087",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "source",
+          "path": "manuscript.tex",
+          "present": true,
+          "sha256": "a2c2780567491b50d375996e1c1cb7865754d958b59ea0a00c2f17870f4c1910",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_source",
+          "path": "output/factor-paper-arxiv-source.zip",
+          "present": true,
+          "sha256": "5d9c2b2d6421ba27bd7dca8bc3f64ed63d773d7fdd8c482282ab4c202cc94bfa",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        }
+      ]
+    },
+    {
+      "id": "regime-predictability",
+      "repository": "ChorokLeeDev/regime-predictability-revision",
+      "source_branch": "revision/pi-interview-arxiv-20260926",
+      "baseline_commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
+      "catalogue_summary_commit": "ad08f1e2aeef9e4ec667b787d8ae00430c60f65f",
+      "artifacts": [
+        {
+          "kind": "manuscript",
+          "path": "output/regime-predictability-revised.pdf",
+          "present": true,
+          "sha256": "efcd4dcb914dbefff7d0c7f7583e0c8f22a599ffe35892f628b6a58547acb6d5",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "source",
+          "path": "manuscript.tex",
+          "present": true,
+          "sha256": "84b103760dc5bae283d9266e909250727e28cd3c37bcbb864f8d8bee77167d2d",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_source",
+          "path": "output/regime-predictability-arxiv-source.zip",
+          "present": true,
+          "sha256": "6b8ed63a5201a39be01ba397c7b431eac506e342368a9e3b7739af24d37f47fb",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        }
+      ]
+    },
+    {
+      "id": "icaif2026",
+      "repository": "ChorokLeeDev/factor-decay-icaif2026",
+      "source_branch": "main",
+      "baseline_commit": "a0bd43ea47898011d0661710975658a8969299d5",
+      "catalogue_summary_commit": null,
+      "artifacts": [
+        {
+          "kind": "manuscript",
+          "path": "submission/main_icaif_submission.pdf",
+          "present": true,
+          "sha256": "798939cc75e3f690f8780f35c481523c0d5621b026c81b5b71e14fb97ad9fdf1",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_pdf",
+          "path": "arxiv/factor_decay_arxiv.pdf",
+          "present": true,
+          "sha256": "5885fa16420ea4812f86c071cfe8a93180ecdc1e85c1b628d3d1bb5963368c92",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        },
+        {
+          "kind": "arxiv_source",
+          "path": "arxiv/factor_decay_arxiv_source.zip",
+          "present": true,
+          "sha256": "89da26e76a05b014952920ed1005cebf87d412fa25a64e4cea66fd69270d7c6e",
+          "hash_source": "git blob at baseline_commit, not mutable working tree"
+        }
+      ]
+    }
+  ]
+}

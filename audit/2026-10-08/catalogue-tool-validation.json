@@ -1,0 +1,27 @@
+{
+  "baseline": "a04e9fdd062133dd8c4c44cefc8e828e76409c65",
+  "deck_build_command": "XDG_CACHE_HOME=/workspace/research-papers-environment/cache node materials/tools/build_decks.mjs iclr2027",
+  "checks": [
+    {
+      "case": "fresh_native_deck_and_LibreOffice_PDF",
+      "exit_status": 0,
+      "stdout": "iclr2027 pages= 10 rendered= [1, 2, 4] missing_items= 0 offpage= 0",
+      "stderr": ""
+    },
+    {
+      "case": "missing_required_text_is_rejected",
+      "exit_status": 1,
+      "stdout": "iclr2027 pages= 10 rendered= [1, 2, 4] missing_items= 1 offpage= 0",
+      "stderr": "Slide PDF validation failed; see qa/deck_pdf_checks.json."
+    },
+    {
+      "case": "empty_collection_is_rejected",
+      "exit_status": 1,
+      "stdout": "",
+      "stderr": "No slide decks were checked; content/*.json is empty."
+    }
+  ],
+  "fresh_pdf_sha256": "ebd303bc8f9f5a035b4ae84a2d3a6656fabf2e85434925768bb11747dc88f4de",
+  "runtime_helper_location": "/opt/codex/skills/builtins/presentations",
+  "note": "Fresh ten-slide deck generated; these are document-pipeline checks, not scientific validation of the paper."
+}
