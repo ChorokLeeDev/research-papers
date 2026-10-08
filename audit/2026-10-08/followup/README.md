@@ -6,6 +6,16 @@ Authenticated enumeration, complete non-shallow Git histories, **40,116 per-repo
 
 The final recovery-surface check also queried advertised PR heads across all 31 repositories: all **11 heads** were already in the inspected histories, adding no new commits or files. One archived embedded-repository pointer has no recorded remote; its target was absent from all 31 local object databases and unavailable through authenticated commit queries across all 31 repositories (with a known-commit positive control). Its tree and origin remain unauthenticated; this does not show the object never existed or exclude copies outside the requested account. No additional original experiment evidence was recovered.
 
+## Tracking update — 2026-10-09 KST
+
+The two arXiv correction tasks were **created in Linear and fetched again for verification**: [UAI YEO-169](https://linear.app/yeondu/issue/YEO-169) and [KG YEO-170](https://linear.app/yeondu/issue/YEO-170). Both remain Todo; this is task registration, not an arXiv replacement submission. Evidence commits and exact issue URLs are recorded in [the sync receipt](linear-sync-20261009.json).
+
+The user supplied an arXiv account dashboard identifying three **new submissions on hold**: ICLR `submit/8134764`, AISTATS `submit/8147722`, and standalone ICAIF Factor Decay `submit/8147946`. This supersedes the previous failure to identify these submissions. These are internal submission IDs, not public arXiv article IDs. The submitted files have not been compared with current GitHub revisions. In particular, standalone ICAIF is not regime paper `2601.10732`.
+
+The official public pages still list UAI v2 and KG v3 when checked in this session. The dashboard reports the three-active-submission block. [Official policy](https://info.arxiv.org/help/moderation/index.html#submission-rate) distinguishes two new submissions per month from replacement rate rules; it does not clearly settle whether a pending replacement is blocked by the active cap. [On-hold guidance](https://info.arxiv.org/help/submit_status.html) says to await instructions and avoid duplicate/delete-and-resubmit actions. No account action was performed.
+
+The next bounded seven-paper review can now begin. Historical verification counts below describe the previous cycle, not new reruns.
+
 ## Current outcomes
 
 | Project | Executed work and corrected interpretation |
@@ -27,8 +37,8 @@ Actual public-version PDFs and source packages were retrieved before deciding wh
 - **UAI 2601.00908v2:** material correction required. Interpretation, mathematical/statistical claims and operational advice change; historical and recovered follow-up evidence must be separated.
 - **KG 2512.22318v3:** material correction required. Proposed v4 revises provenance/pretest claims, the unverified original-checker claim and reconstruction-dependent table entries.
 - **Factor 2512.11913v3 and regime 2601.10732v2:** scientific methods, equations, results and interpretation match. GitHub evidence/provenance recovery does not alone require substantial scientific replacements.
-- No existing arXiv deposit was identified for the current ICLR/V33, AISTATS or standalone ICAIF drafts. Local files named `arxiv` do not establish publication.
+- At the previous audit, no existing arXiv deposit had been identified for ICLR/V33, AISTATS or standalone ICAIF. The account dashboard supplied on 2026-10-09 KST now identifies the three pending submissions above; announcement and uploaded-file identity remain unverified.
 
-[Two concrete Linear requests](linear-README.md) include current corrected artifacts, independent review links and completion criteria. **They have not been written to Linear:** the user selected the plugin, but this session exposes no callable Linear tool. No issue ID, update or submission is claimed.
+[Two concrete Linear requests](linear-README.md) include current corrected artifacts, independent review links and completion criteria. **They are now written to Linear and read back:** UAI YEO-169 and KG YEO-170. No arXiv replacement submission is claimed.
 
-The user's latest instruction sequences the **next whole-paper review cycle after confirmed Linear updates**. That next cycle has not started. The current recovery/revision milestone is complete; historical evidence that cannot be authenticated remains explicitly distinguished from valid new reconstruction, withdrawal of unsupported claims and genuinely verified original bytes. No arXiv or venue submission has been performed.
+The user's latest instruction sequences the **next whole-paper review cycle after confirmed Linear updates**. The Linear prerequisite is now complete; the next cycle is being initiated. The current recovery/revision milestone is complete; historical evidence that cannot be authenticated remains explicitly distinguished from valid new reconstruction, withdrawal of unsupported claims and genuinely verified original bytes. No arXiv or venue submission has been performed.

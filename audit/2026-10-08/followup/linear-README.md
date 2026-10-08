@@ -1,10 +1,18 @@
-# arXiv update requests prepared for Linear
+# arXiv correction tasks synchronized to Linear
 
-**Status: not written to Linear.** The plugin was selected, but this session has no callable Linear tool. The following two requests are concrete, reviewed drafts; no external issue ID or URL is invented.
+## Tracking update — 2026-10-09 KST
 
-- [[arXiv 2601.00908v2] 통계 정정과 복구 자료 재검증을 반영한 개정본 준비](uai-arxiv-correction.md)
-- [[arXiv 2512.22318v3 → v4] 사전 검증 주장 정정과 재구성 실험·수정 표 반영](kg-arxiv-correction.md)
+The two arXiv correction tasks were **created in Linear and fetched again for verification**: [UAI YEO-169](https://linear.app/yeondu/issue/YEO-169) and [KG YEO-170](https://linear.app/yeondu/issue/YEO-170). Both remain Todo; this is task registration, not an arXiv replacement submission. Evidence commits and exact issue URLs are recorded in [the sync receipt](linear-sync-20261009.json).
 
-Factor v3 and regime v2 were compared with their actual public source packages. Their scientific contents are unchanged; the GitHub evidence recovery does not by itself warrant a substantial arXiv replacement. No existing arXiv deposit was identified for the standalone ICAIF, AISTATS or ICLR manuscripts.
+The user supplied an arXiv account dashboard identifying three **new submissions on hold**: ICLR `submit/8134764`, AISTATS `submit/8147722`, and standalone ICAIF Factor Decay `submit/8147946`. This supersedes the previous failure to identify these submissions. These are internal submission IDs, not public arXiv article IDs. The submitted files have not been compared with current GitHub revisions. In particular, standalone ICAIF is not regime paper `2601.10732`.
 
-The user's requested next whole-paper review cycle is sequenced after actual Linear updates. The current recovery and independent-review milestone is being closed first.
+The official public pages still list UAI v2 and KG v3 when checked in this session. The dashboard reports the three-active-submission block. [Official policy](https://info.arxiv.org/help/moderation/index.html#submission-rate) distinguishes two new submissions per month from replacement rate rules; it does not clearly settle whether a pending replacement is blocked by the active cap. [On-hold guidance](https://info.arxiv.org/help/submit_status.html) says to await instructions and avoid duplicate/delete-and-resubmit actions. No account action was performed.
+
+The next bounded seven-paper review can now begin. Historical verification counts below describe the previous cycle, not new reruns.
+
+## Original request details
+
+- [UAI correction](uai-arxiv-correction.md)
+- [KG correction](kg-arxiv-correction.md)
+
+Factor v3 and regime v2 scientific content was unchanged in the preceding source comparison; evidence recovery alone did not require replacement.

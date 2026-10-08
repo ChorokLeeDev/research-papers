@@ -1,0 +1,24 @@
+{
+  "date_kst": "2026-10-09",
+  "verified_at_utc": "2026-10-08T15:40:51.635Z",
+  "issues": [
+    {
+      "id": "YEO-169",
+      "url": "https://linear.app/yeondu/issue/YEO-169/arxiv-260100908v2-통계-정정과-복구-자료-재검증을-반영한-개정본-준비",
+      "operation": "created",
+      "updated_at": "2026-10-08T15:38:18.925Z",
+      "evidence_commit": "533814f27add9dd05bcebb74e71ea21bfeb76649",
+      "state": "Todo"
+    },
+    {
+      "id": "YEO-170",
+      "url": "https://linear.app/yeondu/issue/YEO-170/arxiv-251222318v3-v4-사전-검증-주장-정정과-재구성-실험수정-표-반영",
+      "operation": "created",
+      "updated_at": "2026-10-08T15:38:31.418Z",
+      "evidence_commit": "af000ebf0c896c4ab0a75ad0f8874077c1eece0a",
+      "state": "Todo"
+    }
+  ],
+  "verification": "Created after workspace identifier/title/repository search and full Research-project issue listing; fetched both issues again and checked descriptions, URLs and Todo states.",
+  "arxiv_replacement_submitted": false
+}

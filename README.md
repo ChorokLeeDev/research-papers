@@ -1,5 +1,7 @@
 # Research Papers
 
+> 2026-10-09 KST: [Linear correction tasks and pending arXiv submissions](audit/2026-10-08/followup/linear-README.md) have been synchronized and read back. UAI **YEO-169**, KG **YEO-170**; ICLR/AISTATS/ICAIF are submitted **on hold**, not publicly announced.
+
 Chorok Lee · Research catalogue · Updated 8 October 2026
 
 논문별 저장소, 기준 원고, 한 페이지 소개와 한·영 1분 스피치를 모았습니다. 금융 논문 세 편의 차이는 아래 비교표에서 확인할 수 있습니다. 아래 7개 항목은 프로젝트/버전 목록이며 독립적인 출판 논문 수를 뜻하지 않습니다.
