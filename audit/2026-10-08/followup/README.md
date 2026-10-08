@@ -1,5 +1,7 @@
 # Account-wide evidence recovery and verified revisions
 
+> Latest replacement review files: [2026-10-09 synchronization record](../../2026-10-09/replacement-review-sync.md). UAI proposed v3 and KG proposed v4 remain unsubmitted.
+
 The user requested continued work on every unresolved item, including a search of every repository in the same account. This follow-up covers the original seven catalogue projects and traces their evidence across all **31 account-owned repositories**, including 14 private repositories, three forks and two empty repositories. It is not a scientific audit of every unrelated project in the account.
 
 Authenticated enumeration, complete non-shallow Git histories, **40,116 per-repository historical paths**, all repository release/Actions listings, and relevant archived sources were inspected. The sole available release restored a **33-part, 2,185,804,556-byte** archive with **6,488 members**, verified against its recorded whole-file SHA-256. Private raw payload remains in the private/local recovery checkout. [Search receipt](account-recovery-scope.json).
