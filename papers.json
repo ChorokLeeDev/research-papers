@@ -25,11 +25,11 @@
       "status": "Submitted to ICLR 2027 · Decision pending (not accepted)",
       "audit": {
         "date": "2026-10-08",
-        "report": "audit/2026-10-08/initial-review.md",
-        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "report": "audit/2026-10-08/followup-data-and-citations.md",
+        "independent_recheck": "audit/2026-10-08/v33-reconstruction-independent-recheck.md",
         "revised_artifact": "v33/README.md",
-        "commit": "09d03cf1bf112639531a14924585e87705517e51",
-        "summary": "Manuscript binding repaired; complementary robust-frontier and V33 extensions preserved and checked without claiming fresh CIFAR training.",
+        "commit": "21588a434f920ae1d6769ba9145df2017218df63",
+        "summary": "Raw inputs recovered; fresh model, 10,000 predictions and 48 exact audit probabilities checked. Historical confidence-order mismatch remains explicitly preserved.",
         "historical_summaries_rewritten": false
       }
     },
@@ -51,11 +51,11 @@
       "status": "AISTATS 2027 submission 644",
       "audit": {
         "date": "2026-10-08",
-        "report": "audit/2026-10-08/initial-review.md",
-        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
-        "revised_artifact": "revision/2026-10-08/aistats_submission.pdf",
-        "commit": "1a797c291a5a4f31bd109c39c102eac68b934b88",
-        "summary": "Positive-score exception restored in the identification claim; numerical evidence reproduced.",
+        "report": "audit/2026-10-08/followup/README.md",
+        "independent_recheck": "audit/2026-10-08/followup/independent-recheck.md",
+        "revised_artifact": "revision/2026-10-08-followup/aistats_submission.pdf",
+        "commit": "c9d1f21510df33eb28a785efba476ca9425517b9",
+        "summary": "Protocol timing qualified; all 27 cited primary metadata records and nine full-text versions checked. Numerical results unchanged.",
         "historical_summaries_rewritten": false
       }
     },
@@ -77,11 +77,11 @@
       "status": "UAI 2026 camera-ready source",
       "audit": {
         "date": "2026-10-08",
-        "report": "audit/2026-10-08/initial-review.md",
-        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
+        "report": "audit/2026-10-08/recovery/README.md",
+        "independent_recheck": "audit/2026-10-08/recovery-independent-recheck.md",
         "revised_artifact": "audit/2026-10-08/revision/uai-statistical-audit-revision.pdf",
-        "commit": "ba3e968d71fea58c118e80c46bdf4944744bb4bd",
-        "summary": "APS/theorem and statistical interpretation corrected; historical experiments remain unreproduced.",
+        "commit": "533814f27add9dd05bcebb74e71ea21bfeb76649",
+        "summary": "Recovered 24-model follow-up fully refitted; negative eight-task association, date-truncated join defect and unsupported experiment claims documented. Original 50-seed results remain unrecovered.",
         "historical_summaries_rewritten": false
       }
     },
@@ -103,11 +103,11 @@
       "status": "Active revision",
       "audit": {
         "date": "2026-10-08",
-        "report": "audit/2026-10-08/initial-review.md",
-        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
-        "revised_artifact": "output/kg-uncertainty-two-graph-draft9-20261008.pdf",
-        "commit": "19d5f072c5595af4dce4999ae58d984e9baf5dfc",
-        "summary": "Verified two-graph source/PDF separated from an unsupported expanded three-graph archive.",
+        "report": "audit/2026-10-08/expanded-evidence-recovery.md",
+        "independent_recheck": "audit/2026-10-08/expanded-reconstruction-recheck.md",
+        "revised_artifact": "output/kg-uncertainty-expanded-audit-20261008.pdf",
+        "commit": "af000ebf0c896c4ab0a75ad0f8874077c1eece0a",
+        "summary": "Public expanded v3 identified; three-graph results reconstructed and independently checked. Proposed v4 withdraws unsupported pretest/original-checker claims and records numerical deviations.",
         "historical_summaries_rewritten": false
       }
     },
@@ -130,11 +130,11 @@
       "arxiv_url": "https://arxiv.org/abs/2512.11913",
       "audit": {
         "date": "2026-10-08",
-        "report": "audit/2026-10-08/initial-review.md",
-        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
-        "revised_artifact": "output/factor-crowding-statistical-audit-20261008.pdf",
-        "commit": "de88bc61edaff2a9071236b5fed4cfd4d23aebc3",
-        "summary": "Missing v10 raw evidence disclosed; six retained older empirical runs replayed.",
+        "report": "audit/2026-10-08/factor-v10-reconstruction.md",
+        "independent_recheck": "audit/2026-10-08/factor-recovery-recheck.md",
+        "revised_artifact": "output/factor-crowding-reconstructed-evidence-20261008.pdf",
+        "commit": "d6f6d1e7410c4961126d8be759431b3eb9287da7",
+        "summary": "Complete v10 reconstruction: 5,040 fits, 648,000 entries; 166 stable fields and table match exactly. New evidence is distinguished from missing original archive bytes.",
         "historical_summaries_rewritten": false
       }
     },
@@ -157,11 +157,11 @@
       "arxiv_url": "https://arxiv.org/abs/2601.10732",
       "audit": {
         "date": "2026-10-08",
-        "report": "audit/2026-10-08/initial-review.md",
-        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
-        "revised_artifact": "output/regime-predictability-statistical-audit-20261008.pdf",
-        "commit": "3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39",
-        "summary": "Four omitted tests integrated; missing 800 intervention artifacts disclosed; historical recovery preserved.",
+        "report": "audit/2026-10-08/regime-evidence-recovery.md",
+        "independent_recheck": "audit/2026-10-08/regime-recovery-recheck.md",
+        "revised_artifact": "output/regime-predictability-evidence-recovery-20261008.pdf",
+        "commit": "bbf84ffaac9aca05e434884e517027f57d324e4f",
+        "summary": "All 800 raw files restored to original hashes; 400-run reconstruction and independent loss/interval replay pass. Scientific results unchanged.",
         "historical_summaries_rewritten": false
       }
     },
@@ -196,11 +196,11 @@
       "arxiv_page_count": 10,
       "audit": {
         "date": "2026-10-08",
-        "report": "audit/2026-10-08/initial-review.md",
-        "independent_recheck": "audit/2026-10-08/independent-recheck.md",
-        "revised_artifact": "revisions/2026-10-08/statistical-erratum.md",
-        "commit": "7c45a212175b523db99ad54a8458682ce63eed50",
-        "summary": "Statistical erratum withdraws unsupported predictive interpretations; replacement performance not estimated.",
+        "report": "audit/2026-10-08/recovery-and-rebuild.md",
+        "independent_recheck": "audit/2026-10-08/rebuild-independent-review.md",
+        "revised_artifact": "revisions/2026-10-08/rebuild/research-addendum.md",
+        "commit": "4b088580b5b1756c180c4064640f1dcc558dd825",
+        "summary": "New chronological reconstruction independently checks 1,830 regressions and 240 cohorts. Held-out AUC/C-index are undefined with 3 and 1 eligible events; original 0.933 is not validated.",
         "historical_summaries_rewritten": false
       }
     }

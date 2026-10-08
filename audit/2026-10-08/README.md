@@ -1,5 +1,7 @@
 # Statistical and reproducibility audit — 8 October 2026
 
+**Later account-wide recovery and current findings:** [follow-up report](followup/README.md). That report supersedes the availability and network limitations recorded in this initial pass. It includes actual recovered-data reruns, independent checks, current main commits and the arXiv/Linear status. The initial record below is retained as the chronological baseline.
+
 This audit covers all seven projects listed in `papers.json`, including their linked manuscript repositories. The requested priority is statistical correctness. The user reported an ICAIF concern described as “statistical error”; no full reviewer report was supplied. No venue decision or reviewer verdict is inferred from that description.
 
 ## Scope and evidence rules
@@ -22,7 +24,7 @@ The slide builder assumed presentation helpers lived under `/root/.codex`; the c
 
 [Executable validation](catalogue-tool-validation.json) records a fresh ten-slide deck/PDF build, a passing full-content check, a deliberately missing-text case that fails, and an empty-collection case that fails. These validate the document toolchain only, not the paper's scientific conclusions. Generated validation outputs remain outside the tracked deliverables.
 
-## Paper findings and verified milestones
+## Initial-pass findings and verified milestones
 
 | Project | Scientific or reproducibility correction | Executed validation and remaining limit |
 | --- | --- | --- |

@@ -1,0 +1,47 @@
+{
+  "account": "ChorokLeeDev",
+  "method": "Authenticated owner enumeration with pagination; full nonshallow Git-history filename searches; every repository releases/actions artifact listing; targeted blob/archive inspection and the available release member index.",
+  "repository_count": 31,
+  "public_count": 17,
+  "private_count": 14,
+  "fork_count": 3,
+  "empty_repository_count": 2,
+  "historical_paths": 40116,
+  "archive_and_data_candidate_paths": 7683,
+  "releases": 1,
+  "actions_artifacts": 0,
+  "api_surface_errors": [],
+  "recovered_release_parts": 33,
+  "recovered_release_bytes": 2185804556,
+  "recovered_release_sha256": "d31e4522bf8050d1447547c1ae58eb4da582600f764a24f40f6a95da2d963559",
+  "recovered_release_members": 6488,
+  "private_raw_payload": "retained in owner-private/local recovery checkout; no raw private payload copied into public catalogue",
+  "local_inventory_sha256": "56c69060ef23644600f8202f07bc98eeff54581fd4560968ab32020976397185",
+  "scope_note": "All owned repositories were included. Filename/archive searches do not establish that an untracked historical file never existed.",
+  "pr_head_closure": {
+    "repositories_queried": 31,
+    "query_errors": 0,
+    "repositories_with_pr_heads": 3,
+    "pr_heads": 11,
+    "heads_checked": 11,
+    "already_reachable": 11,
+    "unique_new_commits": 0,
+    "unique_new_paths": 0,
+    "fetched_heads": 0,
+    "new_original_evidence_recovered": false
+  },
+  "archived_gitlink_closure": {
+    "local_object_scan_repositories": 31,
+    "object_found_locally": false,
+    "remote_commit_queries": 31,
+    "remote_status_counts": {
+      "422": 29,
+      "409": 2
+    },
+    "known_commit_positive_control": 200,
+    "remote_object_found": false,
+    "authoritative_origin_recorded": false,
+    "unresolved_limit": "Gitlink tree content and origin remain unauthenticated; no claim that the object never existed or is absent from other accounts, deleted repositories, unreachable storage, or author disks."
+  },
+  "targeted_closure_receipt_sha256": "ce3af9f8d02d2ffd7d0f0bc73e174169f305675488c9b1178ee1e26b6ef67ca5"
+}

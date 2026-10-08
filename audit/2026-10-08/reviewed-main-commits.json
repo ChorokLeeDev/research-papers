@@ -1,13 +1,14 @@
 {
   "date": "2026-10-08",
+  "phase": "account-wide recovery follow-up",
   "paper_repositories": {
-    "ChorokLeeDev/selective-labels-minimax-iclr2027": "09d03cf1bf112639531a14924585e87705517e51",
-    "ChorokLeeDev/conformal-coverage-identification-aistats2027": "1a797c291a5a4f31bd109c39c102eac68b934b88",
-    "ChorokLeeDev/conformal-covid-uai2026": "ba3e968d71fea58c118e80c46bdf4944744bb4bd",
-    "ChorokLeeDev/kg-uncertainty-revision": "19d5f072c5595af4dce4999ae58d984e9baf5dfc",
-    "ChorokLeeDev/factor-regime-revision": "de88bc61edaff2a9071236b5fed4cfd4d23aebc3",
-    "ChorokLeeDev/regime-predictability-revision": "3472b6a7d55e6874bf14d8bb82cf6d9f00ccdb39",
-    "ChorokLeeDev/factor-decay-icaif2026": "7c45a212175b523db99ad54a8458682ce63eed50"
+    "ChorokLeeDev/selective-labels-minimax-iclr2027": "21588a434f920ae1d6769ba9145df2017218df63",
+    "ChorokLeeDev/conformal-coverage-identification-aistats2027": "c9d1f21510df33eb28a785efba476ca9425517b9",
+    "ChorokLeeDev/conformal-covid-uai2026": "533814f27add9dd05bcebb74e71ea21bfeb76649",
+    "ChorokLeeDev/kg-uncertainty-revision": "af000ebf0c896c4ab0a75ad0f8874077c1eece0a",
+    "ChorokLeeDev/factor-regime-revision": "d6f6d1e7410c4961126d8be759431b3eb9287da7",
+    "ChorokLeeDev/regime-predictability-revision": "bbf84ffaac9aca05e434884e517027f57d324e4f",
+    "ChorokLeeDev/factor-decay-icaif2026": "4b088580b5b1756c180c4064640f1dcc558dd825"
   },
-  "note": "Exact reviewed source commits. Remote main equality is checked separately during publication; no force push or venue submission."
+  "note": "Exact independently reviewed main commits. Older baselines and initial audit receipts remain preserved."
 }
