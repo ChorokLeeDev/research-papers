@@ -1,0 +1,29 @@
+{
+  "data_n": 8817,
+  "data_start": "1990-01-02",
+  "data_end": "2024-12-31",
+  "evaluation_n_per_factor_horizon": 3753,
+  "evaluation_start": "2010-01-04",
+  "evaluation_end": "2024-11-29",
+  "scale_training_first_origin": "2000-01-03",
+  "scale_training_last_origin": "2009-12-01",
+  "scale_training_n": 2494,
+  "RMSSE_definition": "sqrt(test log MSE / training mean squared daily (lag-1) target difference); fixed first-fold training scales with 21-observation purge; mean of six factor-specific RMSSEs",
+  "naive_definition": "at t use completed t-h+1..t block to forecast t+1..t+h; identical evaluation origins to B/C/D/CV",
+  "scope": "Historical chronological OOS, reused 2010-2024; descriptive RMSSE comparisons, no significance or economic endpoint claims",
+  "max_target_alignment_error": 1.7763568394002505e-15,
+  "max_frozen_metric_error": 6.661338147750939e-16,
+  "B_h20_mean_RMSSE_gain_vs_naive_pct": 9.394357027958256,
+  "D_h20_mean_RMSSE_gain_vs_B_pct": 0.07414172416932985,
+  "B_lowest_RMSSE_factor_count_h20": 4,
+  "forecast_figure": "All six factors, h=20, fixed calendar year 2013; no interval estimates",
+  "input_sha256": {
+    "archive/three-directions-20261001/data/US.csv": "a77506066090316404b5c1a6d512406470775b68272ed029d91f41c12e6bf5ab",
+    "experiments/finals-matrix/results/matrix_forecasts.csv.gz": "6e1a152d1fafa8146c9603f7fcc268eb34aeec3276adc1ab20b0c105f4d452a4",
+    "experiments/finals-matrix/results/matrix_pooled.csv": "8c7aa0db68eed38fa05a5971f50f9954763cc5760175749275fa6fb951a20bc7",
+    "experiments/finals-matrix/protocol.json": "445783d672f91ec5c82b0197d02dcbfabdddbacd4899c7adf1ac7e30853f48d5"
+  },
+  "python": "3.9.6",
+  "numpy": "1.26.4",
+  "pandas": "2.3.3"
+}

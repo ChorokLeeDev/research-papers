@@ -1,0 +1,24 @@
+{
+  "slides": 6,
+  "aspect_ratio": "4:3",
+  "criteria_presence_checks": {
+    "forecast_and_research_question": "PASS",
+    "user_decision_and_practical_value": "PASS",
+    "data_source_period_frequency_count": "PASS",
+    "data_features_plot": "PASS",
+    "methods_suitability_and_benchmark": "PASS",
+    "out_of_sample_design_and_horizons": "PASS",
+    "scaled_point_accuracy": "PASS",
+    "comparison_table_and_improvement": "PASS",
+    "out_of_sample_forecast_plot_and_units": "PASS",
+    "takeaway_decision_limits_extensions": "PASS"
+  },
+  "probabilistic_metrics": "Not applicable: point forecasts only; intervals listed as an extension",
+  "text_within_page_bounds": true,
+  "latex_overfull_boxes": 0,
+  "source_archive_hashes_match": true,
+  "input_source_hashes_match": true,
+  "identical_evaluation_origins_all_cells": true,
+  "frozen_losses_reproduced": true,
+  "deck_sha256": "b09d127480c040224391c922db08b5d24f96378befcdbece622c2a8a68fae995"
+}
