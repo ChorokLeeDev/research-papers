@@ -2,6 +2,8 @@
 
 **Multi-horizon factor volatility: what needs recalibration?**
 
+Slides are in **English**; the five-minute speaking script is in **Korean**.
+
 - [Presentation PDF](deck.pdf): six slides, 4:3 Beamer style matching the other decks.
 - [Five-minute speaking notes](speaking-notes.md).
 - [Complete course-criteria checklist](requirements-check.md).

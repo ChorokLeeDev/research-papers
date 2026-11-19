@@ -1,10 +1,10 @@
 {
   "source_directory": "/Users/i767700/Desktop/2026-fall/green/timeseries-and-forcasting/docs/techtalk/course-final",
   "files_sha256": {
-    "deck.pdf": "b09d127480c040224391c922db08b5d24f96378befcdbece622c2a8a68fae995",
+    "deck.pdf": "b75a75053524e52e666b558dac26eb7e69154faeacd7e321a959b13b92940cda",
     "speaking-notes.md": "d4e9ce0d9c69649c04df1acb5fd128cd79a047492e4a88c90a5b4c129e793060",
-    "requirements-check.md": "922b95f7f200d605740ace63f2fbeb0091b1b176bace6feddbfb8ad1837a32d4",
-    "deck-check.json": "b99d171d091bfac5f08cb7e5b31ca3ba550b43b03ff96458d45028f58f2c880f",
+    "requirements-check.md": "17bdb5f288512272eddcd2b96da415a12ac5b4cb4e73b2ccfc236a2db07a03fa",
+    "deck-check.json": "782f5aedc99b8c4327fa63b0ab0f133b961b40f78c841cf39bdf44074b431629",
     "verification.json": "32a5a12666b3dfb47d51814b856f3a9f204e89bd18f12c4fa23b150670e318c4"
   }
 }

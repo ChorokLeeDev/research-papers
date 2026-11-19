@@ -1,6 +1,10 @@
 {
   "slides": 6,
   "aspect_ratio": "4:3",
+  "deck_language": "English",
+  "speaker_notes_language": "Korean",
+  "speaker_notes_time_plan_seconds": 300,
+  "speaker_notes_sha256": "d4e9ce0d9c69649c04df1acb5fd128cd79a047492e4a88c90a5b4c129e793060",
   "criteria_presence_checks": {
     "forecast_and_research_question": "PASS",
     "user_decision_and_practical_value": "PASS",
@@ -20,5 +24,5 @@
   "input_source_hashes_match": true,
   "identical_evaluation_origins_all_cells": true,
   "frozen_losses_reproduced": true,
-  "deck_sha256": "b09d127480c040224391c922db08b5d24f96378befcdbece622c2a8a68fae995"
+  "deck_sha256": "b75a75053524e52e666b558dac26eb7e69154faeacd7e321a959b13b92940cda"
 }

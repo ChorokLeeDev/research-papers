@@ -1,7 +1,7 @@
 # Final presentation requirements check
 
 Checked against the supplied course announcement. The deck contains six
-slides and a five-minute speaking plan. Every mandatory content item is
+English slides and a five-minute Korean speaking script. Every mandatory content item is
 covered. Prediction intervals are not included; this is a point-forecast
 presentation, with calibrated intervals identified as a possible extension.
 
