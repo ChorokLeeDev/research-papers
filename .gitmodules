@@ -1,0 +1,9 @@
+[submodule "decks/uai2026"]
+	path = decks/uai2026
+	url = https://github.com/ChorokLeeDev/conformal-covid-uai2026.git
+[submodule "decks/aistats2027"]
+	path = decks/aistats2027
+	url = https://github.com/ChorokLeeDev/conformal-coverage-identification-aistats2027.git
+[submodule "decks/iclr2027"]
+	path = decks/iclr2027
+	url = https://github.com/ChorokLeeDev/selective-labels-minimax-iclr2027.git
