@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 assets/fonts/*.ttf
 qa/
+
+# Track project skills even though global gitignore hides .claude/
+!.claude/
+!.claude/skills/
+!.claude/skills/**
