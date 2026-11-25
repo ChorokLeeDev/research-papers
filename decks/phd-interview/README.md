@@ -1,14 +1,14 @@
 # Chorok Lee — PhD interview research introduction
 
-Nine slides explaining the intuition behind predictive reliability, distribution shift and label audits. The deck is lab-neutral and can be reused across PhD interviews.
+Nine reusable slides, with short spoken explanations of the models and the questions behind the three papers.
 
-- [PDF slides](deck.pdf)
-- [Editable PowerPoint](deck.pptx), with embedded speaker notes
-- [Offline HTML presentation](deck.html), with a notes panel and rehearsal timer
-- [English speaking notes](speaking-notes.md)
+- [Short English speaking notes](speaking-notes.md) — one read-aloud paragraph per slide.
+- [Basic professor setup questions](setup-questions.md).
+- [PDF slides](deck.pdf).
+- [PowerPoint](deck.pptx), with matching embedded notes.
+- [Offline HTML presentation](deck.html), with matching notes.
+- [Preserved user-edited TAIL source](speaking-notes-source.md) — copied unchanged; the current notes clarify model settings and generalize the lab references.
 
-Open the HTML file locally: arrows or Space navigate, N shows notes, F enters full screen, T starts or pauses the timer, and P prints.
+In the HTML, N shows notes; the “Back to point” line stays visible while reading. Keys 1–9 jump directly to a slide. Arrows or Space navigate, T pauses or starts the rehearsal timer, F enters full screen and P prints. The times are a rehearsal budget, not a recorded duration.
 
-The speaking notes use a provisional 11:10 rehearsal budget. Actual duration depends on delivery and pauses; rehearse within the interview time limit.
-
-UAI 2026 is published. The AISTATS 2027 and ICLR 2027 manuscripts are submitted with decisions pending. The diagrams are conceptual, with the scope of the results retained in the slides and notes.
+UAI is published; AISTATS and ICLR are submissions with decisions pending. The current notes keep historical findings, mathematical assumptions and new proposed directions separately scoped.
