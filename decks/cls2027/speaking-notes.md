@@ -1,6 +1,6 @@
 # Chorok Lee · CLS 2027 · 4-minute research video — timed English script
 
-Planned runtime: **04:00**. 5 main slides. Read-aloud text: 480 words.
+Planned runtime: **04:00**. 5 main slides. Read-aloud text: ~470 words.
 Times are rehearsal targets, including pauses and slide changes. Time one full rehearsal before presenting. Do not read source footers aloud.
 
 Record your own spoken presentation in English. Save the final video as **13470_Chorok_Lee_CLS2027.mp4**. The deck and script are preparation files, not the requested video.
@@ -8,35 +8,39 @@ Record your own spoken presentation in English. Save the final video as **13470_
 | Slide | Time window | Duration |
 | --- | --- | --- |
 | 1. Chorok Lee | 00:00–00:40 | 40s |
-| 2. The starting point: coverage fails differently | 00:40–01:15 | 35s |
-| 3. Thesis: identify a range instead of assuming a point | 01:15–02:15 | 60s |
-| 4. Related work: how much can more labels establish? | 02:15–03:05 | 50s |
-| 5. At CLS: two projects in reliable evaluation | 03:05–04:00 | 55s |
+| 2. Where it started: the same shock, very different damage | 00:40–01:15 | 35s |
+| 3. My thesis: give an honest range, not a false single number | 01:15–02:15 | 60s |
+| 4. Related work: how many labels does it take to catch a bad model? | 02:15–03:05 | 50s |
+| 5. At CLS: two projects on trustworthy evaluation | 03:05–04:00 | 55s |
 
 ## 1. Chorok Lee · 00:00–00:40
 
-Hello, I am Chorok Lee, a master's student in Software Engineering at KAIST, supervised by Professor Insik Shin. I expect to complete my degree in February 2027. I previously studied Economics at Yonsei University, with an exchange year at Dartmouth. My research asks what observable evidence can establish about predictive reliability, and which additional observations make evaluation informative. I study these questions under distribution shift and selective or noisy labels.
+Hello, I'm Chorok Lee. I'm a master's student in software engineering at KAIST, advised by Professor Insik Shin, finishing in February 2027. I came to this from economics at Yonsei, with an exchange year at Dartmouth. My research asks one question: when we check whether a model is reliable, what can the evidence we actually have really tell us — and what more would we need to collect? I study this when the data shifts after deployment and the true answers are missing or unreliable.
 
 
-## 2. The starting point: coverage fails differently · 00:40–01:15
+## 2. Where it started: the same shock, very different damage · 00:40–01:15
 
-My published UAI 2026 paper began with a COVID-19 case study: classification tasks facing the same temporal disruption lost conformal coverage by very different amounts. I studied SHAP concentration, the share of feature importance assigned to the top feature, as an exploratory vulnerability diagnostic. In the gradient-boosted models studied, concentration was associated with greater coverage loss. The diagnostic has model-dependent limits. This led me to a deeper question: which reliability conclusions can the summaries we observe actually determine?
-
-
-## 3. Thesis: identify a range instead of assuming a point · 01:15–02:15
-
-My master's thesis, submitted to AISTATS 2027 and currently under review, formalizes that question. First, in a binary setting with a known logistic label law, shifts can have equal rotation-invariant magnitudes but different conformal coverage. A more accurate estimate of the same magnitude cannot recover information it discarded. Under that known link, the absolute-score distribution does determine the full coverage curve.
-
-Second, I remove the known-link assumption. Given source confidence calibration, target confidence frequencies, and an assumed covariate density-ratio bound, I derive a sharp partial-identification envelope: the range of coverage compatible with those inputs. The endpoints are attainable. This distinguishes uncertainty caused by a limited sample from ambiguity that the observed summaries cannot resolve. For a PhD, I want to extend this perspective to risk scores whose calibration is itself uncertain.
+My first question came from COVID. In my published UAI paper, many prediction tasks were hit by the very same disruption — yet some stayed reliable and others fell apart. I wanted to know why. My finding: the models that leaned almost all their weight on one single feature were the ones that broke, because when the world changed, that one feature changed too. That gave a warning sign you can compute before deployment. But it only works for one family of models — which pushed me to a deeper question.
 
 
-## 4. Related work: how much can more labels establish? · 02:15–03:05
+## 3. My thesis: give an honest range, not a false single number · 01:15–02:15
 
-My related ICLR 2027 submission studies evaluation when difficult cases can be missing their labels. For a frozen predictor and cohort with a committed partial record, I ask how well an additional audit can detect excessive risk while controlling false alarms. The paper characterizes an exact fixed-query asymptotic minimax detection frontier and an attaining rule for truthful queries.
+Here's the deeper question. After the data shifts, we can't measure a model's reliability directly — we only see summaries, like how far the data moved and how confident the model is. Can those summaries tell us how reliable the model still is?
 
-With uncertain audit-label reliability, more requests need not resolve the ambiguity. Query count, knowledge of label quality, and cohort size are different resources. These results depend on specified risk and audit protocols. The broader question is how to acquire evidence that makes a reliability claim informative.
+My thesis answer has two parts. First, a plain "how far did the data move" number is not enough: I show two shifts that move the data by the exact same amount, where one breaks the model and the other doesn't. So that number alone can't tell them apart.
+
+Second — and this is the part I care about most — when the information is limited, the honest answer isn't a single reliability number, it's a range. I prove the exact best-case and worst-case reliability the evidence allows. That's valuable because it separates "we're unsure because our sample is small" from "the evidence we have simply cannot pin this down." For a PhD, I want to extend this to models whose confidence is itself untrustworthy.
 
 
-## 5. At CLS: two projects in reliable evaluation · 03:05–04:00
+## 4. Related work: how many labels does it take to catch a bad model? · 02:15–03:05
 
-At CLS, I would like to pursue two projects from my motivation letter. First, partial identification of risk-score calibration under shift: characterize the confidence law itself as a set of possibilities supported by evidence. Second, label-budget lower bounds for certifying a deployed model's risk under selective observation. I would be excited to connect these questions to Celestine Mendler-Dünner's work on risk scores and Moritz Hardt's work on evaluation limits. The joint ETH and Tübingen environment, including the twelve-month exchange, would let me develop one problem through theory and empirical evaluation, with sustained collaboration across groups. Thank you.
+My related ICLR work asks a practical follow-up. A model can look good just because its hard cases were never checked. So: how many of those missing answers do we have to go check before we can be confident the real error rate is too high — without crying wolf?
+
+I work out that exact number. And I show something useful: if you don't know how trustworthy your checker is, no amount of extra checking fixes that — knowing your checker's reliability is a separate resource from doing more checks.
+
+
+## 5. At CLS: two projects on trustworthy evaluation · 03:05–04:00
+
+At CLS, I'd like to pursue two projects. First, when a model's confidence can't be trusted under a data shift, describe the full set of reliabilities the evidence still allows — a range, not a guess. Second, prove how many labels you truly need to certify a deployed model's risk when the hard cases are the ones left unchecked.
+
+Both connect directly to the groups there — Celestine Mendler-Dünner's work on risk scores, and Moritz Hardt's on the limits of evaluation. The joint ETH and Tübingen setup, with the twelve-month exchange, is exactly the place to take one of these problems from theory to real evaluation, across both groups. Thank you.
